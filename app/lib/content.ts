@@ -261,9 +261,9 @@ export const AI_ASSISTANT_DEFAULTS = {
     "Hey - I'm here to help you understand my work, what I can build for you, or help you sketch a plan for your next idea. What are you working on?",
   responses: {
     capabilities:
-      "I build mobile apps, iOS games, SaaS systems, AI integrations, and business dashboards. I handle everything from blueprint to launch.",
+      "I build mobile apps, games, SaaS systems, and AI-powered tools. I handle everything from the initial blueprint to the final launch, ensuring the product is verified and ready for users.",
     multiplatform:
-      "Yes. I build cross-platform apps with Flutter and native Apple experiences with SwiftUI/SpriteKit when the project needs that level of polish.",
+      "Yes. I can build for any platform you need—iOS, Android, or Web. I choose the technology stack based on what will make your specific product most successful.",
   },
 };
 
