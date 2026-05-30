@@ -1,16 +1,14 @@
 import { openai } from "@ai-sdk/openai";
 import { streamText } from "ai";
 import {
-  AI_ASSISTANT_DEFAULTS,
   BIO_FACTS,
+  AI_ASSISTANT_DEFAULTS,
   STACK_GROUPS,
   PROCESS,
   PROJECTS,
   HOW_I_BUILD,
   AI_WORKFLOW_CLAIMS,
 } from "../../lib/content";
-
-const MAX_MESSAGE_LENGTH = 900;
 
 /**
  * Programmatically generate the assistant context from the unified source of truth.
@@ -39,25 +37,28 @@ If asked "Who are you?", answer: "I'm ${BIO_FACTS.shortName}. I'm a product engi
 `;
 
 export async function POST(req: Request) {
-  const { message, history } = await req.json();
-
-  if (!message || message.length > MAX_MESSAGE_LENGTH) {
-    return new Response("Message too long or missing", { status: 400 });
-  }
-
   try {
+    const { messages } = await req.json();
+
+    if (!messages || !Array.isArray(messages)) {
+      return new Response("Missing or invalid messages array", { status: 400 });
+    }
+
     const result = await streamText({
       model: openai(process.env.OPENAI_MODEL || "gpt-5.5"),
       system: portfolioContext,
-      messages: [
-        ...(Array.isArray(history) ? history : []),
-        { role: "user", content: message },
-      ],
+      messages,
     });
 
     return result.toDataStreamResponse();
   } catch (err) {
     console.error("Chat API Error:", err);
-    return new Response(JSON.stringify({ error: "API Error", details: err instanceof Error ? err.message : String(err) }), { status: 500 });
+    return new Response(
+      JSON.stringify({ 
+        error: "API Error", 
+        details: err instanceof Error ? err.message : String(err) 
+      }), 
+      { status: 500, headers: { 'Content-Type': 'application/json' } }
+    );
   }
 }
