@@ -761,6 +761,25 @@ main {
   color: #fff7ea;
 }
 
+.message-content :first-child { margin-top: 0; }
+.message-content :last-child { margin-bottom: 0; }
+.message-content p { margin: 8px 0; }
+.message-content strong { color: inherit; font-weight: 800; }
+.message-content ul, .message-content ol { padding-left: 20px; margin: 8px 0; }
+.message-content li { margin-bottom: 4px; }
+
+.section-textured {
+  background:
+    repeating-linear-gradient(45deg, rgba(17, 16, 14, 0.02) 0px, rgba(17, 16, 14, 0.02) 1px, transparent 1px, transparent 12px),
+    var(--bg);
+}
+
+.section-dark.section-textured {
+  background:
+    repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.02) 0px, rgba(255, 255, 255, 0.02) 1px, transparent 1px, transparent 12px),
+    var(--dark);
+}
+
 .quick-prompts {
   border-top: 1px solid var(--line);
   display: grid;

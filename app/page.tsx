@@ -62,7 +62,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section section-dark" id="story">
+      <section className="section section-dark section-textured" id="story">
         <div className="section-heading">
           <p className="eyebrow">The Story</p>
           <h2>Engineer. Operator. Builder.</h2>
@@ -79,9 +79,12 @@ export default function Home() {
             </article>
           ))}
         </div>
+        <div style={{ marginTop: '48px', textAlign: 'center' }}>
+          <a className="button primary" href="#contact">Contact Me</a>
+        </div>
       </section>
 
-      <section className="section" id="work">
+      <section className="section section-textured" id="work">
         <div className="section-heading section-heading-row">
           <div>
             <p className="eyebrow">Work</p>
@@ -89,6 +92,10 @@ export default function Home() {
           </div>
           <p className="section-copy">
             Accurate project status, concrete build evidence, and no inflated launch claims.
+            <br />
+            <a href="#contact" style={{ color: 'var(--amber)', fontWeight: 800, textDecoration: 'none', display: 'inline-block', marginTop: '12px' }}>
+              Have a project? Let&apos;s talk →
+            </a>
           </p>
         </div>
         <div className="project-grid">
@@ -118,13 +125,16 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section build-section" id="how-i-build">
+      <section className="section build-section section-textured" id="how-i-build">
         <div className="build-copy">
           <p className="eyebrow">{HOW_I_BUILD.eyebrow}</p>
           <h2>{HOW_I_BUILD.title}</h2>
           {HOW_I_BUILD.body.map((paragraph) => (
             <p key={paragraph}>{paragraph}</p>
           ))}
+          <div style={{ marginTop: '32px' }}>
+            <a className="button primary" href="#contact">Start a Project</a>
+          </div>
         </div>
         <div className="workflow-rail">
           {HOW_I_BUILD.steps.map((step, index) => (
@@ -137,7 +147,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section stack-section" id="stack">
+      <section className="section stack-section section-textured" id="stack">
         <div className="section-heading">
           <p className="eyebrow">Stack</p>
           <h2>Tools, not trends.</h2>

@@ -1,6 +1,8 @@
 "use client";
 
 import { FormEvent, useState, useRef, useEffect } from "react";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import { AI_ASSISTANT_DEFAULTS } from "../lib/content";
 
 type Message = {
@@ -87,7 +89,7 @@ export function ChatBoard() {
       {/* Popup Window */}
       <div className={`chat-popup ${isOpen ? "open" : ""}`}>
         <div className="chat-header">
-          <h3>Athar&apos;s AI</h3>
+          <h3>Chat with Athar</h3>
           <p>Ask about the work or your next build.</p>
         </div>
 
@@ -95,7 +97,11 @@ export function ChatBoard() {
           <div className="chat-log" ref={chatLogRef}>
             {messages.map((message, index) => (
               <div className={`chat-message ${message.role}`} key={index}>
-                <p>{message.content}</p>
+                <div className="message-content">
+                  <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                    {message.content}
+                  </ReactMarkdown>
+                </div>
               </div>
             ))}
             {isSending && (
