@@ -92,23 +92,28 @@ export const CAPABILITIES = [
 export const PROCESS = [
   {
     step: "01",
-    title: "AI Strategy",
-    text: "We define the AI-native path for your product, selecting the right LLMs, agents, and automation layers."
+    title: "Discovery",
+    text: "We deep-dive into your business goals, user personas, and core 'Why' to ensure the product solves a real market problem."
   },
   {
     step: "02",
-    title: "Architecture",
-    text: "I design the structural blueprint, from MCP servers to custom plugins and secure data pipelines."
+    title: "Blueprint",
+    text: "Designing the technical architecture, from data schemas to AI agent orchestration and secure API boundaries."
   },
   {
     step: "03",
-    title: "Agentic Build",
-    text: "Implementation using elite AI-assisted workflows, resulting in cleaner code and faster delivery cycles."
+    title: "Iteration",
+    text: "Building with elite AI-assisted velocity. We ship functional modules rapidly, allowing for frequent feedback and refinement."
   },
   {
     step: "04",
-    title: "Validation",
-    text: "Multi-layer verification ensures the product is secure, high-performance, and ready for production."
+    title: "Hardening",
+    text: "Rigorous end-to-end testing, security audits, and stress tests to ensure the product holds up under production traffic."
+  },
+  {
+    step: "05",
+    title: "Launch",
+    text: "Seamless cloud deployment, automated monitoring setup, and a clean handoff with documentation for your team."
   }
 ];
 
