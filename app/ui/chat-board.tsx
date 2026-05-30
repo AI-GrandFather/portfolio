@@ -25,6 +25,13 @@ export function ChatBoard() {
   const [error, setError] = useState("");
   const chatLogRef = useRef<HTMLDivElement>(null);
 
+  const isConversationActive = messages.length > 1;
+
+  function resetChat() {
+    setMessages(starterMessages);
+    setError("");
+  }
+
   useEffect(() => {
     if (chatLogRef.current) {
       chatLogRef.current.scrollTop = chatLogRef.current.scrollHeight;
@@ -89,6 +96,11 @@ export function ChatBoard() {
       {/* Popup Window */}
       <div className={`chat-popup ${isOpen ? "open" : ""}`}>
         <div className="chat-header">
+          {isConversationActive && (
+            <button className="chat-back-btn" onClick={resetChat} aria-label="Back to starter questions">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            </button>
+          )}
           <h3>Chat with Athar</h3>
         </div>
 
@@ -111,13 +123,15 @@ export function ChatBoard() {
             {error && <p className="chat-error">{error}</p>}
           </div>
 
-          <div className="quick-prompts">
-            {AI_ASSISTANT_DEFAULTS.questions.map((q) => (
-              <button key={q} onClick={() => void sendMessage(q)} disabled={isSending}>
-                {q}
-              </button>
-            ))}
-          </div>
+          {!isConversationActive && (
+            <div className="quick-prompts">
+              {AI_ASSISTANT_DEFAULTS.questions.map((q) => (
+                <button key={q} onClick={() => void sendMessage(q)} disabled={isSending}>
+                  {q}
+                </button>
+              ))}
+            </div>
+          )}
         </div>
 
         <form className="chat-footer" onSubmit={handleSubmit}>
