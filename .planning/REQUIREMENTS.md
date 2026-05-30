@@ -116,56 +116,58 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| CONT-01 | TBD | Pending |
-| CONT-02 | TBD | Pending |
-| CONT-03 | TBD | Pending |
-| CONT-04 | TBD | Pending |
-| CONT-05 | TBD | Pending |
-| HOME-01 | TBD | Pending |
-| HOME-02 | TBD | Pending |
-| HOME-03 | TBD | Pending |
-| HOME-04 | TBD | Pending |
-| HOME-05 | TBD | Pending |
-| HOME-06 | TBD | Pending |
-| HOME-07 | TBD | Pending |
-| UIUX-01 | TBD | Pending |
-| UIUX-02 | TBD | Pending |
-| UIUX-03 | TBD | Pending |
-| UIUX-04 | TBD | Pending |
-| UIUX-05 | TBD | Pending |
-| UIUX-06 | TBD | Pending |
-| ASST-01 | TBD | Pending |
-| ASST-02 | TBD | Pending |
-| ASST-03 | TBD | Pending |
-| ASST-04 | TBD | Pending |
-| ASST-05 | TBD | Pending |
-| ASST-06 | TBD | Pending |
-| ASST-07 | TBD | Pending |
-| LEAD-01 | TBD | Pending |
-| LEAD-02 | TBD | Pending |
-| LEAD-03 | TBD | Pending |
-| LEAD-04 | TBD | Pending |
-| LEAD-05 | TBD | Pending |
-| SEC-01 | TBD | Pending |
-| SEC-02 | TBD | Pending |
-| SEC-03 | TBD | Pending |
-| SEC-04 | TBD | Pending |
-| SEC-05 | TBD | Pending |
-| SEC-06 | TBD | Pending |
-| SEC-07 | TBD | Pending |
-| SEC-08 | TBD | Pending |
-| VER-01 | TBD | Pending |
-| VER-02 | TBD | Pending |
-| VER-03 | TBD | Pending |
-| VER-04 | TBD | Pending |
-| VER-05 | TBD | Pending |
-| VER-06 | TBD | Pending |
+| CONT-01 | Phase 1 | Pending |
+| CONT-02 | Phase 1 | Pending |
+| CONT-03 | Phase 1 | Pending |
+| CONT-04 | Phase 1 | Pending |
+| CONT-05 | Phase 1 | Pending |
+| HOME-01 | Phase 2 | Pending |
+| HOME-02 | Phase 2 | Pending |
+| HOME-03 | Phase 2 | Pending |
+| HOME-04 | Phase 2 | Pending |
+| HOME-05 | Phase 2 | Pending |
+| HOME-06 | Phase 2 | Pending |
+| HOME-07 | Phase 2 | Pending |
+| UIUX-01 | Phase 3 | Pending |
+| UIUX-02 | Phase 3 | Pending |
+| UIUX-03 | Phase 3 | Pending |
+| UIUX-04 | Phase 3 | Pending |
+| UIUX-05 | Phase 3 | Pending |
+| UIUX-06 | Phase 3 | Pending |
+| ASST-01 | Phase 4 | Pending |
+| ASST-02 | Phase 4 | Pending |
+| ASST-03 | Phase 4 | Pending |
+| ASST-04 | Phase 4 | Pending |
+| ASST-05 | Phase 4 | Pending |
+| ASST-06 | Phase 4 | Pending |
+| ASST-07 | Phase 4 | Pending |
+| LEAD-01 | Phase 5 | Pending |
+| LEAD-02 | Phase 5 | Pending |
+| LEAD-03 | Phase 5 | Pending |
+| LEAD-04 | Phase 5 | Pending |
+| LEAD-05 | Phase 5 | Pending |
+| SEC-01 | Phase 5 | Pending |
+| SEC-02 | Phase 5 | Pending |
+| SEC-03 | Phase 5 | Pending |
+| SEC-04 | Phase 5 | Pending |
+| SEC-05 | Phase 5 | Pending |
+| SEC-06 | Phase 5 | Pending |
+| SEC-07 | Phase 6 | Pending |
+| SEC-08 | Phase 5 | Pending |
+| VER-01 | Phase 6 | Pending |
+| VER-02 | Phase 6 | Pending |
+| VER-03 | Phase 6 | Pending |
+| VER-04 | Phase 6 | Pending |
+| VER-05 | Phase 6 | Pending |
+| VER-06 | Phase 6 | Pending |
 
 **Coverage:**
 - v1 requirements: 44 total
-- Mapped to phases: 0
-- Unmapped: 44
+- Mapped to phases: 44
+- Unmapped: 0
+- Duplicate mappings: 0
+- Coverage validated: 2026-05-30
 
 ---
 *Requirements defined: 2026-05-30*
-*Last updated: 2026-05-30 after initial definition*
+*Last updated: 2026-05-30 after roadmap creation*
