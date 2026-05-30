@@ -1,86 +1,49 @@
 "use client";
 
-import { FormEvent, useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
+import { useChat } from "ai/react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { AI_ASSISTANT_DEFAULTS } from "../lib/content";
 
-type Message = {
-  role: "assistant" | "user";
-  content: string;
-};
-
-const starterMessages: Message[] = [
-  {
-    role: "assistant",
-    content: AI_ASSISTANT_DEFAULTS.greeting,
-  },
-];
-
 export function ChatBoard() {
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<Message[]>(starterMessages);
-  const [input, setInput] = useState("");
-  const [isSending, setIsSending] = useState(false);
-  const [error, setError] = useState("");
+  const { messages, input, handleInputChange, handleSubmit, setMessages, isLoading, error, append } = useChat({
+    api: "/api/chat",
+    initialMessages: [
+      {
+        id: "initial-greeting",
+        role: "assistant",
+        content: AI_ASSISTANT_DEFAULTS.greeting,
+      },
+    ],
+  });
+
   const chatLogRef = useRef<HTMLDivElement>(null);
-
   const isConversationActive = messages.length > 1;
-
-  function resetChat() {
-    setMessages(starterMessages);
-    setError("");
-  }
 
   useEffect(() => {
     if (chatLogRef.current) {
       chatLogRef.current.scrollTop = chatLogRef.current.scrollHeight;
     }
-  }, [messages, isSending]);
+  }, [messages, isLoading]);
 
-  async function sendMessage(message: string) {
-    const trimmed = message.trim();
-    if (!trimmed || isSending) return;
-
-    setError("");
-    setIsSending(true);
-    setInput("");
-    setMessages((current) => [...current, { role: "user", content: trimmed }]);
-
-    try {
-      const response = await fetch("/api/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          message: trimmed,
-          history: messages.slice(-10),
-        }),
-      });
-      const payload = (await response.json()) as { reply?: string; error?: string };
-
-      if (!response.ok || !payload.reply) {
-        throw new Error(payload.error || "The assistant could not respond.");
-      }
-
-      setMessages((current) => [
-        ...current,
-        { role: "assistant", content: payload.reply! },
-      ]);
-    } catch (caught) {
-      setError(caught instanceof Error ? caught.message : "The assistant is unavailable.");
-    } finally {
-      setIsSending(false);
-    }
+  function resetChat() {
+    setMessages([
+      {
+        id: "initial-greeting",
+        role: "assistant",
+        content: AI_ASSISTANT_DEFAULTS.greeting,
+      },
+    ]);
   }
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    void sendMessage(input);
-  }
+  const sendMessage = async (content: string) => {
+    await append({ role: 'user', content });
+  };
 
   return (
     <>
-      {/* Floating Toggle Button */}
       <button 
         className={`chat-toggle ${isOpen ? "active" : ""}`} 
         onClick={() => setIsOpen(!isOpen)}
@@ -93,7 +56,6 @@ export function ChatBoard() {
         )}
       </button>
 
-      {/* Popup Window */}
       <div className={`chat-popup ${isOpen ? "open" : ""}`}>
         <div className="chat-header">
           {isConversationActive && (
@@ -106,8 +68,8 @@ export function ChatBoard() {
 
         <div className="chat-body">
           <div className="chat-log" ref={chatLogRef}>
-            {messages.map((message, index) => (
-              <div className={`chat-message ${message.role}`} key={index}>
+            {messages.map((message) => (
+              <div className={`chat-message ${message.role}`} key={message.id}>
                 <div className="message-content">
                   <ReactMarkdown remarkPlugins={[remarkGfm]}>
                     {message.content}
@@ -115,18 +77,18 @@ export function ChatBoard() {
                 </div>
               </div>
             ))}
-            {isSending && (
+            {isLoading && messages[messages.length - 1]?.role === 'user' && (
               <div className="chat-message assistant">
                 <p className="typing-dots"><span>.</span><span>.</span><span>.</span></p>
               </div>
             )}
-            {error && <p className="chat-error">{error}</p>}
+            {error && <p className="chat-error">The assistant is unavailable.</p>}
           </div>
 
           {!isConversationActive && (
             <div className="quick-prompts">
               {AI_ASSISTANT_DEFAULTS.questions.map((q) => (
-                <button key={q} onClick={() => void sendMessage(q)} disabled={isSending}>
+                <button key={q} onClick={() => void sendMessage(q)} disabled={isLoading}>
                   {q}
                 </button>
               ))}
@@ -138,12 +100,12 @@ export function ChatBoard() {
           <input
             className="chat-input"
             value={input}
-            onChange={(e) => setInput(e.target.value)}
+            onChange={handleInputChange}
             placeholder="Ask a question..."
             maxLength={900}
-            disabled={isSending}
+            disabled={isLoading}
           />
-          <button type="submit" className="chat-send-btn" disabled={isSending || !input.trim()}>
+          <button type="submit" className="chat-send-btn" disabled={isLoading || !input.trim()}>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
           </button>
         </form>
