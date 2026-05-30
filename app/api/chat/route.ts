@@ -45,14 +45,19 @@ export async function POST(req: Request) {
     return new Response("Message too long or missing", { status: 400 });
   }
 
-  const result = await streamText({
-    model: openai(process.env.OPENAI_MODEL || "gpt-5.5"),
-    system: portfolioContext,
-    messages: [
-      ...(Array.isArray(history) ? history : []),
-      { role: "user", content: message },
-    ],
-  });
+  try {
+    const result = await streamText({
+      model: openai(process.env.OPENAI_MODEL || "gpt-5.5"),
+      system: portfolioContext,
+      messages: [
+        ...(Array.isArray(history) ? history : []),
+        { role: "user", content: message },
+      ],
+    });
 
-  return result.toDataStreamResponse();
+    return result.toDataStreamResponse();
+  } catch (err) {
+    console.error("Chat API Error:", err);
+    return new Response(JSON.stringify({ error: "API Error", details: err instanceof Error ? err.message : String(err) }), { status: 500 });
+  }
 }
