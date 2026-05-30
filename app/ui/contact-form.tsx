@@ -7,7 +7,7 @@ type Status = "idle" | "sending" | "sent" | "error";
 export function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState("");
-  const [projectType, setProjectType] = useState("");
+  const [name, setName] = useState("");
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -16,16 +16,16 @@ export function ContactForm() {
 
     const form = event.currentTarget;
     const formData = new FormData(form);
-    
+
     const payload = {
       name: String(formData.get("name") || ""),
       email: String(formData.get("email") || ""),
-      projectType: projectType === "Other" 
-        ? `Other: ${formData.get("otherProject")}` 
-        : projectType,
+      building: String(formData.get("building") || ""),
+      platform: String(formData.get("platform") || ""),
+      timeline: String(formData.get("timeline") || ""),
       budget: String(formData.get("budget") || ""),
-      message: String(formData.get("message") || ""),
-      website: String(formData.get("website") || ""), // Honeypot
+      source: String(formData.get("source") || ""),
+      website: String(formData.get("website") || ""),
     };
 
     try {
@@ -41,11 +41,14 @@ export function ContactForm() {
       }
 
       form.reset();
-      setProjectType("");
       setStatus("sent");
     } catch (caught) {
       setStatus("error");
-      setError(caught instanceof Error ? caught.message : "Could not send your message.");
+      setError(
+        caught instanceof Error
+          ? caught.message
+          : "Something went wrong. Email me directly: atharmushtaq9@gmail.com",
+      );
     }
   }
 
@@ -54,7 +57,13 @@ export function ContactForm() {
       <div className="field-pair">
         <label>
           Name
-          <input name="name" required maxLength={80} placeholder="Your name" />
+          <input
+            name="name"
+            required
+            maxLength={100}
+            onChange={(event) => setName(event.target.value)}
+            placeholder="Your name"
+          />
         </label>
         <label>
           Email
@@ -68,71 +77,80 @@ export function ContactForm() {
         </label>
       </div>
 
+      <label>
+        What are you building?
+        <textarea
+          name="building"
+          required
+          maxLength={2000}
+          minLength={10}
+          placeholder="Describe the problem you're solving and who it's for."
+          rows={6}
+        />
+      </label>
+
       <div className="field-pair">
         <label>
-          Project category
-          <select 
-            name="projectCategory" 
-            required 
-            value={projectType}
-            onChange={(e) => setProjectType(e.target.value)}
-          >
-            <option value="" disabled>Select category</option>
-            <option value="Mobile App (Flutter/iOS)">Mobile App (Flutter/iOS)</option>
-            <option value="Web App or SaaS">Web App or SaaS</option>
-            <option value="AI Agent / MCP Server">AI Agent / MCP Server</option>
-            <option value="Business Dashboard">Business Dashboard</option>
-            <option value="Game Development">Game Development</option>
-            <option value="Other">Other Project</option>
+          Platform
+          <select name="platform" required defaultValue="">
+            <option value="" disabled>Select one</option>
+            <option>Mobile App</option>
+            <option>Web App / SaaS</option>
+            <option>iOS / Apple Platform</option>
+            <option>Game</option>
+            <option>AI Integration</option>
+            <option>Internal Tool</option>
+            <option>Other</option>
           </select>
         </label>
         <label>
-          Budget range
-          <select name="budget" required defaultValue="">
+          Timeline
+          <select name="timeline" required defaultValue="">
             <option value="" disabled>Select one</option>
-            <option>Exploring</option>
-            <option>Under $2,500</option>
-            <option>$2,500 - $10,000</option>
-            <option>$10,000+</option>
+            <option>Under 1 month</option>
+            <option>1-3 months</option>
+            <option>3-6 months</option>
+            <option>Flexible / Not yet decided</option>
           </select>
         </label>
       </div>
 
-      {projectType === "Other" && (
-        <label className="animate-fade-in-up">
-          Custom Project Type
-          <input 
-            name="otherProject" 
-            required 
-            maxLength={100} 
-            placeholder="e.g. Chrome Extension, Desktop Utility, etc." 
+      <div className="field-pair">
+        <label>
+          Budget
+          <select name="budget" required defaultValue="">
+            <option value="" disabled>Select one</option>
+            <option>Under $5K</option>
+            <option>$5K - $15K</option>
+            <option>$15K - $50K</option>
+            <option>$50K+</option>
+            <option>Let&apos;s discuss</option>
+          </select>
+        </label>
+        <label>
+          How did you find me?
+          <input
+            name="source"
+            maxLength={200}
+            placeholder="LinkedIn, GitHub, referral..."
           />
         </label>
-      )}
+      </div>
 
-      {/* Honeypot field - hidden from users */}
       <div style={{ display: "none" }} aria-hidden="true">
         <label htmlFor="website">Website</label>
         <input id="website" name="website" tabIndex={-1} autoComplete="off" />
       </div>
 
-      <label>
-        Project brief
-        <textarea
-          name="message"
-          required
-          maxLength={1800}
-          placeholder="What do you want to build, improve, or launch?"
-          rows={5}
-        />
-      </label>
-
       <button type="submit" className="button primary" disabled={status === "sending"}>
-        {status === "sending" ? "Sending..." : "Submit Query"}
+        {status === "sending" ? "Sending..." : "Send ->"}
       </button>
 
       {status === "sent" ? (
-        <p className="form-success">Vision received. I will review and reach out soon.</p>
+        <p className="form-success">
+          Got it{name.trim() ? `, ${name.trim()}` : ""}. I&apos;ll read this carefully
+          and get back to you within 24 hours.
+        </p>
       ) : null}
       {status === "error" ? <p className="form-error">{error}</p> : null}
     </form>

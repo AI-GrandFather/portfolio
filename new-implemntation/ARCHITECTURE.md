@@ -1,7 +1,7 @@
 # Portfolio v2.0 — Technical Architecture
 
 **Owner:** Mian Muhammad Athar
-**Stack:** Next.js 14 App Router · TypeScript · Tailwind CSS · Anthropic SDK · Resend
+**Stack:** Next.js App Router · TypeScript · global CSS · OpenAI SDK · Resend
 **Deployment:** Vercel
 
 ---
@@ -10,14 +10,14 @@
 
 | Layer | Technology | Notes |
 |---|---|---|
-| Framework | Next.js 14 App Router | No Pages Router |
+| Framework | Next.js App Router | No Pages Router |
 | Language | TypeScript (strict) | No `any`, no `ts-ignore` |
-| Styling | Tailwind CSS + CSS variables | No inline styles, no CSS-in-JS |
+| Styling | global CSS + CSS variables | No inline styles, no CSS-in-JS |
 | Fonts | Geist Mono + Inter | Via `next/font/google` |
-| AI Chat | Anthropic SDK | Server-side only, `claude-sonnet-4-6` |
+| AI Chat | OpenAI SDK | Server-side only, `gpt-4o or configured OPENAI_MODEL` |
 | Email | Resend SDK | Server-side only |
 | Images | `next/image` | All images via `next/image` |
-| Analytics | Vercel Analytics | One-line addition in layout |
+| Analytics | Not installed | Requires separate approval before adding tracking dependencies |
 | Deployment | Vercel | Edge-optimized |
 | Linting | ESLint + Prettier | Config from `next/eslint` |
 
@@ -33,7 +33,7 @@ portfolio/
 │   ├── globals.css                 # Design tokens + global base styles
 │   ├── api/
 │   │   ├── chat/
-│   │   │   └── route.ts            # Anthropic chat endpoint (server-only)
+│   │   │   └── route.ts            # OpenAI chat endpoint (server-only)
 │   │   └── contact/
 │   │       └── route.ts            # Resend email endpoint (server-only)
 │   └── ui/
@@ -64,7 +64,7 @@ portfolio/
 │   ├── ARCHITECTURE.md             # This document
 │   ├── CONTENT_STRATEGY.md         # All copy and system prompts
 │   └── PRODUCT_INVENTORY.md        # Source of truth for project status
-└── tailwind.config.ts              # Tailwind config (extend colors/fonts)
+└── eslint.config.mjs               # ESLint flat config
 ```
 
 ---
@@ -73,7 +73,7 @@ portfolio/
 
 ### 3.1 POST /api/chat
 
-**Purpose:** Proxy Anthropic API. No API key exposed to client.
+**Purpose:** Proxy OpenAI API. No API key exposed to client.
 
 **Request body:**
 ```typescript
@@ -88,12 +88,12 @@ portfolio/
 
 **Implementation:**
 ```typescript
-import Anthropic from "@anthropic-ai/sdk";
+import OpenAI from "@anthropic-ai/sdk";
 import { NextRequest, NextResponse } from "next/server";
 import { rateLimit } from "@/lib/rate-limit";
 import { CHAT_SYSTEM_PROMPT } from "@/lib/chat-config";
 
-const client = new Anthropic();
+const client = new OpenAI();
 
 export async function POST(req: NextRequest) {
   // 1. Rate limit check
@@ -104,7 +104,7 @@ export async function POST(req: NextRequest) {
   }
 
   // 2. API key guard
-  if (!process.env.ANTHROPIC_API_KEY) {
+  if (!process.env.OPENAI_API_KEY) {
     return NextResponse.json({ error: "Chat is not available right now." }, { status: 503 });
   }
 
@@ -121,9 +121,9 @@ export async function POST(req: NextRequest) {
     { role: "user" as const, content: message },
   ];
 
-  // 5. Call Anthropic (streaming)
+  // 5. Call OpenAI (streaming)
   const stream = await client.messages.stream({
-    model: "claude-sonnet-4-6",
+    model: "gpt-4o or configured OPENAI_MODEL",
     max_tokens: 1024,
     system: CHAT_SYSTEM_PROMPT,
     messages,
@@ -155,7 +155,7 @@ export async function POST(req: NextRequest) {
 - `503` → API key not configured
 - `429` → Rate limited
 - `400` → Bad message
-- `500` → Anthropic API error
+- `500` → OpenAI API error
 
 ### 3.2 POST /api/contact
 
@@ -398,33 +398,23 @@ a { ... }
 .eyebrow { ... }
 .section { ... }
 
-/* 5. Component styles (only for components that can't use Tailwind cleanly) */
+/* 5. Component styles */
 .chat-popup { ... }
 ```
 
-### 7.2 Tailwind Config Extension
+### 7.2 CSS Token Extension
 
-```typescript
-// tailwind.config.ts
-export default {
-  content: ["./app/**/*.{ts,tsx}", "./lib/**/*.{ts,tsx}"],
-  theme: {
-    extend: {
-      colors: {
-        bg: "#080808",
-        surface: "#0F0F0F",
-        border: "#1E1E1E",
-        accent: "#F59E0B",
-        "text-primary": "#EDEDED",
-        "text-secondary": "#888888",
-      },
-      fontFamily: {
-        mono: ["var(--font-geist-mono)", "monospace"],
-        sans: ["var(--font-inter)", "sans-serif"],
-      },
-    },
-  },
-} satisfies Config;
+```css
+:root {
+  --font-heading: var(--font-inter), sans-serif;
+  --font-body: var(--font-inter), sans-serif;
+  --font-mono: var(--font-geist-mono), monospace;
+  --bg: #f3f0ea;
+  --paper: #fffaf0;
+  --ink: #11100e;
+  --dark: #090908;
+  --amber: #d9982f;
+}
 ```
 
 ---
@@ -435,7 +425,7 @@ export default {
 # .env.example
 
 # Chat (required for live chat)
-ANTHROPIC_API_KEY=sk-ant-...
+OPENAI_API_KEY=sk-ant-...
 
 # Contact form (required for email delivery)
 RESEND_API_KEY=re_...
@@ -448,7 +438,7 @@ NEXT_PUBLIC_SITE_URL=https://yourdomain.com
 
 **Rules:**
 - Never commit `.env.local`
-- Never expose `ANTHROPIC_API_KEY` or `RESEND_API_KEY` to client
+- Never expose `OPENAI_API_KEY` or `RESEND_API_KEY` to client
 - `NEXT_PUBLIC_*` prefix only for truly public values (site URL, analytics IDs)
 
 ---
@@ -464,11 +454,11 @@ This file lives at the project root and is loaded by Claude Code automatically.
 Client-facing portfolio for Mian Muhammad Athar — solo product engineer.
 
 ## Stack
-Next.js 14 App Router · TypeScript (strict) · Tailwind CSS · Anthropic SDK · Resend · Vercel
+Next.js App Router · TypeScript (strict) · global CSS · OpenAI SDK · Resend · Vercel
 
 ## Non-Negotiable Rules
 - TypeScript strict mode. Zero `any`. Zero `ts-ignore`.
-- Tailwind CSS only. No inline `style={{}}`. No separate CSS files except `globals.css`.
+- global CSS only. No inline `style={{}}`. No separate CSS files except `globals.css`.
 - All content in `lib/content.ts`. No strings >20 chars hardcoded in JSX.
 - API keys are server-side ONLY. Never in client components. Never in `NEXT_PUBLIC_*`.
 - Conventional commits: feat / fix / refactor / chore.
@@ -478,8 +468,8 @@ Next.js 14 App Router · TypeScript (strict) · Tailwind CSS · Anthropic SDK ·
 - Surgical scope: one task per session. No scope creep.
 
 ## Content Rules (Critical)
-- Block Scramble! is the ONLY product with confirmed App Store publication.
-- FurrFind, NexPOS, Soleris Ledger: do NOT claim App Store/Play Store publication.
+- Block Crush Puzzle is the ONLY product with confirmed App Store publication.
+- FurrFind, AuraPOS, Soleris Ledger: do NOT claim App Store/Play Store publication.
 - See docs/PRODUCT_INVENTORY.md for authoritative project status.
 - Portfolio is for MIAN MUHAMMAD ATHAR as a solo developer. Never use "We".
 

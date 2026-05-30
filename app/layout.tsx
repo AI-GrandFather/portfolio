@@ -1,23 +1,23 @@
 import type { Metadata } from "next";
-import { Outfit, Work_Sans } from "next/font/google";
+import { Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 
-const outfit = Outfit({
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-outfit",
+  variable: "--font-inter",
   display: "swap",
 });
 
-const workSans = Work_Sans({
+const geistMono = Geist_Mono({
   subsets: ["latin"],
-  variable: "--font-work-sans",
+  variable: "--font-geist-mono",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Athar | AI Strategy & Product Engineering",
+  title: "Mian Muhammad Athar - Solo Product Engineer",
   description:
-    "Athar: Bridging the gap between complex AI and business ROI. Specialized in AI Agents, MCP Servers, and scalable software architecture.",
+    "I turn ideas into shipped apps, games, and SaaS systems. Engineering discipline meets agentic AI workflows. From Islamabad to the App Store.",
 };
 
 export default function RootLayout({
@@ -26,7 +26,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${outfit.variable} ${workSans.variable}`}>
+    <html lang="en" className={`${inter.variable} ${geistMono.variable}`}>
       <body>{children}</body>
     </html>
   );

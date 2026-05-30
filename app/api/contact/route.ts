@@ -7,29 +7,40 @@ const MAX_REQUESTS_PER_WINDOW = 5;
 const WINDOW_MS = 60_000;
 const buckets = new Map<string, { count: number; resetAt: number }>();
 
-const ALLOWED_PROJECT_TYPES = [
-  "Mobile App (Flutter/iOS)",
-  "Web App or SaaS",
-  "AI Agent / MCP Server",
-  "Business Dashboard",
-  "Game Development",
+const ALLOWED_PLATFORMS = [
+  "Mobile App",
+  "Web App / SaaS",
+  "iOS / Apple Platform",
+  "Game",
+  "AI Integration",
+  "Internal Tool",
   "Other",
 ];
 
+const ALLOWED_TIMELINES = [
+  "Under 1 month",
+  "1-3 months",
+  "3-6 months",
+  "Flexible / Not yet decided",
+];
+
 const ALLOWED_BUDGETS = [
-  "Exploring",
-  "Under $2,500",
-  "$2,500 - $10,000",
-  "$10,000+",
+  "Under $5K",
+  "$5K - $15K",
+  "$15K - $50K",
+  "$50K+",
+  "Let's discuss",
 ];
 
 type ContactPayload = {
   name: string;
   email: string;
-  projectType: string;
+  building: string;
+  platform: string;
+  timeline: string;
   budget: string;
-  message: string;
-  website?: string; // Honeypot field
+  source?: string;
+  website?: string;
 };
 
 function getString(body: Record<string, unknown>, key: keyof ContactPayload) {
@@ -86,46 +97,53 @@ export async function POST(request: Request) {
   const payload: ContactPayload = {
     name: getString(record, "name"),
     email: getString(record, "email"),
-    projectType: getString(record, "projectType"),
+    building: getString(record, "building"),
+    platform: getString(record, "platform"),
+    timeline: getString(record, "timeline"),
     budget: getString(record, "budget"),
-    message: getString(record, "message"),
+    source: getString(record, "source"),
     website: getString(record, "website"),
   };
 
-  // Honeypot check
   if (payload.website) {
-    console.warn(`Honeypot triggered from IP: ${ip}`);
-    return NextResponse.json({ ok: true }); // Silently ignore bot
+    return NextResponse.json({ ok: true });
   }
 
   if (
     !payload.name ||
     !isEmail(payload.email) ||
-    !payload.projectType ||
-    !payload.budget ||
-    !payload.message
+    !payload.building ||
+    !payload.platform ||
+    !payload.timeline ||
+    !payload.budget
   ) {
     return NextResponse.json(
-      { error: "Please complete every field with a valid email address." },
+      { error: "Please complete every required field with a valid email address." },
       { status: 400 },
     );
   }
 
-  // Allowlist validation
-  if (!ALLOWED_PROJECT_TYPES.includes(payload.projectType)) {
-    return NextResponse.json({ error: "Invalid project type." }, { status: 400 });
+  if (!ALLOWED_PLATFORMS.includes(payload.platform)) {
+    return NextResponse.json({ error: "Invalid platform." }, { status: 400 });
   }
+
+  if (!ALLOWED_TIMELINES.includes(payload.timeline)) {
+    return NextResponse.json({ error: "Invalid timeline." }, { status: 400 });
+  }
+
   if (!ALLOWED_BUDGETS.includes(payload.budget)) {
     return NextResponse.json({ error: "Invalid budget range." }, { status: 400 });
   }
 
   if (
-    payload.name.length > 80 ||
+    payload.name.length > 100 ||
     payload.email.length > 120 ||
-    payload.message.length > 1800
+    payload.building.length < 10 ||
+    payload.building.length > 2000 ||
+    (payload.source && payload.source.length > 200)
   ) {
     return NextResponse.json(
-      { error: "One or more fields is longer than allowed." },
+      { error: "One or more fields is outside the allowed length." },
       { status: 400 },
     );
   }
@@ -147,22 +165,24 @@ export async function POST(request: Request) {
       from,
       to,
       replyTo: payload.email,
-      subject: `Portfolio lead: ${payload.projectType}`,
+      subject: `Portfolio lead: ${payload.platform}`,
       text: [
         `Name: ${payload.name}`,
         `Email: ${payload.email}`,
-        `Project type: ${payload.projectType}`,
+        `Building: ${payload.building}`,
+        `Platform: ${payload.platform}`,
+        `Timeline: ${payload.timeline}`,
         `Budget: ${payload.budget}`,
-        "",
-        payload.message,
-      ].join("\n"),
+        payload.source ? `Source: ${payload.source}` : "",
+      ]
+        .filter(Boolean)
+        .join("\n"),
     });
 
     return NextResponse.json({ ok: true });
-  } catch (error) {
-    console.error("Resend API Error:", error);
+  } catch {
     return NextResponse.json(
-      { error: "Could not send the contact email right now. Please try again later." },
+      { error: "Something went wrong. Email me directly: atharmushtaq9@gmail.com" },
       { status: 502 },
     );
   }

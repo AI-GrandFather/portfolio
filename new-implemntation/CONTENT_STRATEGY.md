@@ -103,12 +103,12 @@ Eyebrow:   Work
 H2:        Shipped. Built. In Progress.
 ```
 
-### Project 1 — Block Scramble!
+### Project 1 — Block Crush Puzzle
 
 ```typescript
 {
   id: "block-scramble",
-  name: "Block Scramble!",
+  name: "Block Crush Puzzle",
   status: "LIVE — APP STORE",
   statusColor: "green",
   tagline: "Published iOS block puzzle game.",
@@ -132,17 +132,18 @@ H2:        Shipped. Built. In Progress.
 }
 ```
 
-### Project 3 — NexPOS
+### Project 3 — AuraPOS
 
 ```typescript
 {
-  id: "nexpos",
-  name: "NexPOS",
-  status: "BUILT",
-  statusColor: "gray",
+  id: "aurapos",
+  name: "AuraPOS",
+  status: "LIVE",
+  statusColor: "green",
   tagline: "Multi-location SaaS point-of-sale system.",
   detail: "Next.js and Supabase. Offline-first architecture for 10-second checkouts. Multi-location support, role-based access, inventory management, stock transfers, COGS reports, Z-reports, and audit logs. SaaS-ready from the ground up.",
-  stack: ["Next.js", "Supabase", "TypeScript", "Tailwind CSS", "Recharts"],
+  stack: ["Next.js", "Supabase", "TypeScript", "global CSS", "Recharts"],
+  link: "https://nexpos-ten.vercel.app/",
 }
 ```
 
@@ -227,7 +228,7 @@ export const STACK: StackGroup[] = [
   },
   {
     label: "Web",
-    items: ["Next.js 14", "React", "TypeScript", "Tailwind CSS"],
+    items: ["Next.js", "React", "TypeScript", "global CSS"],
   },
   {
     label: "Backend",
@@ -235,7 +236,7 @@ export const STACK: StackGroup[] = [
   },
   {
     label: "AI & ML",
-    items: ["Anthropic Claude", "OpenAI", "Google Gemini Flash 2.0", "MediaPipe"],
+    items: ["Claude", "OpenAI", "Google Gemini Flash 2.0", "MediaPipe"],
   },
   {
     label: "Tooling",
@@ -414,7 +415,7 @@ Development workflow:
 
 == PUBLISHED WORK ==
 
-Block Scramble! (Block Crush Puzzle):
+Block Crush Puzzle (Block Crush Puzzle):
 - Status: PUBLISHED on iOS App Store
 - Type: iOS game
 - Stack: SwiftUI, SpriteKit, Combine, StoreKit, Game Center
@@ -428,10 +429,10 @@ FurrFind:
 - Stack: Flutter, Dart, OpenAI Vision API, RevenueCat, Hive, AdMob
 - Features: Dog and cat breed identification from photos, scan history, free daily scan limit, premium AI veterinary care chat, subscription model
 
-NexPOS:
-- Status: Built web application
+AuraPOS:
+- Status: Live web application
 - Type: SaaS POS system
-- Stack: Next.js 14, Supabase, TypeScript, Tailwind CSS, Recharts
+- Stack: Next.js, Supabase, TypeScript, global CSS, Recharts
 - Features: Multi-location support, offline-first architecture, inventory management, stock transfers, COGS reports, Z-reports, audit logs, role-based access
 
 Soleris Ledger:
@@ -462,7 +463,7 @@ You are a portfolio assistant and lead qualifier. You should:
 5. Encourage qualified leads to use the contact form
 
 You should NOT:
-- Claim published App Store/Play Store status for FurrFind, NexPOS, Soleris Ledger, Handtracking, or any game other than Block Scramble!
+- Claim App Store/Play Store status for FurrFind, AuraPOS, Soleris Ledger, Handtracking, or any game other than Block Crush Puzzle. AuraPOS may be described as live on web.
 - Promise specific timelines, prices, or guaranteed outcomes
 - Act as a general-purpose AI assistant for topics unrelated to Athar's work
 - Expose local file paths, internal project notes, private business details, or sensitive context
@@ -491,13 +492,14 @@ If someone asks something you don't know:
 ## 12. Content Rules for All Agents
 
 1. **Never use "We"** — Athar is a solo developer. Always "I" or "Athar".
-2. **Block Scramble! only** — Only product confirmed published on App Store.
-3. **FurrFind / NexPOS / Soleris Ledger** — "Built", "In Review", or "Portfolio evidence". Never "Published".
-4. **No invented metrics** — Only use $130K revenue (from CV), GIKI CGPA 3.18, and verified project features.
-5. **No inflated claims** — "10x speed", "industry-leading", "best-in-class" are banned unless with specific evidence.
-6. **No agency language** — "We", "our team", "our experts" are all banned.
-7. **Email:** atharmushtaq9@gmail.com
-8. **Do not mention Crown E-Commerce (SMC-Private) Limited** in any context.
+2. **Block Crush Puzzle only** — Only product confirmed published on App Store.
+3. **FurrFind / Soleris Ledger** — "Built", "In Review", or "Portfolio evidence". Never "Published".
+4. **AuraPOS** — Verified live web app. Never describe it as App Store or Play Store published.
+5. **No invented metrics** — Only use $130K revenue (from CV), GIKI CGPA 3.18, and verified project features.
+6. **No inflated claims** — "10x speed", "industry-leading", "best-in-class" are banned unless with specific evidence.
+7. **No agency language** — "We", "our team", "our experts" are all banned.
+8. **Email:** atharmushtaq9@gmail.com
+9. **Do not mention Crown E-Commerce (SMC-Private) Limited** in any context.
 
 ---
 

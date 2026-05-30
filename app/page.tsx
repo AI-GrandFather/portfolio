@@ -1,7 +1,15 @@
 import Image from "next/image";
 import { ChatBoard } from "./ui/chat-board";
 import { ContactForm } from "./ui/contact-form";
-import { PROJECTS, CAPABILITIES, PROCESS, BIO_FACTS } from "./lib/content";
+import {
+  BIO_FACTS,
+  CONTACT_COPY,
+  HOW_I_BUILD,
+  ORIGIN_STORY,
+  PROCESS,
+  PROJECTS,
+  STACK_GROUPS,
+} from "./lib/content";
 
 export default function Home() {
   const currentYear = new Date().getFullYear();
@@ -15,8 +23,8 @@ export default function Home() {
               {BIO_FACTS.fullName}
             </a>
             <div className="nav-links">
-              <a href="#work">Case Studies</a>
-              <a href="#manifesto">Approach</a>
+              <a href="#work">Work</a>
+              <a href="#how-i-build">How I Build</a>
               <a href="#contact">Contact</a>
             </div>
           </nav>
@@ -25,102 +33,130 @@ export default function Home() {
         <div className="hero-content-wrap">
           <div className="hero-copy">
             <p className="eyebrow">{BIO_FACTS.tagline}</p>
-            <h1>{BIO_FACTS.headline}</h1>
+            <h1>
+              {BIO_FACTS.headline.split("\n").map((line) => (
+                <span key={line}>{line}</span>
+              ))}
+            </h1>
             <p className="hero-text">{BIO_FACTS.subheadline}</p>
             <div className="hero-actions">
-              <a className="button primary" href="#contact">
-                Get a Consultation
+              <a className="button primary" href="#work">
+                See the Work
               </a>
-              <a className="button secondary" href="#work">
-                Explore Work
+              <a className="button secondary" href="#contact">
+                Start a Project
               </a>
             </div>
           </div>
 
-          <div className="hero-image-overlay">
+          <div className="hero-portrait">
             <Image
               src={BIO_FACTS.image}
               alt={BIO_FACTS.fullName}
               fill
               priority
-              sizes="(max-width: 1024px) min(100vw - 48px, 500px), 40vw"
-              style={{ objectFit: 'cover' }}
+              sizes="(max-width: 1024px) min(100vw - 48px, 520px), 38vw"
+              style={{ objectFit: "cover" }}
             />
           </div>
         </div>
       </section>
 
-      {/* ROI Intro Section */}
-      <section className="section intro-band">
-        <h2 dangerouslySetInnerHTML={{ __html: BIO_FACTS.background.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') }} />
-      </section>
-
-      {/* Technical Manifesto */}
-      <section className="section" id="manifesto">
+      <section className="section section-dark" id="story">
         <div className="section-heading">
-          <p className="eyebrow">Our Philosophy</p>
-          <h2>Technical Excellence. Business Results.</h2>
+          <p className="eyebrow">The Story</p>
+          <h2>Engineer. Operator. Builder.</h2>
         </div>
-
-        <div className="manifesto-grid">
-          <div className="manifesto-item">
-            <h3>AI Strategy</h3>
-            <p>We don&apos;t just add AI; we architect autonomous systems that solve complex operational bottlenecks and unlock new revenue streams.</p>
-          </div>
-          <div className="manifesto-item">
-            <h3>Scale First</h3>
-            <p>Engineering robust, offline-first architectures and high-performance mobile platforms built to handle real-world production stress.</p>
-          </div>
-          <div className="manifesto-item">
-            <h3>Elite Velocity</h3>
-            <p>Leveraging advanced agentic workflows to deliver verified, high-performance software at 10x traditional development speed.</p>
-          </div>
+        <div className="origin-grid">
+          {ORIGIN_STORY.map((item) => (
+            <article className="origin-card" key={item.title}>
+              <div className="card-kicker">
+                <span>{item.phase}</span>
+                <span>{item.label}</span>
+              </div>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </article>
+          ))}
         </div>
       </section>
 
       <section className="section" id="work">
-        <div className="section-heading">
-          <p className="eyebrow">Success Stories</p>
-          <h2>Client-ready product systems.</h2>
+        <div className="section-heading section-heading-row">
+          <div>
+            <p className="eyebrow">Work</p>
+            <h2>Shipped. Built. In Progress.</h2>
+          </div>
+          <p className="section-copy">
+            Accurate project status, concrete build evidence, and no inflated launch claims.
+          </p>
         </div>
         <div className="project-grid">
           {PROJECTS.map((project) => (
             <a
               className="project-card"
-              key={project.name}
+              data-status={project.statusColor}
+              key={project.id}
               href={project.link || "#"}
               target={project.link ? "_blank" : undefined}
               rel={project.link ? "noopener noreferrer" : undefined}
             >
-              <div className="status-tag">{project.status} &bull; {project.type}</div>
+              <div className="project-visual" aria-hidden="true">
+                <span>{project.visual}</span>
+              </div>
+              <div className="status-tag">{project.statusLabel}</div>
               <h3>{project.name}</h3>
+              <p className="project-tagline">{project.tagline}</p>
               <p>{project.detail}</p>
-              {project.stack && (
-                <div className="project-stack">
-                  {project.stack.map(s => <span key={s}>{s}</span>)}
-                </div>
-              )}
+              <div className="project-stack">
+                {project.stack.map((item) => (
+                  <span key={item}>{item}</span>
+                ))}
+              </div>
             </a>
           ))}
         </div>
       </section>
 
-      <section className="section" id="capabilities">
-        <div className="section-heading">
-          <p className="eyebrow">Expertise</p>
-          <h2>Core Proficiencies.</h2>
+      <section className="section build-section" id="how-i-build">
+        <div className="build-copy">
+          <p className="eyebrow">{HOW_I_BUILD.eyebrow}</p>
+          <h2>{HOW_I_BUILD.title}</h2>
+          {HOW_I_BUILD.body.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
         </div>
-        <div className="capability-list">
-          {CAPABILITIES.map((capability) => (
-            <div key={capability} className="capability-item">
-              <span>{capability}</span>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </div>
+        <div className="workflow-rail">
+          {HOW_I_BUILD.steps.map((step, index) => (
+            <article className="workflow-step" key={step.title}>
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <h3>{step.title}</h3>
+              <p>{step.text}</p>
+            </article>
           ))}
         </div>
       </section>
 
-      <section className="section" id="process">
+      <section className="section stack-section" id="stack">
+        <div className="section-heading">
+          <p className="eyebrow">Stack</p>
+          <h2>Tools, not trends.</h2>
+        </div>
+        <div className="stack-grid">
+          {STACK_GROUPS.map((group) => (
+            <article className="stack-group" key={group.label}>
+              <h3>{group.label}</h3>
+              <div>
+                {group.items.map((item) => (
+                  <span key={item}>{item}</span>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="section process-section" id="process">
         <div className="section-heading">
           <p className="eyebrow">Delivery Lifecycle</p>
           <h2>The 0 to 1 Path.</h2>
@@ -138,11 +174,9 @@ export default function Home() {
 
       <section className="section contact-section" id="contact">
         <div className="section-heading">
-          <p className="eyebrow">Contact</p>
-          <h2>Build the next product.</h2>
-          <p className="section-copy">
-            Brief me on your vision. I use elite AI-assisted workflows to deliver results faster and more accurately than traditional models.
-          </p>
+          <p className="eyebrow">{CONTACT_COPY.eyebrow}</p>
+          <h2>{CONTACT_COPY.title}</h2>
+          <p className="section-copy">{CONTACT_COPY.text}</p>
         </div>
         <ContactForm />
       </section>
@@ -150,26 +184,34 @@ export default function Home() {
       <footer className="footer-simple">
         <div className="footer-content">
           <div className="footer-brand">
-            <a className="wordmark" href="#top">{BIO_FACTS.fullName}</a>
-            <p>{BIO_FACTS.title}</p>
+            <a className="wordmark" href="#top">
+              {BIO_FACTS.fullName}
+            </a>
+            <p>
+              {BIO_FACTS.title} - {BIO_FACTS.location}
+            </p>
           </div>
           <div className="footer-links">
             <div className="footer-group">
               <span className="eyebrow">Connect</span>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a>
+              <a href={BIO_FACTS.linkedin} target="_blank" rel="noopener noreferrer">
+                LinkedIn
+              </a>
+              <a href={BIO_FACTS.github} target="_blank" rel="noopener noreferrer">
+                GitHub
+              </a>
             </div>
             <div className="footer-group">
-              <span className="eyebrow">Navigation</span>
+              <span className="eyebrow">Navigate</span>
               <a href="#work">Work</a>
-              <a href="#manifesto">Approach</a>
+              <a href="#how-i-build">How I Build</a>
               <a href="#contact">Contact</a>
             </div>
           </div>
         </div>
         <div className="footer-bottom">
-          <p>&copy; {currentYear} {BIO_FACTS.fullName}. All rights reserved.</p>
-          <div className="stack-info">Strategic Engineering</div>
+          <p>&copy; {currentYear} {BIO_FACTS.fullName}</p>
+          <div className="stack-info">Built with Next.js - Deployed on Vercel</div>
         </div>
       </footer>
 

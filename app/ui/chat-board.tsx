@@ -11,7 +11,7 @@ type Message = {
 const starterMessages: Message[] = [
   {
     role: "assistant",
-    content: "Hi! I'm Athar's AI assistant. How can I help you today?",
+    content: AI_ASSISTANT_DEFAULTS.greeting,
   },
 ];
 
@@ -42,7 +42,10 @@ export function ChatBoard() {
       const response = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: trimmed }),
+        body: JSON.stringify({
+          message: trimmed,
+          history: messages.slice(-10),
+        }),
       });
       const payload = (await response.json()) as { reply?: string; error?: string };
 
@@ -70,7 +73,7 @@ export function ChatBoard() {
     <>
       {/* Floating Toggle Button */}
       <button 
-        className={`chat-toggle ${isOpen ? 'active' : ''}`} 
+        className={`chat-toggle ${isOpen ? "active" : ""}`} 
         onClick={() => setIsOpen(!isOpen)}
         aria-label="Toggle chat assistant"
       >
@@ -82,10 +85,10 @@ export function ChatBoard() {
       </button>
 
       {/* Popup Window */}
-      <div className={`chat-popup ${isOpen ? 'open' : ''}`}>
+      <div className={`chat-popup ${isOpen ? "open" : ""}`}>
         <div className="chat-header">
-          <h3>Consultancy Assistant</h3>
-          <p>Automated ROI Guidance</p>
+          <h3>Athar&apos;s AI</h3>
+          <p>Ask about the work or your next build.</p>
         </div>
 
         <div className="chat-body">

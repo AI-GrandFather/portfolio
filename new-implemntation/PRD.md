@@ -24,7 +24,7 @@ Before building v2, every agent must understand why v1 fails at a strategic leve
 | "We" language throughout a solo developer's portfolio | Dishonest. Clients feel misled when they realize it's one person. |
 | "AI Agency" framing | Saturated category. Every Fiverr seller claims this in 2026. Differentiates nothing. |
 | "10x traditional development speed" | Cliché with zero proof. Sophisticated clients dismiss it immediately. |
-| NexPOS labeled PUBLISHED (App Store) | False. Per PRODUCT_INVENTORY.md, publication is unverified. Destroys credibility with anyone who searches for it. |
+| AuraPOS labeled as App Store published | False. AuraPOS is live on web, not an App Store product. Mislabeling platform status destroys credibility. |
 | "Proven Impact" section has no metrics | Impact without numbers is just adjectives. |
 
 ### 2.2 Missing Story
@@ -84,7 +84,7 @@ This combination is the core value proposition and should be stated explicitly, 
 - "We" (one person)
 - "AI Agency" (meaningless category)
 - "10x speed" (no evidence given)
-- Published App Store status for FurrFind, NexPOS, Soleris Ledger, or any other unverified project
+- Published App Store status for FurrFind, Soleris Ledger, AuraPOS, or any other non-App-Store project
 
 ### 3.5 What To Start Claiming (With Evidence)
 
@@ -188,13 +188,13 @@ Five projects minimum. Each card must have:
 | Screenshot/mockup | Required — at minimum a placeholder with project color; real screenshots preferred |
 
 **Accurate status labels (per PRODUCT_INVENTORY.md):**
-- Block Scramble!: `LIVE — APP STORE` (green)
+- Block Crush Puzzle: `LIVE — APP STORE` (green)
 - FurrFind: `IN REVIEW` (yellow)
-- NexPOS: `BUILT` (gray)
+- AuraPOS: `LIVE — WEB` (green)
 - Soleris Ledger: `BUILT` (gray)
 - Handtracking: `EXPERIMENT` (blue)
 
-**Do not label any project as PUBLISHED unless it is Block Scramble!**
+**Do not label any project as App Store published unless it is Block Crush Puzzle. AuraPOS may be labeled live on web.**
 
 ### 6.4 How I Build Section
 
@@ -212,9 +212,9 @@ Grouped by layer, not an unordered list. Groups:
 
 ```
 Mobile       — Flutter/Dart, SwiftUI/SpriteKit
-Web          — Next.js 14, React, TypeScript
+Web          — Next.js, React, TypeScript
 Backend      — Supabase, Node.js, SQLite, Express
-AI & ML      — Anthropic Claude, OpenAI, Google Gemini Flash 2.0
+AI & ML      — Claude, OpenAI, Google Gemini Flash 2.0
 Tooling      — Claude Code, GitHub, Vercel, Gemini CLI
 Monetization — RevenueCat, StoreKit, AdMob
 ```
@@ -251,7 +251,7 @@ Each step: number (amber, large), title, 2-sentence description. See CONTENT_STR
 ### 6.8 Chat System (v2)
 
 **Backend changes:**
-- Switch from OpenAI to Anthropic SDK (`claude-sonnet-4-6`)
+- Switch from OpenAI to OpenAI SDK (`gpt-4o or configured OPENAI_MODEL`)
 - Stream response (faster perceived UX)
 - Include conversation history in each request
 - Rate limit: 20 requests per IP per hour (simple in-memory)
@@ -374,11 +374,11 @@ Rationale: Geist Mono signals craft and engineering background without being try
 See ARCHITECTURE.md for full technical spec.
 
 **Summary:**
-- Next.js 14 App Router, TypeScript strict mode
-- Tailwind CSS only (no inline styles, no CSS-in-JS)
+- Next.js App Router, TypeScript strict mode
+- global CSS only (no inline styles, no CSS-in-JS)
 - All content in `lib/content.ts` — no strings hardcoded in JSX
-- Server-side only: `ANTHROPIC_API_KEY`, `RESEND_API_KEY`
-- Vercel Analytics: one-line addition (`<Analytics />` in layout)
+- Server-side only: `OPENAI_API_KEY`, `RESEND_API_KEY`
+- manual browser QA: one-line addition (`<Analytics />` in layout)
 - Vercel deployment
 - `npm run lint && npm run typecheck && npm run build` must pass after every phase
 
@@ -401,7 +401,7 @@ See ARCHITECTURE.md for full technical spec.
 ## 10. Implementation Phases
 
 ### Phase 1 — Foundation (Session 1)
-- New project setup: Next.js 14, TypeScript strict, Tailwind, Geist Mono + Inter
+- Current project setup: Next.js, TypeScript strict, global CSS, Geist Mono + Inter
 - New `globals.css` with dark design token system
 - New `lib/content.ts` with all BIO, PROJECTS, STACK, PROCESS, QUICK_PROMPTS
 - New `CLAUDE.md` root with @path imports
@@ -426,7 +426,7 @@ See ARCHITECTURE.md for full technical spec.
 - Footer
 
 ### Phase 5 — Chat System v2 (Session 3)
-- Switch to Anthropic SDK
+- Switch to OpenAI SDK
 - New system prompt
 - Streaming response
 - New quick prompts
@@ -435,7 +435,7 @@ See ARCHITECTURE.md for full technical spec.
 - Updated UI
 
 ### Phase 6 — Polish & Verify (Session 3–4)
-- Vercel Analytics
+- manual browser QA
 - Open Graph metadata + og:image
 - Lighthouse audit
 - Mobile QA
@@ -454,7 +454,7 @@ See ARCHITECTURE.md for full technical spec.
 | Lighthouse Accessibility | >95 |
 | Console errors | Zero |
 | Broken links | Zero |
-| Scroll depth >70% | Goal (measure via Vercel Analytics) |
+| Scroll depth >70% | Goal (measure via manual browser QA) |
 | Time on page >90s | Goal |
 
 ---
