@@ -90,7 +90,6 @@ export function ChatBoard() {
       <div className={`chat-popup ${isOpen ? "open" : ""}`}>
         <div className="chat-header">
           <h3>Chat with Athar</h3>
-          <p>Ask about the work or your next build.</p>
         </div>
 
         <div className="chat-body">

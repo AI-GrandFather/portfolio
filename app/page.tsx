@@ -221,7 +221,6 @@ export default function Home() {
         </div>
         <div className="footer-bottom">
           <p>&copy; {currentYear} {BIO_FACTS.fullName}</p>
-          <div className="stack-info">Built with Next.js - Deployed on Vercel</div>
         </div>
       </footer>
 

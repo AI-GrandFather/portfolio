@@ -258,12 +258,12 @@ export const AI_ASSISTANT_DEFAULTS = {
     "What's the difference between Flutter and SwiftUI for my project?",
   ],
   greeting:
-    "Hey - I'm an AI built to represent Athar's work and capabilities. Ask me what he's shipped, what he can build for you, or describe your idea and I'll sketch a plan.",
+    "Hey - I'm here to help you understand my work, what I can build for you, or help you sketch a plan for your next idea. What are you working on?",
   responses: {
     capabilities:
-      "Athar builds mobile apps, iOS games, SaaS systems, AI integrations, and business dashboards.",
+      "I build mobile apps, iOS games, SaaS systems, AI integrations, and business dashboards. I handle everything from blueprint to launch.",
     multiplatform:
-      "Yes. Athar builds cross-platform apps with Flutter and native Apple experiences with SwiftUI/SpriteKit when the project needs it.",
+      "Yes. I build cross-platform apps with Flutter and native Apple experiences with SwiftUI/SpriteKit when the project needs that level of polish.",
   },
 };
 
