@@ -46,7 +46,7 @@ export async function POST(req: Request) {
   }
 
   const result = await streamText({
-    model: openai(process.env.OPENAI_MODEL || "gpt-4o"),
+    model: openai(process.env.OPENAI_MODEL || "gpt-5.5"),
     system: portfolioContext,
     messages: [
       ...(Array.isArray(history) ? history : []),
