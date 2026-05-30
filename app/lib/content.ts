@@ -5,6 +5,7 @@
  */
 
 export type ProjectStatus = 
+  | 'Live'
   | 'Published' 
   | 'Built' 
   | 'In Review'
@@ -24,10 +25,10 @@ export interface Project {
 
 export const PROJECTS: Project[] = [
   {
-    name: "NexPOS (AuraPOS)",
-    status: "Published",
+    name: "AuraPOS",
+    status: "Live",
     type: "Hybrid Commerce Engine",
-    detail: "An offline-first SaaS POS system designed for 10-second checkouts and multi-location retail management. Built to eliminate downtime and per-register fees.",
+    detail: "A live offline-first SaaS POS system for fast checkouts, inventory workflows, and multi-location retail management.",
     stack: ["Next.js", "Supabase", "Tailwind CSS", "PWA"],
     link: "https://nexpos-ten.vercel.app/"
   },
@@ -59,6 +60,13 @@ export const PROJECTS: Project[] = [
     type: "Enterprise Web App",
     detail: "A high-performance management interface for complex operations, currently undergoing final publishing review.",
     stack: ["Next.js", "TypeScript", "Tailwind CSS"]
+  },
+  {
+    name: "Handtracking",
+    status: "Experiment",
+    type: "Computer Vision Interaction",
+    detail: "A complete MediaPipe and canvas experiment with real-time hand landmarks, gesture controls, physics strings, particles, and camera-based browser interaction.",
+    stack: ["MediaPipe", "Canvas", "Gesture UX", "Physics"]
   }
 ];
 
@@ -66,17 +74,17 @@ export const BIO_FACTS = {
   name: "Mian Muhammad Athar",
   shortName: "Athar",
   fullName: "Mian Muhammad Athar",
-  title: "AI-First Product Architect",
-  tagline: "I build the next generation of AI-Native software.",
-  headline: "Architecting Products from 0 to 1.",
-  subheadline: "Specializing in AI Agents, MCP Servers, and automated delivery workflows. I turn high-level business goals into verified, high-performance software systems.",
+  title: "AI Strategy & Product Engineering",
+  tagline: "Bridging the gap between complex AI and business ROI.",
+  headline: "From idea to app, engineered for launch.",
+  subheadline: "I help organizations leverage AI Agents and MCP Servers to solve operational bottlenecks and drive measurable growth. From 0 to 1 deployment with engineering precision.",
   image: "/55D670AB-C554-4417-86F0-C65863EDE18E.PNG",
-  background: "I architect high-performance software where engineering discipline meets **AI-native intelligence**. From autonomous agents to offline-first commerce, I build the systems that work where others break.",
+  background: "I architect high-performance software where technical excellence meets **strategic business impact**. Specializing in AI Agency and scalable system design, I build the solutions that scale with your ambitions.",
   education: "Bachelor of Science in Electronic Engineering from Ghulam Ishaq Khan Institute.",
   experience: [
-    "AI-Native Development: Architecting systems with autonomous agents and custom MCP servers.",
-    "Full-Stack Engineering: Scalable architectures using Next.js, Flutter, and high-performance backends.",
-    "Automated Delivery: Leveraging coding agents and multi-model reasoning to ship at 10x velocity."
+    "AI Strategy: Designing autonomous systems that convert raw AI potential into business value.",
+    "Engineering Leadership: Architecting scalable systems with Next.js, Flutter, and custom MCP servers.",
+    "Outcome-Driven: Leveraging agentic workflows to deliver production-ready software at scale."
   ]
 };
 

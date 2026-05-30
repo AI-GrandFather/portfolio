@@ -1,23 +1,23 @@
 import type { Metadata } from "next";
-import { Bodoni_Moda, Jost } from "next/font/google";
+import { Outfit, Work_Sans } from "next/font/google";
 import "./globals.css";
 
-const bodoni = Bodoni_Moda({
+const outfit = Outfit({
   subsets: ["latin"],
-  variable: "--font-bodoni",
+  variable: "--font-outfit",
   display: "swap",
 });
 
-const jost = Jost({
+const workSans = Work_Sans({
   subsets: ["latin"],
-  variable: "--font-jost",
+  variable: "--font-work-sans",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Athar | Architecting Products from 0 to 1",
+  title: "Athar | AI Strategy & Product Engineering",
   description:
-    "Athar: Specialist in turning rough concepts into high-performance products. iOS Games, Vision-AI, and Offline-First SaaS.",
+    "Athar: Bridging the gap between complex AI and business ROI. Specialized in AI Agents, MCP Servers, and scalable software architecture.",
 };
 
 export default function RootLayout({
@@ -26,7 +26,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${bodoni.variable} ${jost.variable}`}>
+    <html lang="en" className={`${outfit.variable} ${workSans.variable}`}>
       <body>{children}</body>
     </html>
   );

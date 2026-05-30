@@ -60,7 +60,8 @@ It summarizes known products, publication status, and construction status based 
 
 ### AuraPOS
 
-- Status: Built/in progress POS and SaaS system; public launch status not confirmed.
+- Status: Live POS and SaaS system.
+- Public URL: `https://nexpos-ten.vercel.app/` verified with HTTP 200 on 2026-05-31.
 - Source project evidence: `pos`.
 - Product type: Web-based point-of-sale and SaaS-ready business system.
 - Stack and build evidence: Next.js App Router, Supabase, Tailwind CSS, shadcn/ui, Recharts, Stripe/Twilio-related dependencies, offline foundations.
@@ -78,7 +79,7 @@ It summarizes known products, publication status, and construction status based 
 
 ### Handtracking / Project Anti-Jelly
 
-- Status: Built experimental project; public launch status not confirmed.
+- Status: Complete experimental project; public/commercial launch status not claimed.
 - Source project evidence: `Handtracking`.
 - Product type: Interactive computer-vision web experiment.
 - Stack and build evidence: MediaPipe Tasks Vision, HTML Canvas, One Euro Filter, Verlet physics.
@@ -179,7 +180,7 @@ Use these categories in UI copy, chat responses, and future case-study pages:
 - Business dashboards:
   - Soleris Ledger.
 - SaaS and POS systems:
-  - AuraPOS.
+  - AuraPOS (live).
 - Interactive experiments:
   - Handtracking.
 - Internal utilities:
@@ -192,8 +193,11 @@ Use these categories in UI copy, chat responses, and future case-study pages:
 Future agents should follow these copy rules:
 
 - It is safe to say Block Crush Game is published on the iOS App Store.
+- It is safe to say AuraPOS is live at `https://nexpos-ten.vercel.app/`, verified with HTTP 200 on 2026-05-31.
+- It is safe to say Handtracking is a complete experimental project.
 - It is safe to say Keyboard Lock was not published.
-- For FurrFind, Soleris Ledger, AuraPOS, Handtracking, Jungle Rush, Rally Crush, SweetMerge, Candy, and other projects, do not claim public release unless publication is verified.
+- For FurrFind, Soleris Ledger, Jungle Rush, Rally Crush, SweetMerge, Candy, and other projects, do not claim public release unless publication is verified.
+- For Handtracking, do not imply a commercial launch; describe it as a completed experiment or interaction proof.
 - Use terms like "built", "prototype", "internal tool", "in progress", "pipeline project", or "portfolio evidence" when launch status is not verified.
 
 ## Current Website Usage

@@ -5,14 +5,14 @@
 See: .planning/PROJECT.md (updated 2026-05-30)
 
 **Core value:** Convert serious visitors into confident client conversations by proving Mian can understand business needs, plan the right product, build it with modern AI-assisted workflows, and secure the public touchpoints.
-**Current focus:** Surgical UI Refinement
+**Current focus:** Modern Technical Consultancy Overhaul (v4)
 
 ## Current Position
 
-Phase: 7 of 7 (Surgical UI Alignment & Visual Narrative Restructuring)
-Plan: Plan 01 - Layout Foundation
+Phase: 8 of 8 (Modern Consultancy UI Overhaul (v4))
+Plan: Plan 01 - Foundation & Brand Identity
 Status: Planning Complete
-Last activity: 2026-06-01 — Created surgical plan to address intro section wall-of-text and alignment overlaps.
+Last activity: 2026-05-31 — Added fact-correction execution plan for AuraPOS live status, completed Handtracking proof, and Phase 8 UI verification.
 
 Progress: [▓▓▓▓▓▓▓▓▓░] 90%
 
@@ -28,15 +28,20 @@ Progress: [▓▓▓▓▓▓▓▓▓░] 90%
 ### Decisions
 
 - [All Phases]: Successfully transitioned from a resume-style site to a professional product-builder portfolio.
-- [UI/UX]: Adopted 'Archivo' and 'Space Grotesk' fonts with a 'Vibrant & Block-based' style for higher trust and conversion.
-- [Security]: Implemented honeypot and allowlist protection without new dependencies.
-- [Phase 07]: Intro section will be restructured into a 3-column "Technical Manifesto" grid per user requirement.
+- [UI/UX]: (Superseded) Archivo/Space Grotesk and Vibrant style from Phase 7 are superseded by Outfit/Work Sans and Modern Consultancy aesthetic in Phase 8.
+- [Phase 08]: Shift to White/Light Gray background, Deep Navy text, and Electric Blue accents per user requirement.
+- [Phase 08]: Hero copy updated to "Bridging the Gap Between Complex AI and Business ROI."
+- [Phase 08]: AuraPOS is the current live product name; do not use NexPOS as the public primary name.
+- [Phase 08]: Handtracking is a complete experimental proof piece; do not frame it as an unfinished project.
 
 ### Pending Todos
 
-- [Phase 07]: Fix contact section heading overlap.
-- [Phase 07]: Fix chat popup input/button overflow.
-- [Phase 07]: Update contact button text to "Submit Query".
+- [Phase 08]: Update globals.css with new variables and reset typography.
+- [Phase 08]: Redesign Hero for high-contrast corporate look.
+- [Phase 08]: Rebuild Manifesto and Success Stories as clean bordered cards.
+- [Phase 08]: Skin Chat and Contact to match new aesthetic.
+- [Phase 08]: Align source-of-truth docs and app content with AuraPOS live status and completed Handtracking status.
+- [Phase 08]: Fix mobile hero wrapping and next/image sizing warning.
 
 ### Blockers/Concerns
 
@@ -45,5 +50,5 @@ Progress: [▓▓▓▓▓▓▓▓▓░] 90%
 ## Session Continuity
 
 Last session: 2026-06-01
-Stopped at: Starting Phase 07 execution.
-Resume file: .planning/phases/07-surgical-ui/07-01-PLAN.md
+Stopped at: Starting Phase 08 execution.
+Resume file: .planning/phases/08-modern-consultancy/08-FACT-CORRECTION-AND-IMPLEMENTATION-PLAN.md

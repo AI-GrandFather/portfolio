@@ -24,12 +24,12 @@ The content was based on local project evidence from `/Users/atharmushtaq/projec
 - Block Crush Game / BlockPuzzlePro: published iOS block puzzle game using SwiftUI and SpriteKit with multiple modes and 120Hz performance work.
 - FurrFind: Flutter iOS and Android AI pet breed identification app with scan history, free scan limits, subscriptions, and premium AI care chat.
 - Soleris Ledger: budget, inventory, profit, ROAS, currency conversion, and AI-assisted business dashboard.
-- AuraPOS: Next.js and Supabase POS system with entry management, inventory, SaaS-oriented architecture, and operational tooling.
-- Handtracking: real-time MediaPipe hand-tracking experiment with gestures, physics, and canvas rendering.
+- AuraPOS: live Next.js and Supabase POS system with entry management, inventory, SaaS-oriented architecture, and operational tooling.
+- Handtracking: complete real-time MediaPipe hand-tracking experiment with gestures, physics, and canvas rendering.
 - Keyboard Lock: unpublished desktop utility prototype.
 - Jungle Rush and Rally Crush: broader game production pipeline projects.
 
-Do not claim unpublished projects are launched. They can be described as prototypes, internal tools, experiments, or pipeline projects.
+Do not claim unpublished projects are launched. AuraPOS is verified live; Handtracking is complete experimental proof, not a commercial launch. Other unverified projects can be described as prototypes, internal tools, experiments, or pipeline projects.
 
 For a fuller handoff inventory, see `PRODUCT_INVENTORY.md`.
 

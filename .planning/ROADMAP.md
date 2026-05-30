@@ -12,12 +12,13 @@ This roadmap upgrades the existing Next.js portfolio into a client-onboarding sy
 - [x] **Phase 4: Bounded Second-Self Assistant** - The chatbot answers client-fit and AI-workflow questions from approved facts while staying within safe boundaries. (Completed)
 - [x] **Phase 5: Lead Flow And Endpoint Hardening** - Contact and public API routes collect useful leads while reducing spam, leakage, drift, and budget abuse. (Completed)
 - [x] **Phase 6: Verification And Release Readiness** - The improved portfolio is checked through lint, typecheck, build, route probes, accessibility review, and screenshots. (Completed)
-- [ ] **Phase 7: Surgical UI Alignment & Visual Narrative Restructuring** - Refine the visual storytelling and fix surgical alignment issues for "Agency-of-One" precision.
+- [x] **Phase 7: Surgical UI Alignment & Visual Narrative Restructuring** - Refine the visual storytelling and fix surgical alignment issues for "Agency-of-One" precision. (Superseded by Phase 8)
+- [ ] **Phase 8: Modern Consultancy UI Overhaul (v4)** - Transform the portfolio into a professional technical consultancy aesthetic with high-contrast light backgrounds, ROI-focused messaging, corrected AuraPOS live status, and completed Handtracking proof.
 
 ## Progress
 
 **Execution Order:**
-1 → 2 → 3 → 4 → 5 → 6 → 7
+1 → 2 → 3 → 4 → 5 → 6 → 7 → 8
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
@@ -27,11 +28,13 @@ This roadmap upgrades the existing Next.js portfolio into a client-onboarding sy
 | 4. Bounded Second-Self Assistant | 1/1 | Completed | 2026-05-30 |
 | 5. Lead Flow And Endpoint Hardening | 1/1 | Completed | 2026-05-30 |
 | 6. Verification And Release Readiness | 1/1 | Completed | 2026-05-30 |
-| 7. Surgical UI Alignment & Visual Narrative Restructuring | 0/3 | In Progress | - |
+| 7. Surgical UI Alignment & Visual Narrative Restructuring | 0/3 | Superseded | 2026-06-01 |
+| 8. Modern Consultancy UI Overhaul (v4) | 0/3 | In Progress | - |
 
 Progress: [▓▓▓▓▓▓▓▓▓░] 90%
 
 Plans:
-- [ ] 07-01-PLAN.md — Layout Integrity & Global CSS Fixes
-- [ ] 07-02-PLAN.md — Visual Manifesto & Component Polish
-- [ ] 07-03-PLAN.md — Quality Assurance & Build Verification
+- [ ] 08-FACT-CORRECTION-AND-IMPLEMENTATION-PLAN.md — Fact correction and execution handoff
+- [ ] 08-01-PLAN.md — Foundation & Brand Identity
+- [ ] 08-02-PLAN.md — Structural Layout & Hero Section
+- [ ] 08-03-PLAN.md — Interactive Components & QA
