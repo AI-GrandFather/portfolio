@@ -754,6 +754,14 @@ main {
   margin-top: 6px;
 }
 
+.chat-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+
 .chat-log {
   display: flex;
   flex: 1;
