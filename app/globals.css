@@ -237,6 +237,56 @@ main {
   z-index: 20;
 }
 
+.hero-copy h1 {
+  color: #fff7ea;
+  font-size: clamp(72px, 9vw, 132px);
+  line-height: 0.82;
+  margin-bottom: 28px;
+}
+
+.hero-copy h1 span {
+  display: block;
+}
+
+.hero-text {
+  color: #d7ccbd;
+  font-size: clamp(17px, 1.45vw, 22px);
+  line-height: 1.55;
+  max-width: 720px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  margin-top: 34px;
+}
+
+.button {
+  align-items: center;
+  border-radius: 999px;
+  display: inline-flex;
+  font-size: 14px;
+  font-weight: 800;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 24px;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+}
+
+.button.primary {
+  background: var(--amber);
+  color: var(--dark);
+}
+
+.button.secondary {
+  border: 1px solid rgba(255, 247, 234, 0.28);
+  color: #fff7ea;
+}
+
 .hero-portrait {
   bottom: 0;
   height: 100%;
