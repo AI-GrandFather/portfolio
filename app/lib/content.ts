@@ -60,7 +60,7 @@ export const BIO_FACTS = {
   linkedin: "https://linkedin.com/in/mian-muhammad-athar",
   github: "https://github.com/AI-GrandFather",
   education:
-    "GIKI Electronic Engineering, CGPA 3.18/4.00. Microcontrollers, embedded systems, PCB design, and a wall-climbing robot final-year project.",
+    "GIKI Electronic Engineering, with 5 distinctions. Microcontrollers, embedded systems, PCB design, and a wall-climbing robot final-year project.",
   operator:
     "Three e-commerce companies across Texas and Yorkshire with $130K in revenue, Shopify and Amazon operations, supplier coordination, margins, and customer relationships.",
 };
@@ -71,7 +71,7 @@ export const ORIGIN_STORY: OriginCard[] = [
     label: "Systems",
     title: "Engineer",
     text:
-      "GIKI Electronic Engineering, CGPA 3.18. Microcontrollers, embedded systems, PCB design, and a wall-climbing robot final-year project. Systems thinking from day one.",
+      "GIKI Electronic Engineering, with 5 distinctions. Microcontrollers, embedded systems, PCB design, and a wall-climbing robot final-year project. Systems thinking from day one.",
   },
   {
     phase: "02",
