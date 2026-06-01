@@ -46,6 +46,12 @@ export interface ProcessStep {
   deliverable?: string;
 }
 
+export interface NumberedCard {
+  step: string;
+  title: string;
+  text: string;
+}
+
 export const BIO_FACTS = {
   name: "Mian Muhammad Athar",
   shortName: "Athar",
@@ -210,6 +216,46 @@ export const STACK_GROUPS: StackGroup[] = [
     items: ["RevenueCat", "StoreKit", "AdMob", "Stripe"],
   },
 ];
+
+export const DOCUMENT_STACK = {
+  eyebrow: "Document Stack",
+  title: "Every project starts on paper.",
+  subtitle: "The build is just the execution.",
+  intro:
+    "Before an agent writes a single line of code, the full specification exists as structured documents. These are not formalities - they are the system. They prevent scope creep, make handoffs clean, and give AI agents something precise to execute against instead of vague instructions.",
+  cards: [
+    {
+      step: "01",
+      title: "PRD - Product Requirements Document",
+      text:
+        "Defines what is being built and why. User goals, feature scope, acceptance criteria, and an explicit list of what is out of scope. This is the contract that prevents requirements from expanding mid-build.",
+    },
+    {
+      step: "02",
+      title: "TRD - Technical Requirements Document",
+      text:
+        "Stack decisions, API boundaries, third-party integrations, data schemas, and every constraint that governs how the system is built. Written before build starts, referenced throughout.",
+    },
+    {
+      step: "03",
+      title: "Architecture Document",
+      text:
+        "System diagrams, module boundaries, state management model, and the rationale behind structural choices. Written and agreed before the first task is assigned - not reconstructed from memory after the fact.",
+    },
+    {
+      step: "04",
+      title: "Phase Plans",
+      text:
+        "Delivery split into reviewable units. Each phase has a defined scope, acceptance criteria, and a completion gate before the next phase begins. Nothing ships half-built, and nothing starts until the previous phase passes review.",
+    },
+    {
+      step: "05",
+      title: "CLAUDE.md - Agent Governance File",
+      text:
+        "Every AI coding agent in the project operates under a written rule file: what it can modify, what it must leave untouched, how it must commit, and what checks must pass before any change is logged. This is how agentic development stays disciplined instead of unpredictable.",
+    },
+  ] satisfies NumberedCard[],
+};
 
 export const PROCESS: ProcessStep[] = [
   {
