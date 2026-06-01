@@ -545,6 +545,10 @@ main {
   line-height: 1.65;
 }
 
+.workflow-step p + p {
+  margin-top: 14px;
+}
+
 .stack-grid {
   grid-template-columns: repeat(3, 1fr);
 }

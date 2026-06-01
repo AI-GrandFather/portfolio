@@ -188,6 +188,8 @@ export const HOW_I_BUILD = {
     {
       title: "Agent Build",
       text: "Claude Code, Codex, and Gemini execute tightly scoped implementation work.",
+      detail:
+        "Every agent task is scoped to a single module and executed against a written spec. Agents cannot modify architecture, authentication, payments, or production configuration without an explicit, session-level instruction. Every change is committed with a conventional commit message (feat / fix / refactor / chore) and logged to COMMITS.md with a timestamp. Typecheck and production build must pass clean before any commit is recorded. The review gate is not a rubber stamp — it is the only thing that ships.",
     },
     {
       title: "Review & Ship",

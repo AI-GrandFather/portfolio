@@ -144,6 +144,7 @@ export default function Home() {
               <span>{String(index + 1).padStart(2, "0")}</span>
               <h3>{step.title}</h3>
               <p>{step.text}</p>
+              {"detail" in step ? <p>{step.detail}</p> : null}
             </article>
           ))}
         </div>
