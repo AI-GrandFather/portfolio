@@ -2,6 +2,7 @@ import Image from "next/image";
 import { ChatBoard } from "./ui/chat-board";
 import { ContactForm } from "./ui/contact-form";
 import { DocumentStack } from "./ui/document-stack";
+import { PreDeploymentSafety } from "./ui/pre-deployment-safety";
 import {
   BIO_FACTS,
   CONTACT_COPY,
@@ -149,6 +150,8 @@ export default function Home() {
       </section>
 
       <DocumentStack />
+
+      <PreDeploymentSafety />
 
       <section className="section stack-section section-textured" id="stack">
         <div className="section-heading">

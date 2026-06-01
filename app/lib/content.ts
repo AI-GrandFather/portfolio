@@ -52,6 +52,12 @@ export interface NumberedCard {
   text: string;
 }
 
+export interface SafetyItem {
+  step: string;
+  title: string;
+  text: string;
+}
+
 export const BIO_FACTS = {
   name: "Mian Muhammad Athar",
   shortName: "Athar",
@@ -255,6 +261,72 @@ export const DOCUMENT_STACK = {
         "Every AI coding agent in the project operates under a written rule file: what it can modify, what it must leave untouched, how it must commit, and what checks must pass before any change is logged. This is how agentic development stays disciplined instead of unpredictable.",
     },
   ] satisfies NumberedCard[],
+};
+
+export const PRE_DEPLOYMENT_SAFETY = {
+  eyebrow: "Pre-Deployment Safety",
+  title: "Nothing ships without a signed-off checklist.",
+  subtitle: "No exceptions. No deadline pressure.",
+  intro:
+    "Shipping to production is the moment a small oversight becomes a public incident. Every product I build — mobile app, web app, or SaaS — goes through a structured safety review before launch. Below is what that review covers and why each item exists.",
+  closing:
+    "This checklist is completed and signed off before every production deployment. It is not compressed under deadline pressure. If a phase isn't safe to ship, it doesn't ship.",
+  items: [
+    {
+      step: "01",
+      title: "Authorization — Users locked to their own data",
+      text:
+        "Authentication proves who you are. Authorization decides what you're allowed to touch. Every protected endpoint is verified to check that the requesting user actually owns the resource they're asking for — not just that they're logged in. The most common and most damaging class of bug in production web products is IDOR (Insecure Direct Object Reference): an endpoint that returns data without checking ownership. This is explicitly closed on every route before deploy.",
+    },
+    {
+      step: "02",
+      title: "Password reset links expire",
+      text:
+        "Reset tokens are short-lived and single-use. They expire within minutes of issue and are invalidated immediately on use or when a new reset is requested. Reset links land in email inboxes that can be forwarded, cached on shared devices, or exposed in breaches. A non-expiring token is a permanent backdoor. A short TTL shrinks the attack window to minutes.",
+    },
+    {
+      step: "03",
+      title: "Input validation — SQL injection and XSS",
+      text:
+        "Every value arriving from the client is treated as hostile until proven otherwise. Parameterized queries ensure user input cannot alter the shape of a SQL statement. Output escaping ensures injected scripts cannot execute in another user's browser. Both attack classes have appeared in the OWASP Top 10 for over a decade because teams keep leaving one field unvalidated.",
+    },
+    {
+      step: "04",
+      title: "CORS — API locked to your own domain",
+      text:
+        "In production, the API only accepts requests from your own domains. Not *, not localhost, not a development configuration left in by accident. A misconfigured CORS policy allows malicious sites to make authenticated API calls from a victim's browser, leaking data or triggering account actions on their behalf.",
+    },
+    {
+      step: "05",
+      title: "Rate limiting on every sensitive endpoint",
+      text:
+        "Login, password reset, signup, search, and anything that hits the database hard or sends email or SMS have request caps per client. Without rate limiting, a single client can brute-force credentials, exhaust the database connection pool, or run up a cloud bill overnight. This is one of the cheapest controls to add and one of the most expensive to omit.",
+    },
+    {
+      step: "06",
+      title: "Error handling — no internals exposed to the browser",
+      text:
+        "Every failure state returns a clean, structured response. Internal exceptions, stack traces, framework debug pages, and database error messages never reach the client in production. Default debug screens leak file paths, library versions, and sometimes secrets — information an attacker uses to fingerprint the stack and craft targeted exploits.",
+    },
+    {
+      step: "07",
+      title: "Database performance — targeted indexes on hot queries",
+      text:
+        "Queries that run constantly are covered by indexes before launch. A query that runs in 5ms on development data can take 30 seconds on production volume without one. That single slow query can exhaust the connection pool and take the entire app down under real traffic. Indexes are added where data shows they're needed — not blindly on every column, which slows writes unnecessarily.",
+    },
+    {
+      step: "08",
+      title: "Logging and monitoring — alerts before users notice",
+      text:
+        "Structured logs capture requests, errors, and key business events. Automated alerts fire on error rate spikes, latency jumps, and uptime failures. The goal is simple: know about a problem before a user screenshots it. Without logs, production incidents are debugged blind. Without alerts, outages are discovered on social media.",
+    },
+    {
+      step: "09",
+      title: "Rollback strategy — every deploy has a tested exit",
+      text:
+        "Production deployments are structured so a bad release can be reversed without a rebuild. Staging validation happens before the production switch. If something breaks in ways testing didn't catch — config drift, an unmigrated table, a dependency behaving differently in prod — the rollback path is already confirmed, not improvised under pressure.",
+    },
+  ] satisfies SafetyItem[],
 };
 
 export const PROCESS: ProcessStep[] = [
