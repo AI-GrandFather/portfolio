@@ -1,0 +1,254 @@
+[     325ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2477
+[     362ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2477
+[   66718ms] [ERROR] WebSocket connection to 'ws://localhost:3000/_next/webpack-hmr?id=Y2Hnko09gtC3F4w7ZmdQP' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_0fhqo1d._.js:13322
+[   67721ms] [ERROR] WebSocket connection to 'ws://localhost:3000/_next/webpack-hmr?id=Y2Hnko09gtC3F4w7ZmdQP' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_0fhqo1d._.js:13322
+[   68724ms] [ERROR] WebSocket connection to 'ws://localhost:3000/_next/webpack-hmr?id=Y2Hnko09gtC3F4w7ZmdQP' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_0fhqo1d._.js:13322
+[   69730ms] [ERROR] WebSocket connection to 'ws://localhost:3000/_next/webpack-hmr?id=Y2Hnko09gtC3F4w7ZmdQP' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_0fhqo1d._.js:13322
+[   70732ms] [ERROR] WebSocket connection to 'ws://localhost:3000/_next/webpack-hmr?id=Y2Hnko09gtC3F4w7ZmdQP' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_0fhqo1d._.js:13322
+[   75737ms] [ERROR] WebSocket connection to 'ws://localhost:3000/_next/webpack-hmr?id=Y2Hnko09gtC3F4w7ZmdQP' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_0fhqo1d._.js:13322
+[   80742ms] [ERROR] WebSocket connection to 'ws://localhost:3000/_next/webpack-hmr?id=Y2Hnko09gtC3F4w7ZmdQP' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_0fhqo1d._.js:13322
+[   85746ms] [ERROR] WebSocket connection to 'ws://localhost:3000/_next/webpack-hmr?id=Y2Hnko09gtC3F4w7ZmdQP' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_0fhqo1d._.js:13322
+[   90750ms] [ERROR] WebSocket connection to 'ws://localhost:3000/_next/webpack-hmr?id=Y2Hnko09gtC3F4w7ZmdQP' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_0fhqo1d._.js:13322
+[   95754ms] [ERROR] WebSocket connection to 'ws://localhost:3000/_next/webpack-hmr?id=Y2Hnko09gtC3F4w7ZmdQP' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_0fhqo1d._.js:13322
+[  100760ms] [ERROR] WebSocket connection to 'ws://localhost:3000/_next/webpack-hmr?id=Y2Hnko09gtC3F4w7ZmdQP' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_0fhqo1d._.js:13322
+[  105766ms] [ERROR] WebSocket connection to 'ws://localhost:3000/_next/webpack-hmr?id=Y2Hnko09gtC3F4w7ZmdQP' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_0fhqo1d._.js:13322
+[  502174ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2477
+[  502223ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2477
+[  552823ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2477
+[  552900ms] [ERROR] ./app/ui/chat-board.tsx:4:1
+Module not found: Can't resolve '../lib/content'
+  2 |
+  3 | import { FormEvent, useState, useRef, useEffect } from "react";
+> 4 | import { AI_ASSISTANT_DEFAULTS } from "../lib/content";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | type Message = {
+  7 |   role: "assistant" | "user";
+
+Import trace:
+  Server Component:
+    ./app/ui/chat-board.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3318
+[  552900ms] [ERROR] ./app/page.tsx:4:1
+Module not found: Can't resolve './lib/content'
+  2 | import { ChatBoard } from "./ui/chat-board";
+  3 | import { ContactForm } from "./ui/contact-form";
+> 4 | import { PROJECTS, CAPABILITIES, PROCESS, BIO_FACTS } from "./lib/content";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | export default function Home() {
+  7 |   const currentYear = new Date().getFullYear();
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3318
+[  552944ms] [ERROR] ./app/ui/chat-board.tsx:4:1
+Module not found: Can't resolve '../lib/content'
+  2 |
+  3 | import { FormEvent, useState, useRef, useEffect } from "react";
+> 4 | import { AI_ASSISTANT_DEFAULTS } from "../lib/content";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | type Message = {
+  7 |   role: "assistant" | "user";
+
+Import trace:
+  Server Component:
+    ./app/ui/chat-board.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3318
+[  552944ms] [ERROR] ./app/page.tsx:4:1
+Module not found: Can't resolve './lib/content'
+  2 | import { ChatBoard } from "./ui/chat-board";
+  3 | import { ContactForm } from "./ui/contact-form";
+> 4 | import { PROJECTS, CAPABILITIES, PROCESS, BIO_FACTS } from "./lib/content";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | export default function Home() {
+  7 |   const currentYear = new Date().getFullYear();
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3318
+[  553047ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2477
+[  553577ms] [ERROR] ./app/ui/chat-board.tsx:4:1
+Module not found: Can't resolve '../lib/content'
+  2 |
+  3 | import { FormEvent, useState, useRef, useEffect } from "react";
+> 4 | import { AI_ASSISTANT_DEFAULTS } from "../lib/content";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | type Message = {
+  7 |   role: "assistant" | "user";
+
+Import trace:
+  Server Component:
+    ./app/ui/chat-board.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3318
+[  553577ms] [ERROR] ./app/page.tsx:4:1
+Module not found: Can't resolve './lib/content'
+  2 | import { ChatBoard } from "./ui/chat-board";
+  3 | import { ContactForm } from "./ui/contact-form";
+> 4 | import { PROJECTS, CAPABILITIES, PROCESS, BIO_FACTS } from "./lib/content";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | export default function Home() {
+  7 |   const currentYear = new Date().getFullYear();
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3318
+[  553678ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2477
+[  553807ms] [ERROR] ./app/ui/chat-board.tsx:4:1
+Module not found: Can't resolve '../lib/content'
+  2 |
+  3 | import { FormEvent, useState, useRef, useEffect } from "react";
+> 4 | import { AI_ASSISTANT_DEFAULTS } from "../lib/content";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | type Message = {
+  7 |   role: "assistant" | "user";
+
+Import trace:
+  Server Component:
+    ./app/ui/chat-board.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3318
+[  553807ms] [ERROR] ./app/page.tsx:4:1
+Module not found: Can't resolve './lib/content'
+  2 | import { ChatBoard } from "./ui/chat-board";
+  3 | import { ContactForm } from "./ui/contact-form";
+> 4 | import { PROJECTS, CAPABILITIES, PROCESS, BIO_FACTS } from "./lib/content";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | export default function Home() {
+  7 |   const currentYear = new Date().getFullYear();
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3318
+[  553889ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/?_rsc=q3mOO9BClNZHexY7:0
+[  553917ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/?_rsc=q3mOO9BClNZHexY7:0
+[  553937ms] [ERROR] ./app/ui/chat-board.tsx:4:1
+Module not found: Can't resolve '../lib/content'
+  2 |
+  3 | import { FormEvent, useState, useRef, useEffect } from "react";
+> 4 | import { AI_ASSISTANT_DEFAULTS } from "../lib/content";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | type Message = {
+  7 |   role: "assistant" | "user";
+
+Import trace:
+  Server Component:
+    ./app/ui/chat-board.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3318
+[  553937ms] [ERROR] ./app/page.tsx:4:1
+Module not found: Can't resolve './lib/content'
+  2 | import { ChatBoard } from "./ui/chat-board";
+  3 | import { ContactForm } from "./ui/contact-form";
+> 4 | import { PROJECTS, CAPABILITIES, PROCESS, BIO_FACTS } from "./lib/content";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | export default function Home() {
+  7 |   const currentYear = new Date().getFullYear();
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3318
+[  553979ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/?_rsc=q3mOO9BClNZHexY7:0
+[  553990ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/:0
+[  554136ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/node_modules_react-dom_0bruynb._.js:15305
+[  554172ms] Error: ./app/ui/chat-board.tsx:4:1
+Module not found: Can't resolve '../lib/content'
+  2 |
+  3 | import { FormEvent, useState, useRef, useEffect } from "react";
+> 4 | import { AI_ASSISTANT_DEFAULTS } from "../lib/content";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | type Message = {
+  7 |   role: "assistant" | "user";
+
+
+
+Import trace:
+  Server Component:
+    ./app/ui/chat-board.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+    at <unknown> (Error: ./app/ui/chat-board.tsx:4:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at Object.getCompilationErrors (file:///Users/atharmushtaq/projects/portfolio/node_modules/next/dist/server/dev/hot-reloader-turbopack.js:1186:59)
+    at DevBundlerService.getCompilationError (file:///Users/atharmushtaq/projects/portfolio/node_modules/next/dist/server/lib/dev-bundler-service.js:44:55)
+    at DevServer.getCompilationError (file:///Users/atharmushtaq/projects/portfolio/node_modules/next/dist/server/dev/next-dev-server.js:720:42)
+    at DevServer.findPageComponents (file:///Users/atharmushtaq/projects/portfolio/node_modules/next/dist/server/dev/next-dev-server.js:690:43)
+    at async DevServer.renderErrorToResponseImpl (file:///Users/atharmushtaq/projects/portfolio/node_modules/next/dist/server/base-server.js:1753:26)
+[  554177ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_0u_w_5s._.js:1226
+[  554191ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3000/favicon.ico:0
+[  554205ms] [ERROR] ./app/ui/chat-board.tsx:4:1
+Module not found: Can't resolve '../lib/content'
+  2 |
+  3 | import { FormEvent, useState, useRef, useEffect } from "react";
+> 4 | import { AI_ASSISTANT_DEFAULTS } from "../lib/content";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | type Message = {
+  7 |   role: "assistant" | "user";
+
+Import trace:
+  Server Component:
+    ./app/ui/chat-board.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_0u_w_5s._.js:1945
+[  554205ms] [ERROR] ./app/page.tsx:4:1
+Module not found: Can't resolve './lib/content'
+  2 | import { ChatBoard } from "./ui/chat-board";
+  3 | import { ContactForm } from "./ui/contact-form";
+> 4 | import { PROJECTS, CAPABILITIES, PROCESS, BIO_FACTS } from "./lib/content";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | export default function Home() {
+  7 |   const currentYear = new Date().getFullYear();
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_0u_w_5s._.js:1945
+[  554269ms] [ERROR] ./app/ui/chat-board.tsx:4:1
+Module not found: Can't resolve '../lib/content'
+  2 |
+  3 | import { FormEvent, useState, useRef, useEffect } from "react";
+> 4 | import { AI_ASSISTANT_DEFAULTS } from "../lib/content";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | type Message = {
+  7 |   role: "assistant" | "user";
+
+Import trace:
+  Server Component:
+    ./app/ui/chat-board.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_0u_w_5s._.js:1945
+[  554269ms] [ERROR] ./app/page.tsx:4:1
+Module not found: Can't resolve './lib/content'
+  2 | import { ChatBoard } from "./ui/chat-board";
+  3 | import { ContactForm } from "./ui/contact-form";
+> 4 | import { PROJECTS, CAPABILITIES, PROCESS, BIO_FACTS } from "./lib/content";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | export default function Home() {
+  7 |   const currentYear = new Date().getFullYear();
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_0u_w_5s._.js:1945
+[  571082ms] [ERROR] WebSocket connection to 'ws://localhost:3000/_next/webpack-hmr' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_0pe1dg-._.js:2343
+[  572085ms] [ERROR] WebSocket connection to 'ws://localhost:3000/_next/webpack-hmr' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_0pe1dg-._.js:2343
+[  573087ms] [ERROR] WebSocket connection to 'ws://localhost:3000/_next/webpack-hmr' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_0pe1dg-._.js:2343
+[  574090ms] [ERROR] WebSocket connection to 'ws://localhost:3000/_next/webpack-hmr' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_0pe1dg-._.js:2343
+[  575093ms] [ERROR] WebSocket connection to 'ws://localhost:3000/_next/webpack-hmr' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_0pe1dg-._.js:2343
+[  580095ms] [ERROR] WebSocket connection to 'ws://localhost:3000/_next/webpack-hmr' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_0pe1dg-._.js:2343
+[  585102ms] [ERROR] WebSocket connection to 'ws://localhost:3000/_next/webpack-hmr' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_0pe1dg-._.js:2343
+[  590108ms] [ERROR] WebSocket connection to 'ws://localhost:3000/_next/webpack-hmr' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_0pe1dg-._.js:2343
+[  595116ms] [ERROR] WebSocket connection to 'ws://localhost:3000/_next/webpack-hmr' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_0pe1dg-._.js:2343
+[  600123ms] [ERROR] WebSocket connection to 'ws://localhost:3000/_next/webpack-hmr' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_0pe1dg-._.js:2343
+[  605131ms] [ERROR] WebSocket connection to 'ws://localhost:3000/_next/webpack-hmr' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_0pe1dg-._.js:2343
+[  610135ms] [ERROR] WebSocket connection to 'ws://localhost:3000/_next/webpack-hmr' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_0pe1dg-._.js:2343
