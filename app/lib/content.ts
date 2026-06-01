@@ -134,14 +134,15 @@ export const PROJECTS: Project[] = [
   {
     id: "furrfind",
     name: "FurrFind AI",
-    status: "IN REVIEW",
-    statusLabel: "IN REVIEW",
-    statusColor: "yellow",
+    status: "PUBLISHED",
+    statusLabel: "LIVE - APP STORE",
+    statusColor: "green",
     type: "Vision-AI Mobile App",
-    tagline: "Cross-platform AI pet breed identifier.",
+    tagline: "Published iOS AI pet breed identifier.",
     detail:
-      "Flutter app for iOS and Android that identifies dog and cat breeds from photos using Vision AI. Includes RevenueCat subscriptions, local scan history, daily scan limits, and premium AI care chat.",
+      "Published Flutter app for iPhone that identifies dog and cat breeds from photos using Vision AI. Includes RevenueCat subscriptions, local scan history, daily scan limits, and premium AI care chat.",
     stack: ["Flutter", "OpenAI Vision", "RevenueCat", "Hive", "AdMob"],
+    link: "https://apps.apple.com/us/app/furrfind-ai-breed-identifier/id6771251731",
     visual: "Photo, breed, care",
   },
   {

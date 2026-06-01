@@ -26,9 +26,9 @@ It summarizes known products, publication status, and construction status based 
 
 ### FurrFind
 
-- Status: Built mobile app; store/publication status not confirmed in this portfolio setup.
+- Status: Published iPhone app on the iOS App Store, verified on 2026-06-01 at `https://apps.apple.com/us/app/furrfind-ai-breed-identifier/id6771251731`.
 - Source project evidence: `Mobile_Apps/FurrFind`.
-- Product type: AI mobile app for iOS and Android.
+- Product type: AI mobile app for iPhone.
 - Stack and build evidence: Flutter, OpenAI-powered image understanding and chat, Hive local storage, RevenueCat subscriptions.
 - Core capabilities:
   - Identify dog and cat breeds from photos.
@@ -193,10 +193,11 @@ Use these categories in UI copy, chat responses, and future case-study pages:
 Future agents should follow these copy rules:
 
 - It is safe to say Block Crush Game is published on the iOS App Store.
+- It is safe to say FurrFind is published on the iOS App Store, verified on 2026-06-01.
 - It is safe to say AuraPOS is live at `https://nexpos-ten.vercel.app/`, verified with HTTP 200 on 2026-05-31.
 - It is safe to say Handtracking is a complete experimental project.
 - It is safe to say Keyboard Lock was not published.
-- For FurrFind, Soleris Ledger, Jungle Rush, Rally Crush, SweetMerge, Candy, and other projects, do not claim public release unless publication is verified.
+- For Soleris Ledger, Jungle Rush, Rally Crush, SweetMerge, Candy, and other projects, do not claim public release unless publication is verified.
 - For Handtracking, do not imply a commercial launch; describe it as a completed experiment or interaction proof.
 - Use terms like "built", "prototype", "internal tool", "in progress", "pipeline project", or "portfolio evidence" when launch status is not verified.
 
