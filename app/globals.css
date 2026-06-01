@@ -714,6 +714,48 @@ main {
   padding: 28px;
 }
 
+.included-block {
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 22px;
+}
+
+.included-block h3 {
+  color: var(--ink-soft);
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  margin-bottom: 14px;
+  text-transform: uppercase;
+}
+
+.included-block ul {
+  display: grid;
+  gap: 10px 18px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.included-block li {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.45;
+  padding-left: 16px;
+  position: relative;
+}
+
+.included-block li::before {
+  background: var(--amber);
+  border-radius: 50%;
+  content: "";
+  height: 5px;
+  left: 0;
+  position: absolute;
+  top: 0.7em;
+  width: 5px;
+}
+
 .field-pair {
   display: grid;
   gap: 18px;

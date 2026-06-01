@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { CONTACT_COPY } from "../lib/content";
 
 type Status = "idle" | "sending" | "sent" | "error";
 
@@ -54,6 +55,15 @@ export function ContactForm() {
 
   return (
     <form className="contact-form" onSubmit={handleSubmit}>
+      <div className="included-block">
+        <h3>{CONTACT_COPY.includedTitle}</h3>
+        <ul>
+          {CONTACT_COPY.included.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
+      </div>
+
       <div className="field-pair">
         <label>
           Name

@@ -379,6 +379,17 @@ export const CONTACT_COPY = {
   title: "Got Something to Build?",
   text:
     "Tell me what you're working on. I'll tell you if I can help and what the first version would look like.",
+  includedTitle: "Every engagement includes:",
+  included: [
+    "Problem Definition Document",
+    "PRD + TRD + Architecture Document",
+    "Phase-by-phase delivery with review gates at each phase",
+    "CLAUDE.md agent governance for all AI-assisted work",
+    "Full COMMITS.md audit trail — every change, timestamped",
+    "Pre-deployment safety checklist sign-off",
+    "Source code ownership — no platform lock-in",
+    "Handoff documentation and next-phase roadmap",
+  ],
 };
 
 export const AI_ASSISTANT_DEFAULTS = {
