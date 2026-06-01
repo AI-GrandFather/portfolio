@@ -596,6 +596,14 @@ main {
   line-height: 1.55;
 }
 
+.process-item em {
+  color: var(--ink-soft);
+  display: block;
+  font-size: 13px;
+  line-height: 1.55;
+  margin-top: 14px;
+}
+
 .contact-section {
   display: grid;
   gap: 70px;

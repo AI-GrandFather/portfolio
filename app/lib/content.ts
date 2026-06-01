@@ -43,6 +43,7 @@ export interface ProcessStep {
   step: string;
   title: string;
   text: string;
+  deliverable?: string;
 }
 
 export const BIO_FACTS = {
@@ -216,30 +217,40 @@ export const PROCESS: ProcessStep[] = [
     title: "Discovery",
     text:
       "I map your business goal, user, and core constraint before touching a line of code. A product that solves the wrong problem is worse than no product.",
+    deliverable:
+      "Deliverable: Problem Definition Document, user stories, and success criteria.",
   },
   {
     step: "02",
     title: "Blueprint",
     text:
       "Full technical architecture: data schemas, API boundaries, AI orchestration, and phased delivery plan. No ambiguity before build begins.",
+    deliverable:
+      "Deliverables: PRD (Product Requirements Document), TRD (Technical Requirements Document), Architecture Document, Data Schema, and a Phase Plan with acceptance criteria per phase.",
   },
   {
     step: "03",
     title: "Build",
     text:
       "Agentic development against precise task documents. Each module is functional before the next begins, with no half-built features sitting in branches.",
+    deliverable:
+      "Deliverables: CLAUDE.md agent governance file, per-phase task files, and COMMITS.md - a full timestamped audit trail of every change made.",
   },
   {
     step: "04",
     title: "Harden",
     text:
       "Edge case coverage, performance review, and a security pass before client review. What you see should already work.",
+    deliverable:
+      "Deliverables: Pre-deployment checklist sign-off, App Store compliance review (mobile), security audit notes, and performance profiling results.",
   },
   {
     step: "05",
     title: "Launch",
     text:
       "Deployment, documentation, and a clean handoff. You own what was built, and the next phase has a clear path.",
+    deliverable:
+      "Deliverables: Deployment guide, full source code with commit history, handoff documentation, and a next-phase roadmap.",
   },
 ];
 

@@ -177,6 +177,7 @@ export default function Home() {
               <span>{item.step}</span>
               <h3>{item.title}</h3>
               <p>{item.text}</p>
+              {item.deliverable ? <em>{item.deliverable}</em> : null}
             </article>
           ))}
         </div>
