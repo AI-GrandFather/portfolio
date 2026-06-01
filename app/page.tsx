@@ -27,6 +27,8 @@ export default function Home() {
             <div className="nav-links">
               <a href="#work">Work</a>
               <a href="#how-i-build">How I Build</a>
+              <a href="#document-stack">Document Stack</a>
+              <a href="#safety">Safety</a>
               <a href="#contact">Contact</a>
             </div>
           </nav>
@@ -223,6 +225,8 @@ export default function Home() {
               <span className="eyebrow">Navigate</span>
               <a href="#work">Work</a>
               <a href="#how-i-build">How I Build</a>
+              <a href="#document-stack">Document Stack</a>
+              <a href="#safety">Safety</a>
               <a href="#contact">Contact</a>
             </div>
           </div>
