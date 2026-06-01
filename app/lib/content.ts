@@ -222,17 +222,17 @@ export const DOCUMENT_STACK = {
   title: "Every project starts on paper.",
   subtitle: "The build is just the execution.",
   intro:
-    "Before an agent writes a single line of code, the full specification exists as structured documents. These are not formalities - they are the system. They prevent scope creep, make handoffs clean, and give AI agents something precise to execute against instead of vague instructions.",
+    "Before an agent writes a single line of code, the full specification exists as structured documents. These are not formalities — they are the system. They prevent scope creep, make handoffs clean, and give AI agents something precise to execute against instead of vague instructions.",
   cards: [
     {
       step: "01",
-      title: "PRD - Product Requirements Document",
+      title: "PRD — Product Requirements Document",
       text:
         "Defines what is being built and why. User goals, feature scope, acceptance criteria, and an explicit list of what is out of scope. This is the contract that prevents requirements from expanding mid-build.",
     },
     {
       step: "02",
-      title: "TRD - Technical Requirements Document",
+      title: "TRD — Technical Requirements Document",
       text:
         "Stack decisions, API boundaries, third-party integrations, data schemas, and every constraint that governs how the system is built. Written before build starts, referenced throughout.",
     },
@@ -240,7 +240,7 @@ export const DOCUMENT_STACK = {
       step: "03",
       title: "Architecture Document",
       text:
-        "System diagrams, module boundaries, state management model, and the rationale behind structural choices. Written and agreed before the first task is assigned - not reconstructed from memory after the fact.",
+        "System diagrams, module boundaries, state management model, and the rationale behind structural choices. Written and agreed before the first task is assigned — not reconstructed from memory after the fact.",
     },
     {
       step: "04",
@@ -250,7 +250,7 @@ export const DOCUMENT_STACK = {
     },
     {
       step: "05",
-      title: "CLAUDE.md - Agent Governance File",
+      title: "CLAUDE.md — Agent Governance File",
       text:
         "Every AI coding agent in the project operates under a written rule file: what it can modify, what it must leave untouched, how it must commit, and what checks must pass before any change is logged. This is how agentic development stays disciplined instead of unpredictable.",
     },
@@ -280,7 +280,7 @@ export const PROCESS: ProcessStep[] = [
     text:
       "Agentic development against precise task documents. Each module is functional before the next begins, with no half-built features sitting in branches.",
     deliverable:
-      "Deliverables: CLAUDE.md agent governance file, per-phase task files, and COMMITS.md - a full timestamped audit trail of every change made.",
+      "Deliverables: CLAUDE.md agent governance file, per-phase task files, and COMMITS.md — a full timestamped audit trail of every change made.",
   },
   {
     step: "04",
