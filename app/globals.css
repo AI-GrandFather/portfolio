@@ -638,7 +638,7 @@ main {
 }
 
 .safety-panel[data-open="true"] {
-  max-height: 320px;
+  max-height: 700px;
 }
 
 .safety-panel p {
@@ -1125,6 +1125,7 @@ main {
 
   .hero-actions,
   .field-pair,
+  .included-block ul,
   .footer-links {
     display: grid;
     grid-template-columns: 1fr;
