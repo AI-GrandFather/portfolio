@@ -7,3 +7,4 @@
 - 39eb397 2026-06-01 18:28 PKT Phase 4 - Agent governance paragraph added to How I Build Step 02
 - 8d17723 2026-06-01 18:28 PKT Phase 5 - What's included list added to Contact section above form fields
 - 25b13f0 2026-06-01 18:29 PKT Phase 6 - Document Stack and Safety nav links added. All portfolio enhancement phases complete.
+- 0090d21 2026-06-01 18:30 PKT Responsive polish - Mobile included list and accordion expansion height adjusted after verification
