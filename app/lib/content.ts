@@ -62,9 +62,9 @@ export const BIO_FACTS = {
   name: "Mian Muhammad Athar",
   shortName: "Athar",
   fullName: "Mian Muhammad Athar",
-  location: "Islamabad, PK",
+  location: "Product Engineer",
   title: "Solo Product Engineer",
-  tagline: "Solo Product Engineer - Islamabad, PK",
+  tagline: "Solo Product Engineer",
   headline: "From Idea\nto App Store.",
   subheadline:
     "I plan, build, and ship mobile apps, games, and SaaS systems solo. Engineering discipline from GIKI, operator instincts from running e-commerce businesses, and frontier AI development workflows that compress months into weeks.",

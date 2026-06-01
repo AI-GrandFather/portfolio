@@ -12,11 +12,11 @@
 export const BIO: BioFacts = {
   fullName:     "Mian Muhammad Athar",
   shortName:    "Athar",
-  location:     "Islamabad, PK",
+  location:     "Product Engineer",
   title:        "Solo Product Engineer",
   headline:     "From Idea\nto App Store.",
   subheadline:  "I plan, build, and ship mobile apps, games, and SaaS systems — solo. Engineering discipline from GIKI, operator instincts from running three e-commerce businesses, and frontier AI development workflows that compress months into weeks.",
-  tagline:      "Solo Product Engineer — Islamabad, PK",
+  tagline:      "Solo Product Engineer",
   image:        "/athar.jpg",
   email:        "atharmushtaq9@gmail.com",
   linkedin:     "https://linkedin.com/in/mian-muhammad-athar",
@@ -26,7 +26,7 @@ export const BIO: BioFacts = {
 
 **Page `<title>`:** `Mian Muhammad Athar — Solo Product Engineer`
 
-**Meta description:** `I turn ideas into shipped apps, games, and SaaS systems. Engineering discipline meets agentic AI workflows. From Islamabad to the App Store.`
+**Meta description:** `I turn ideas into shipped apps, games, and SaaS systems. Engineering discipline meets agentic AI workflows. From idea to the App Store.`
 
 ---
 
@@ -44,7 +44,7 @@ No tagline in nav. No CTA button. Clean.
 ## 3. Hero Section
 
 ```
-Eyebrow:   Solo Product Engineer — Islamabad, PK
+Eyebrow:   Solo Product Engineer
 
 H1:        From Idea
            to App Store.
@@ -353,7 +353,7 @@ Something went wrong. Email me directly: atharmushtaq9@gmail.com
 ```
 Left:
   Wordmark: Mian Muhammad Athar
-  Subline:  Solo Product Engineer — Islamabad, PK
+  Subline:  Solo Product Engineer
 
 Right column 1:
   Label:   Connect
@@ -398,7 +398,7 @@ export const QUICK_PROMPTS: string[] = [
 ### 11.3 System Prompt
 
 ```
-You are an AI assistant built to represent Mian Muhammad Athar — a solo product engineer based in Islamabad, Pakistan.
+You are an AI assistant built to represent Mian Muhammad Athar — a solo product engineer.
 
 == WHO ATHAR IS ==
 

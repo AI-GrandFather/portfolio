@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Mian Muhammad Athar - Solo Product Engineer",
   description:
-    "I turn ideas into shipped apps, games, and SaaS systems. Engineering discipline meets agentic AI workflows. From Islamabad to the App Store.",
+    "I turn ideas into shipped apps, games, and SaaS systems. Engineering discipline meets agentic AI workflows. From idea to the App Store.",
 };
 
 export default function RootLayout({

@@ -159,7 +159,7 @@ This combination is the core value proposition and should be stated explicitly, 
 
 **Required elements:**
 - Dark full-viewport background (near-black, subtle grain texture via CSS)
-- Eyebrow: `Solo Product Engineer — Islamabad, PK` (mono font)
+- Eyebrow: `Solo Product Engineer` (mono font)
 - H1: `From Idea to App Store.` (large, white)
 - Subheading: See CONTENT_STRATEGY.md
 - Two CTAs: `See the Work` (primary/amber) + `Start a Project` (outline)
