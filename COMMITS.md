@@ -5,3 +5,4 @@
 - fbcb7cd 2026-06-01 18:25 PKT Copy accuracy - Portfolio copy punctuation aligned with source reference
 - f3f0ecd 2026-06-01 18:27 PKT Phase 3 - Pre-Deployment Safety section created, 9 accordion items, inserted after Document Stack
 - 39eb397 2026-06-01 18:28 PKT Phase 4 - Agent governance paragraph added to How I Build Step 02
+- 8d17723 2026-06-01 18:28 PKT Phase 5 - What's included list added to Contact section above form fields
