@@ -13,6 +13,14 @@ export type ProjectStatus =
 
 export type StatusColor = "green" | "yellow" | "gray" | "blue";
 
+export type ProjectTileMotif = "pos" | "blocks" | "paw" | "chart" | "hand";
+
+export interface ProjectTileData {
+  gradient: string;
+  accentColor: string;
+  motif: ProjectTileMotif;
+}
+
 export interface Project {
   id: string;
   name: string;
@@ -25,6 +33,7 @@ export interface Project {
   stack: string[];
   link?: string;
   visual: string;
+  tile: ProjectTileData;
 }
 
 export interface OriginCard {
@@ -116,6 +125,11 @@ export const PROJECTS: Project[] = [
     stack: ["Next.js", "Supabase", "TypeScript", "PWA", "Reports"],
     link: "https://nexpos-ten.vercel.app/",
     visual: "Register, stock, reports",
+    tile: {
+      gradient: "linear-gradient(135deg, #1a2e1a 0%, #0d1f0d 100%)",
+      accentColor: "#4ade80",
+      motif: "pos",
+    },
   },
   {
     id: "block-crush",
@@ -130,6 +144,11 @@ export const PROJECTS: Project[] = [
     stack: ["SwiftUI", "SpriteKit", "Combine", "StoreKit", "Game Center"],
     link: "https://apps.apple.com/us/app/block-crush-puzzle-games-new/id6755646573",
     visual: "Board, pieces, effects",
+    tile: {
+      gradient: "linear-gradient(135deg, #0f0f2e 0%, #1a1a4e 100%)",
+      accentColor: "#818cf8",
+      motif: "blocks",
+    },
   },
   {
     id: "furrfind",
@@ -144,6 +163,11 @@ export const PROJECTS: Project[] = [
     stack: ["Flutter", "OpenAI Vision", "RevenueCat", "Hive", "AdMob"],
     link: "https://apps.apple.com/us/app/furrfind-ai-breed-identifier/id6771251731",
     visual: "Photo, breed, care",
+    tile: {
+      gradient: "linear-gradient(135deg, #2e1a0d 0%, #1f0f05 100%)",
+      accentColor: "#fb923c",
+      motif: "paw",
+    },
   },
   {
     id: "soleris-ledger",
@@ -157,6 +181,11 @@ export const PROJECTS: Project[] = [
       "Dashboard for e-commerce P&L tracking, budget management, inventory workflows, ROAS analysis, profit percentage, and multi-currency conversion. Includes an AI assistant that can inspect and update business data.",
     stack: ["React", "Vite", "SQLite", "Express", "OpenAI"],
     visual: "Budget, ROAS, stock",
+    tile: {
+      gradient: "linear-gradient(135deg, #0d1e2e 0%, #071525 100%)",
+      accentColor: "#38bdf8",
+      motif: "chart",
+    },
   },
   {
     id: "handtracking",
@@ -170,6 +199,11 @@ export const PROJECTS: Project[] = [
       "Complete MediaPipe and canvas experiment with real-time hand landmarks, gesture recognition, interactive strings, particles, and neon visual effects. Built with Verlet physics and One Euro Filter smoothing.",
     stack: ["MediaPipe", "Canvas", "Verlet Physics", "One Euro Filter"],
     visual: "Gesture, particles, physics",
+    tile: {
+      gradient: "linear-gradient(135deg, #050510 0%, #0a0a1a 100%)",
+      accentColor: "#22d3ee",
+      motif: "hand",
+    },
   },
 ];
 

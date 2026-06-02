@@ -402,10 +402,7 @@ main {
 }
 
 .project-visual {
-  align-items: end;
-  background:
-    linear-gradient(135deg, rgba(217, 152, 47, 0.18), transparent 36%),
-    linear-gradient(160deg, #171410, #2f2920);
+  align-items: center;
   border-radius: 14px;
   color: rgba(255, 247, 234, 0.72);
   display: flex;
@@ -414,8 +411,23 @@ main {
   height: 190px;
   letter-spacing: 0.08em;
   margin-bottom: 24px;
+  overflow: hidden;
   padding: 18px;
+  position: relative;
   text-transform: uppercase;
+}
+
+.project-visual span {
+  bottom: 18px;
+  left: 18px;
+  position: absolute;
+  z-index: 2;
+}
+
+.project-tile-motif {
+  height: min(68%, 132px);
+  opacity: 0.3;
+  width: min(68%, 132px);
 }
 
 .status-tag {

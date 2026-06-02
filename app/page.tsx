@@ -3,6 +3,7 @@ import { ChatBoard } from "./ui/chat-board";
 import { ContactForm } from "./ui/contact-form";
 import { DocumentStack } from "./ui/document-stack";
 import { PreDeploymentSafety } from "./ui/pre-deployment-safety";
+import { ProjectTile } from "./ui/project-tile";
 import {
   BIO_FACTS,
   CONTACT_COPY,
@@ -112,9 +113,7 @@ export default function Home() {
               target={project.link ? "_blank" : undefined}
               rel={project.link ? "noopener noreferrer" : undefined}
             >
-              <div className="project-visual" aria-hidden="true">
-                <span>{project.visual}</span>
-              </div>
+              <ProjectTile {...project.tile} tags={project.visual} />
               <div className="status-tag">{project.statusLabel}</div>
               <h3>{project.name}</h3>
               <p className="project-tagline">{project.tagline}</p>
