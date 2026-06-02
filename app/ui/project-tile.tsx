@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export type ProjectTileMotif = "pos" | "blocks" | "paw" | "chart" | "hand";
 
 export interface ProjectTileProps {
@@ -5,20 +7,21 @@ export interface ProjectTileProps {
   accentColor: string;
   motif: ProjectTileMotif;
   tags: string;
+  iconSrc?: string;
 }
 
 function renderMotif(motif: ProjectTileMotif, accentColor: string) {
   switch (motif) {
     case "pos":
       return (
-        <g fill="none" stroke={accentColor} strokeWidth="1.5">
+        <g fill="none" stroke={accentColor} strokeWidth="2">
           <rect height="64" rx="7" width="46" x="41" y="28" />
           <path d="M50 43h28M50 55h22M50 67h26M50 80h28" />
         </g>
       );
     case "blocks":
       return (
-        <g stroke={accentColor} strokeWidth="1.5">
+        <g stroke={accentColor} strokeWidth="2">
           {[
             [38, 32],
             [57, 32],
@@ -58,12 +61,12 @@ function renderMotif(motif: ProjectTileMotif, accentColor: string) {
           <rect height="33" rx="2" width="12" x="56" y="57" />
           <rect height="45" rx="2" width="12" x="74" y="45" />
           <rect height="60" rx="2" width="12" x="92" y="30" />
-          <path d="M31 91h82" fill="none" stroke={accentColor} strokeWidth="1" />
+          <path d="M31 91h82" fill="none" stroke={accentColor} strokeWidth="2" />
         </g>
       );
     case "hand":
       return (
-        <g fill="none" stroke={accentColor} strokeLinecap="round" strokeWidth="1.5">
+        <g fill="none" stroke={accentColor} strokeLinecap="round" strokeWidth="2">
           <path d="M64 88C48 69 40 55 33 35" />
           <path d="M64 88C55 66 52 49 51 26" />
           <path d="M64 88C64 64 65 47 66 23" />
@@ -79,17 +82,36 @@ export function ProjectTile({
   accentColor,
   motif,
   tags,
+  iconSrc,
 }: ProjectTileProps) {
   return (
     <div className="project-visual" style={{ background: gradient }}>
-      <svg
-        aria-hidden="true"
-        className="project-tile-motif"
-        fill="none"
-        viewBox="0 0 128 128"
-      >
-        {renderMotif(motif, accentColor)}
-      </svg>
+      {iconSrc ? (
+        <Image
+          alt=""
+          className="project-tile-icon"
+          height={96}
+          src={iconSrc}
+          style={{
+            borderRadius: "22%",
+            boxShadow: "0 8px 32px rgba(0,0,0,0.45)",
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+          }}
+          width={96}
+        />
+      ) : (
+        <svg
+          aria-hidden="true"
+          className="project-tile-motif"
+          fill="none"
+          viewBox="0 0 128 128"
+        >
+          {renderMotif(motif, accentColor)}
+        </svg>
+      )}
       <span>{tags}</span>
     </div>
   );

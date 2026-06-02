@@ -425,9 +425,14 @@ main {
 }
 
 .project-tile-motif {
-  height: min(68%, 132px);
-  opacity: 0.3;
-  width: min(68%, 132px);
+  height: 70%;
+  opacity: 0.5;
+  width: 40%;
+}
+
+.project-tile-icon {
+  height: 96px;
+  width: 96px;
 }
 
 .status-tag {
@@ -1157,6 +1162,11 @@ main {
 
   .project-visual {
     height: 150px;
+  }
+
+  .project-tile-icon {
+    height: 72px;
+    width: 72px;
   }
 
   .contact-form {

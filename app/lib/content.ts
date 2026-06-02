@@ -19,6 +19,7 @@ export interface ProjectTileData {
   gradient: string;
   accentColor: string;
   motif: ProjectTileMotif;
+  iconSrc?: string;
 }
 
 export interface Project {
@@ -148,6 +149,7 @@ export const PROJECTS: Project[] = [
       gradient: "linear-gradient(135deg, #0f0f2e 0%, #1a1a4e 100%)",
       accentColor: "#818cf8",
       motif: "blocks",
+      iconSrc: "/icons/block-crush-icon.png",
     },
   },
   {
@@ -167,6 +169,7 @@ export const PROJECTS: Project[] = [
       gradient: "linear-gradient(135deg, #2e1a0d 0%, #1f0f05 100%)",
       accentColor: "#fb923c",
       motif: "paw",
+      iconSrc: "/icons/furrfind-icon.png",
     },
   },
   {
