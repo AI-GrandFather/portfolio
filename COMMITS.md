@@ -11,4 +11,4 @@
 - 0f06c3e 2026-06-02 16:33 PKT Phase 7 - All 5 project cards use CSS gradient tiles with SVG motifs. No external images.
 - 1a1a449 2026-06-02 16:38 PKT Phase 8 - Hero space fixed, footer nav updated to 5 links, all Phase 1-6 sections confirmed in DOM.
 - 2576a4a 2026-06-02 16:49 PKT Phase 9 - App icons used for Block Crush and FurrFind project tiles. SVG motifs enlarged and opacity increased for remaining three tiles.
-- 4b21397 2026-06-02 16:55 PKT Phase 10 — FurrFind tile changed to deep navy gradient, icon size normalised to match Block Crush.
+- 9a6710d 2026-06-02 16:55 PKT Phase 10 — FurrFind tile changed to deep navy gradient, icon size normalised to match Block Crush.
