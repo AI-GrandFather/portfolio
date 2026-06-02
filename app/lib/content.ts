@@ -74,7 +74,7 @@ export const BIO_FACTS = {
   location: "Product Engineer",
   title: "Solo Product Engineer",
   tagline: "Solo Product Engineer",
-  headline: "From Idea\nto App Store.",
+  headline: "From Idea to App Store.",
   subheadline:
     "I plan, build, and ship mobile apps, games, and SaaS systems solo. Engineering discipline from GIKI, operator instincts from running e-commerce businesses, and frontier AI development workflows that compress months into weeks.",
   image: "/55D670AB-C554-4417-86F0-C65863EDE18E.PNG",
