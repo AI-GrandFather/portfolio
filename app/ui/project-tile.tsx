@@ -107,6 +107,12 @@ export function ProjectTile({
           aria-hidden="true"
           className="project-tile-motif"
           fill="none"
+          style={{
+            left: "50%",
+            position: "absolute",
+            top: "50%",
+            transform: "translate(-50%, -50%)",
+          }}
           viewBox="0 0 128 128"
         >
           {renderMotif(motif, accentColor)}
