@@ -432,6 +432,7 @@ main {
 
 .project-tile-icon {
   height: 96px;
+  object-fit: contain;
   width: 96px;
 }
 
@@ -1166,6 +1167,7 @@ main {
 
   .project-tile-icon {
     height: 72px;
+    object-fit: contain;
     width: 72px;
   }
 

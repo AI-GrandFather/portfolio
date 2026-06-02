@@ -166,8 +166,8 @@ export const PROJECTS: Project[] = [
     link: "https://apps.apple.com/us/app/furrfind-ai-breed-identifier/id6771251731",
     visual: "Photo, breed, care",
     tile: {
-      gradient: "linear-gradient(135deg, #2e1a0d 0%, #1f0f05 100%)",
-      accentColor: "#fb923c",
+      gradient: "linear-gradient(135deg, #0a1628 0%, #050d1f 100%)",
+      accentColor: "#60a5fa",
       motif: "paw",
       iconSrc: "/icons/furrfind-icon.png",
     },
