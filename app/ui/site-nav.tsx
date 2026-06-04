@@ -46,6 +46,9 @@ export function SiteNav({ fullName }: SiteNavProps) {
 
   return (
     <div className="topbar-container">
+      <a className="skip-link" href="#main-content">
+        Skip to content
+      </a>
       <nav className="topbar" aria-label="Primary navigation" ref={navRef}>
         <a className="wordmark" href="#top" onClick={closeMenu}>
           {fullName}
