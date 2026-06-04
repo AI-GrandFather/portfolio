@@ -13,3 +13,4 @@
 - 2576a4a 2026-06-02 16:49 PKT Phase 9 - App icons used for Block Crush and FurrFind project tiles. SVG motifs enlarged and opacity increased for remaining three tiles.
 - 9a6710d 2026-06-02 16:55 PKT Phase 10 — FurrFind tile changed to deep navy gradient, icon size normalised to match Block Crush.
 - 9ca4b5d 2026-06-02 16:58 PKT Phase 11 — SVG motifs centered in tiles using absolute positioning, matching icon centering behaviour.
+- 21d9f0a 2026-06-04 22:00 PKT Phase 13 — Hamburger menu added for mobile nav, footer subtitle cleaned up.
