@@ -4,7 +4,6 @@ import { ContactForm } from "./ui/contact-form";
 import { DocumentStack } from "./ui/document-stack";
 import { PreDeploymentSafety } from "./ui/pre-deployment-safety";
 import { ProjectTile } from "./ui/project-tile";
-import { ScrollReveal } from "./ui/scroll-reveal";
 import { SiteNav } from "./ui/site-nav";
 import {
   BIO_FACTS,
@@ -20,19 +19,18 @@ export default function Home() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <main id="main-content">
-      <ScrollReveal />
+    <main>
       <section className="hero-shell" id="top">
         <SiteNav fullName={BIO_FACTS.fullName} />
 
         <div className="hero-content-wrap">
           <div className="hero-copy">
             <p className="eyebrow">{BIO_FACTS.tagline}</p>
-            <div className="hero-title-lockup" aria-hidden="true">
-              <span className="hero-title-main">portfolio</span>
-              <span className="hero-signature">Mian Athar</span>
-            </div>
-            <h1 className="hero-statement">{BIO_FACTS.headline}</h1>
+            <h1>
+              {BIO_FACTS.headline.split("\n").map((line) => (
+                <span key={line}>{line}</span>
+              ))}
+            </h1>
             <p className="hero-text">{BIO_FACTS.subheadline}</p>
             <div className="hero-actions">
               <a className="button primary" href="#work">
@@ -45,7 +43,6 @@ export default function Home() {
           </div>
 
           <div className="hero-portrait">
-            <span className="portrait-orbit" aria-hidden="true" />
             <Image
               src={BIO_FACTS.image}
               alt={BIO_FACTS.fullName}
@@ -75,7 +72,7 @@ export default function Home() {
             </article>
           ))}
         </div>
-        <div className="section-action">
+        <div style={{ marginTop: '48px', textAlign: 'center' }}>
           <a className="button primary" href="#contact">Contact Me</a>
         </div>
       </section>
@@ -89,7 +86,7 @@ export default function Home() {
           <p className="section-copy">
             Accurate project status, concrete build evidence, and no inflated launch claims.
             <br />
-            <a className="text-link" href="#contact">
+            <a href="#contact" style={{ color: 'var(--amber)', fontWeight: 800, textDecoration: 'none', display: 'inline-block', marginTop: '12px' }}>
               Have a project? Let&apos;s talk →
             </a>
           </p>
@@ -126,7 +123,7 @@ export default function Home() {
           {HOW_I_BUILD.body.map((paragraph) => (
             <p key={paragraph}>{paragraph}</p>
           ))}
-          <div className="section-action section-action-left">
+          <div style={{ marginTop: '32px' }}>
             <a className="button primary" href="#contact">Start a Project</a>
           </div>
         </div>
