@@ -4,6 +4,7 @@ import { ContactForm } from "./ui/contact-form";
 import { DocumentStack } from "./ui/document-stack";
 import { PreDeploymentSafety } from "./ui/pre-deployment-safety";
 import { ProjectTile } from "./ui/project-tile";
+import { SiteNav } from "./ui/site-nav";
 import {
   BIO_FACTS,
   CONTACT_COPY,
@@ -20,20 +21,7 @@ export default function Home() {
   return (
     <main>
       <section className="hero-shell" id="top">
-        <div className="topbar-container">
-          <nav className="topbar" aria-label="Primary navigation">
-            <a className="wordmark" href="#top">
-              {BIO_FACTS.fullName}
-            </a>
-            <div className="nav-links">
-              <a href="#work">Work</a>
-              <a href="#how-i-build">How I Build</a>
-              <a href="#document-stack">Document Stack</a>
-              <a href="#safety">Safety</a>
-              <a href="#contact">Contact</a>
-            </div>
-          </nav>
-        </div>
+        <SiteNav fullName={BIO_FACTS.fullName} />
 
         <div className="hero-content-wrap">
           <div className="hero-copy">
@@ -207,7 +195,7 @@ export default function Home() {
               {BIO_FACTS.fullName}
             </a>
             <p>
-              {BIO_FACTS.title} - {BIO_FACTS.location}
+              {BIO_FACTS.title}
             </p>
           </div>
           <div className="footer-links">
