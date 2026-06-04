@@ -73,7 +73,7 @@ export default function Home() {
           ))}
         </div>
         <div style={{ marginTop: '48px', textAlign: 'center' }}>
-          <a className="button primary" href="#contact">Contact Me</a>
+          <a className="button primary" href="#contact">Hire Me for Your Next Build</a>
         </div>
       </section>
 
@@ -86,33 +86,60 @@ export default function Home() {
           <p className="section-copy">
             Accurate project status, concrete build evidence, and no inflated launch claims.
             <br />
-            <a href="#contact" style={{ color: 'var(--amber)', fontWeight: 800, textDecoration: 'none', display: 'inline-block', marginTop: '12px' }}>
+            <a className="section-inline-link" href="#contact">
               Have a project? Let&apos;s talk →
             </a>
           </p>
         </div>
         <div className="project-grid">
           {PROJECTS.map((project) => (
-            <a
+            <article
               className="project-card"
               data-status={project.statusColor}
               key={project.id}
-              href={project.link || "#"}
-              target={project.link ? "_blank" : undefined}
-              rel={project.link ? "noopener noreferrer" : undefined}
             >
               <ProjectTile {...project.tile} tags={project.visual} />
-              <div className="status-tag">{project.statusLabel}</div>
+              <div className="project-meta-row">
+                <span className="status-tag">{project.statusLabel}</span>
+                <span className="type-tag">{project.type}</span>
+              </div>
               <h3>{project.name}</h3>
               <p className="project-tagline">{project.tagline}</p>
-              <p>{project.detail}</p>
+              <p className="project-detail">{project.detail}</p>
               <div className="project-stack">
                 {project.stack.map((item) => (
                   <span key={item}>{item}</span>
                 ))}
               </div>
-            </a>
+              <div className="project-actions">
+                {project.link ? (
+                  <a
+                    className="project-link"
+                    href={project.link}
+                    aria-label={`View ${project.name} project`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    View project
+                  </a>
+                ) : (
+                  <span className="project-link-muted">Case study available on request</span>
+                )}
+              </div>
+            </article>
           ))}
+        </div>
+        <div className="work-cta">
+          <div>
+            <p className="eyebrow">Start a Build</p>
+            <h3>Have a product idea or app build in mind?</h3>
+            <p>
+              Let&apos;s turn it into a shipped, production-ready experience.
+            </p>
+          </div>
+          <a className="button primary" href="#contact">
+            Start a Project
+          </a>
         </div>
       </section>
 

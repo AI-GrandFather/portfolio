@@ -65,86 +65,90 @@ export function ContactForm() {
       </div>
 
       <div className="field-pair">
-        <label>
+        <label htmlFor="name">
           Name
-          <input
-            name="name"
-            required
-            maxLength={100}
-            onChange={(event) => setName(event.target.value)}
-            placeholder="Your name"
-          />
         </label>
-        <label>
-          Email
-          <input
-            name="email"
-            required
-            maxLength={120}
-            placeholder="you@example.com"
-            type="email"
-          />
-        </label>
-      </div>
-
-      <label>
-        What are you building?
-        <textarea
-          name="building"
+        <input
+          id="name"
+          name="name"
           required
-          maxLength={2000}
-          minLength={10}
-          placeholder="Describe the problem you're solving and who it's for."
-          rows={6}
+          maxLength={100}
+          onChange={(event) => setName(event.target.value)}
+          placeholder="Your name"
         />
+        <label htmlFor="email">
+          Email
+        </label>
+        <input
+          id="email"
+          name="email"
+          required
+          maxLength={120}
+          placeholder="you@example.com"
+          type="email"
+        />
+      </div>
+
+      <label htmlFor="building">
+        What are you building?
       </label>
+      <textarea
+        id="building"
+        name="building"
+        required
+        maxLength={2000}
+        minLength={10}
+        placeholder="Describe the problem you're solving and who it's for."
+        rows={6}
+      />
 
       <div className="field-pair">
-        <label>
+        <label htmlFor="platform">
           Platform
-          <select name="platform" required defaultValue="">
-            <option value="" disabled>Select one</option>
-            <option>Mobile App</option>
-            <option>Web App / SaaS</option>
-            <option>iOS / Apple Platform</option>
-            <option>Game</option>
-            <option>AI Integration</option>
-            <option>Internal Tool</option>
-            <option>Other</option>
-          </select>
         </label>
-        <label>
+        <select id="platform" name="platform" required defaultValue="">
+          <option value="" disabled>Select one</option>
+          <option>Mobile App</option>
+          <option>Web App / SaaS</option>
+          <option>iOS / Apple Platform</option>
+          <option>Game</option>
+          <option>AI Integration</option>
+          <option>Internal Tool</option>
+          <option>Other</option>
+        </select>
+        <label htmlFor="timeline">
           Timeline
-          <select name="timeline" required defaultValue="">
-            <option value="" disabled>Select one</option>
-            <option>Under 1 month</option>
-            <option>1-3 months</option>
-            <option>3-6 months</option>
-            <option>Flexible / Not yet decided</option>
-          </select>
         </label>
+        <select id="timeline" name="timeline" required defaultValue="">
+          <option value="" disabled>Select one</option>
+          <option>Under 1 month</option>
+          <option>1-3 months</option>
+          <option>3-6 months</option>
+          <option>Flexible / Not yet decided</option>
+        </select>
       </div>
 
       <div className="field-pair">
-        <label>
+        <label htmlFor="budget">
           Budget
-          <select name="budget" required defaultValue="">
-            <option value="" disabled>Select one</option>
-            <option>Under $5K</option>
-            <option>$5K - $15K</option>
-            <option>$15K - $50K</option>
-            <option>$50K+</option>
-            <option>Let&apos;s discuss</option>
-          </select>
         </label>
-        <label>
+        <select id="budget" name="budget" required defaultValue="">
+          <option value="" disabled>Select one</option>
+          <option>Under $5K</option>
+          <option>$5K - $15K</option>
+          <option>$15K - $50K</option>
+          <option>$50K+</option>
+          <option>Let&apos;s discuss</option>
+        </select>
+        <label htmlFor="source">
           How did you find me?
-          <input
-            name="source"
-            maxLength={200}
-            placeholder="LinkedIn, GitHub, referral..."
-          />
         </label>
+        <input
+          id="source"
+          name="source"
+          maxLength={200}
+          placeholder="LinkedIn, GitHub, referral..."
+        />
       </div>
 
       <div style={{ display: "none" }} aria-hidden="true">
@@ -153,7 +157,7 @@ export function ContactForm() {
       </div>
 
       <button type="submit" className="button primary" disabled={status === "sending"}>
-        {status === "sending" ? "Sending..." : "Send ->"}
+        {status === "sending" ? "Sending..." : "Send Message"}
       </button>
 
       {status === "sent" ? (

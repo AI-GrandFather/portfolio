@@ -82,7 +82,18 @@ export function ChatBoard() {
                 <p className="typing-dots"><span>.</span><span>.</span><span>.</span></p>
               </div>
             )}
-            {error && <p className="chat-error">Error: {error.message || "The assistant is unavailable."}</p>}
+            {error && (
+              <p className="chat-error">
+                {(() => {
+                  try {
+                    const parsed = JSON.parse(error.message);
+                    return parsed.error || "The assistant is unavailable.";
+                  } catch {
+                    return error.message || "The assistant is unavailable.";
+                  }
+                })()}
+              </p>
+            )}
           </div>
 
           {!isConversationActive && (

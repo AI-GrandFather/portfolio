@@ -373,3 +373,249 @@ After all 6 phases are committed, do a full site review:
 
 ---
 _End of PORTFOLIO_PHASES.md_
+
+---
+
+## PHASE 7 — Project Card Tiles: Styled Concept Tiles (No Screenshots)
+
+### Scope
+Replace the current image/screenshot slot in every project card with a
+custom designed CSS gradient tile. Each tile has a distinct color theme,
+a subtle SVG visual motif, and the existing tag text overlay. Pure CSS
+and inline SVG — zero external assets, zero images.
+
+### Pre-conditions
+- [ ] Phase 6 committed and verified
+- [ ] Current project card component identified (the one rendering the
+  image/thumbnail area)
+
+### Why
+Screenshots at 450×200px crop poorly for dashboards and game UIs — they
+read as dark, unreadable rectangles. Designed tiles communicate the
+project domain at a glance, load instantly, and look intentional.
+
+### Five tile designs
+
+| Project            | Gradient                        | SVG Motif                                        | Accent color       |
+| ------------------ | ------------------------------- | ------------------------------------------------ | ------------------ |
+| AuraPOS            | #1a2e1a → #0d1f0d (deep forest) | Minimal receipt: 3 horizontal lines + total line | #4ade80 (green)    |
+| Block Crush Puzzle | #0f0f2e → #1a1a4e (deep navy)   | 3×3 grid, one cell filled                        | #818cf8 (indigo)   |
+| FurrFind           | #2e1a0d → #1f0f05 (deep amber)  | Paw print: 4 toe ovals + pad oval                | #fb923c (orange)   |
+| Soleris Ledger     | #0d1e2e → #071525 (deep slate)  | 4 bar chart bars at different heights            | #38bdf8 (sky blue) |
+| Handtracking       | #050510 → #0a0a1a (near-black)  | 5 finger lines radiating from a point            | #22d3ee (cyan)     |
+
+### Prompt (paste into Claude Code)
+
+```
+Read PORTFOLIO_COPY.md before touching any file.
+
+Explore the project structure and locate the component that renders the
+project cards in the Work section. Identify exactly where the image or
+thumbnail is rendered — the dark rectangular area currently showing
+screenshots. Note its dimensions and the className/style applied.
+
+STEP 1 — Create a ProjectTile component
+
+Create a new file: components/ProjectTile.tsx (or the equivalent path
+matching project conventions).
+
+The component accepts these props:
+  gradient: string       // CSS gradient value e.g. "linear-gradient(...)"
+  accentColor: string    // hex color for the SVG motif stroke/fill
+  motif: 'pos' | 'blocks' | 'paw' | 'chart' | 'hand'
+  tags: string           // e.g. "REGISTER, STOCK, REPORTS"
+
+The component renders:
+- A div with the gradient as background, matching the exact width and
+  height of the current image slot (check the existing image dimensions
+  and replicate them precisely)
+- An SVG centred in the tile rendering the appropriate motif (see
+  specifications below), semi-transparent (opacity 0.25–0.35) so it
+  feels like a watermark, not a foreground element
+- The tags string overlaid at the bottom-left in the same monospace
+  small-caps style already used (reuse the exact className from the
+  current implementation)
+
+SVG motif specifications — implement each as clean, minimal strokes:
+
+motif='pos' (AuraPOS):
+  A minimal receipt shape: a rounded rectangle outline, 3 short
+  horizontal lines inside representing line items, and 1 longer
+  bottom line representing the total. Stroke only, no fill.
+  strokeWidth="1.5", stroke=accentColor
+
+motif='blocks' (Block Crush):
+  A 3×3 grid of squares with uniform gaps. The center-top cell is
+  filled solid. All others are stroke only.
+  strokeWidth="1.5", stroke=accentColor, filled cell fill=accentColor
+
+motif='paw' (FurrFind):
+  A paw print: one large oval (pad) at the bottom center, four smaller
+  ovals (toes) arranged above it. Fill only, no stroke.
+  fill=accentColor
+
+motif='chart' (Soleris Ledger):
+  Four vertical bars at different heights (ascending left to right: 30%,
+  55%, 75%, 100% of a fixed max height). A horizontal baseline beneath
+  them. Stroke and fill.
+  fill=accentColor, baseline stroke=accentColor, strokeWidth="1"
+
+motif='hand' (Handtracking):
+  Five lines radiating outward from a central base point, spaced like
+  fingers on a hand, slightly curved. Stroke only, no fill.
+  strokeWidth="1.5", stroke=accentColor
+
+STEP 2 — Update project card data
+
+Locate where the 5 projects are defined (likely an array of objects in
+the Work section component or a data file). For each project, add a
+`tile` property containing the ProjectTile props:
+
+AuraPOS:
+  gradient: "linear-gradient(135deg, #1a2e1a 0%, #0d1f0d 100%)"
+  accentColor: "#4ade80"
+  motif: "pos"
+
+Block Crush Puzzle:
+  gradient: "linear-gradient(135deg, #0f0f2e 0%, #1a1a4e 100%)"
+  accentColor: "#818cf8"
+  motif: "blocks"
+
+FurrFind:
+  gradient: "linear-gradient(135deg, #2e1a0d 0%, #1f0f05 100%)"
+  accentColor: "#fb923c"
+  motif: "paw"
+
+Soleris Ledger:
+  gradient: "linear-gradient(135deg, #0d1e2e 0%, #071525 100%)"
+  accentColor: "#38bdf8"
+  motif: "chart"
+
+Handtracking:
+  gradient: "linear-gradient(135deg, #050510 0%, #0a0a1a 100%)"
+  accentColor: "#22d3ee"
+  motif: "hand"
+
+STEP 3 — Replace image slot in project card
+
+In the project card component, replace the current <Image> or <img>
+or dark div with <ProjectTile {...project.tile} />.
+
+Do not change any other part of the card — title, description, tags
+pills, status badge, links. Only replace the thumbnail area.
+
+STEP 4 — Verify all 5 cards render correctly
+
+Check that:
+- All 5 tiles render with distinct gradients and correct motifs
+- No card is using a broken image path
+- The tile fills the same space the image previously occupied
+- The tags text overlay is still visible at the bottom-left
+- The card hover state (if any) still works correctly
+
+After all changes:
+- Run `npm run typecheck` — must pass with zero errors
+- Run `npm run build` — must pass clean
+- Commit: `feat: replace project screenshots with styled concept tiles`
+- Add entry to COMMITS.md: [commit hash] [date PKT] Phase 7 — All 5
+  project cards now use CSS gradient tiles with SVG motifs. No external
+  images.
+```
+
+### Acceptance criteria
+- [ ] All 5 project cards have distinct gradient tiles
+- [ ] Each tile has the correct SVG motif (semi-transparent watermark)
+- [ ] Tags overlay still visible on each tile
+- [ ] No `<Image>` or `<img>` tags remaining in the project card thumbnail area
+- [ ] No external image files added to the project
+- [ ] Tile dimensions match the previous image slot exactly
+- [ ] `npm run typecheck` passes
+- [ ] `npm run build` passes
+- [ ] COMMITS.md entry added
+
+---
+
+## PHASE 8 — Bug Fixes From Live Site Audit
+
+### Scope
+Fix three issues found in the live site audit. All are small, targeted
+fixes. No new components.
+
+### Pre-conditions
+- [ ] Phase 7 committed and verified
+
+### Issues to fix
+
+**Bug 1 — Hero heading missing space**
+The hero heading currently renders as: "From Ideato App Store."
+It should read: "From Idea to App Store."
+Find the hero component and fix the text.
+
+**Bug 2 — Footer nav missing new links**
+The footer "Navigate" section only shows: Work | How I Build | Contact
+It needs to match the top nav: Work | How I Build | Document Stack | Safety | Contact
+Find the footer component and add the two missing links with correct hrefs
+(#document-stack and #safety).
+
+**Bug 3 — Phases 1–6 not yet visible on live site**
+The Document Stack section, Pre-Deployment Safety section, Delivery
+Lifecycle deliverables, How I Build Step 02 governance paragraph, and
+Contact "What's Included" list are all missing from the live site HTML.
+If these were not executed in previous phases, execute them now using
+PORTFOLIO_COPY.md as the source of truth for all copy. Follow the same
+rules as Phases 1–6.
+
+### Prompt (paste into Claude Code)
+
+```
+Read PORTFOLIO_COPY.md before touching any file.
+
+Fix the following three issues found in a live site audit:
+
+BUG 1 — Hero text
+Find the hero section component. The heading currently says
+"From Ideato App Store." — there is a missing space.
+Fix it to read: "From Idea to App Store."
+Do not change anything else in the hero.
+
+BUG 2 — Footer nav
+Find the footer component. The "Navigate" section shows only:
+Work | How I Build | Contact
+Add the two missing links in the correct position:
+Work | How I Build | Document Stack | Safety | Contact
+Use href="#document-stack" and href="#safety".
+Match the exact styling of the existing footer nav links.
+
+BUG 3 — Missing sections
+Audit the page layout file (page.tsx or equivalent). Check which of
+these sections are currently present in the rendered page:
+- DocumentStack component
+- PreDeploymentSafety component  
+- Deliverable lines on Delivery Lifecycle cards
+- Agent governance paragraph on How I Build Step 02
+- "What's Included" list in Contact section
+
+For each one that is missing, implement it now using the copy and
+rules from PORTFOLIO_COPY.md. Follow the same constraints as the
+original phase prompts (same visual patterns, no new tokens, no new
+fonts, typecheck must pass).
+
+After all three fixes:
+- Run `npm run typecheck` — must pass with zero errors
+- Run `npm run build` — must pass clean
+- Commit: `fix: hero text space, footer nav links, missing sections`
+- Add entry to COMMITS.md: [commit hash] [date PKT] Phase 8 — Hero
+  typo fixed, footer nav updated, all missing portfolio sections verified
+  present.
+```
+
+### Acceptance criteria
+- [ ] Hero reads "From Idea to App Store." with correct spacing
+- [ ] Footer nav has all 5 links including Document Stack and Safety
+- [ ] All sections from Phases 1–6 confirmed present in the DOM
+- [ ] `npm run typecheck` passes
+- [ ] `npm run build` passes
+- [ ] COMMITS.md entry added
+
+---
+_End of PORTFOLIO_PHASES.md — Total phases: 8_
