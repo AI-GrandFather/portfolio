@@ -14,9 +14,24 @@ interface SiteNavProps {
   fullName: string;
 }
 
+type Theme = "light" | "dark";
+
 export function SiteNav({ fullName }: SiteNavProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [theme, setTheme] = useState<Theme>("light");
   const navRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const currentTheme =
+      document.documentElement.dataset.theme === "dark" ? "dark" : "light";
+    const frame = window.requestAnimationFrame(() => {
+      setTheme(currentTheme);
+    });
+
+    return () => {
+      window.cancelAnimationFrame(frame);
+    };
+  }, []);
 
   useEffect(() => {
     if (!isMenuOpen) {
@@ -44,6 +59,15 @@ export function SiteNav({ fullName }: SiteNavProps) {
     setIsMenuOpen(false);
   }
 
+  function toggleTheme() {
+    const nextTheme = theme === "dark" ? "light" : "dark";
+
+    document.documentElement.dataset.theme = nextTheme;
+    document.documentElement.style.colorScheme = nextTheme;
+    window.localStorage.setItem("portfolio-theme", nextTheme);
+    setTheme(nextTheme);
+  }
+
   return (
     <div className="topbar-container">
       <nav className="topbar" aria-label="Primary navigation" ref={navRef}>
@@ -58,6 +82,50 @@ export function SiteNav({ fullName }: SiteNavProps) {
           ))}
         </div>
         <button
+          aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}
+          aria-pressed={theme === "dark"}
+          className="theme-toggle"
+          onClick={toggleTheme}
+          title={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}
+          type="button"
+        >
+          <span className="theme-toggle-track" aria-hidden="true">
+            <span className="theme-toggle-thumb">
+              {theme === "dark" ? (
+                <svg
+                  fill="none"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  width="14"
+                >
+                  <path
+                    d="M21 13.3A8 8 0 1 1 10.7 3 6.5 6.5 0 0 0 21 13.3Z"
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2.4"
+                  />
+                </svg>
+              ) : (
+                <svg
+                  fill="none"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  width="14"
+                >
+                  <path
+                    d="M12 4V2M12 22v-2M20 12h2M2 12h2M18.4 5.6 20 4M4 20l1.6-1.6M18.4 18.4 20 20M4 4l1.6 1.6M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z"
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2.4"
+                  />
+                </svg>
+              )}
+            </span>
+          </span>
+        </button>
+        <button
           aria-controls="mobile-nav-menu"
           aria-expanded={isMenuOpen}
           aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
@@ -65,9 +133,6 @@ export function SiteNav({ fullName }: SiteNavProps) {
           onClick={() => setIsMenuOpen((current) => !current)}
           type="button"
         >
-          <span style={{ fontSize: '11px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.05em', marginRight: '8px', display: 'inline-block' }}>
-            {isMenuOpen ? "Close" : "Menu"}
-          </span>
           <svg 
             width="20" 
             height="20" 
