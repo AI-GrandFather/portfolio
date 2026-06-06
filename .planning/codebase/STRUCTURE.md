@@ -1,208 +1,207 @@
-# Codebase Structure
+# Repository Structure
 
-**Analysis Date:** 2026-05-30
-
-## Directory Layout
+## Directory Overview
 
 ```text
-portfolio/
-├── app/                    # Next.js App Router source
-│   ├── api/                # Server route handlers for public POST endpoints
-│   │   ├── chat/           # OpenAI-backed chat endpoint
-│   │   └── contact/        # Resend-backed contact email endpoint
-│   ├── ui/                 # Client-side interactive React components
-│   ├── globals.css         # Global visual system and responsive CSS
-│   ├── icon.svg            # App icon asset
-│   ├── layout.tsx          # App Router root layout and metadata
-│   └── page.tsx            # Root portfolio page
-├── .planning/codebase/     # Generated codebase maps for GSD workflows
-├── qa-screenshots/         # Manual/automated visual QA screenshots
-├── README.md               # Setup, commands, and project file guide
-├── OPERATIONS.md           # Local workflow, verification, and security notes
-├── PRODUCT_INVENTORY.md    # Portfolio product evidence and safe copy rules
-├── PROJECT_NOTES.md        # Portfolio positioning and context notes
-├── package.json            # npm scripts and dependencies
-├── package-lock.json       # npm lockfile
-├── next.config.ts          # Next.js config
-├── eslint.config.mjs       # ESLint flat config
-├── tsconfig.json           # TypeScript config
-├── next-env.d.ts           # Next.js generated TypeScript declarations
-└── tsconfig.tsbuildinfo    # TypeScript incremental build metadata
+.
+├── app/                         # Deployable Next.js application source
+│   ├── api/                     # Public server route handlers
+│   │   ├── chat/                # AI chat route and security/cost controls
+│   │   └── contact/             # Contact validation and Resend delivery route
+│   ├── lib/                     # Typed public content source
+│   ├── ui/                      # Reusable server and client UI components
+│   ├── globals.css              # Complete visual system and responsive styling
+│   ├── icon.svg                 # App Router site icon
+│   ├── layout.tsx               # Root document shell
+│   └── page.tsx                 # Root portfolio page
+├── public/                      # Static assets exposed by the deployed site
+├── .planning/                   # GSD project state, roadmap, research, and phase plans
+├── design-system/               # Design guidance artifacts
+├── qa-screenshots/              # Manual and automated visual QA evidence
+├── .playwright-mcp/             # Browser automation snapshots and console logs
+├── new-implemntation/           # Historical architecture/content proposal documents
+├── newclaude/                   # Historical copy and phase proposal documents
+├── newoverhaul/                 # Historical overhaul phase documents
+├── icons/                       # Source copies of project icon assets
+├── *.pdf / *.jpg / *.png        # Source evidence and review artifacts
+└── root configuration/docs      # Package, framework, operations, and inventory files
 ```
 
-## Directory Purposes
+## Deployable Application Tree
 
-**`app/`:**
-- Purpose: Own all application source code for the Next.js App Router.
-- Contains: Route segments, root layout, root page, global CSS, app icon, API routes, and interactive UI components.
-- Key files: `app/layout.tsx`, `app/page.tsx`, `app/globals.css`, `app/api/chat/route.ts`, `app/api/contact/route.ts`, `app/ui/chat-board.tsx`, `app/ui/contact-form.tsx`.
+```text
+app/
+├── api/
+│   ├── chat/
+│   │   ├── route.ts
+│   │   └── security.ts
+│   └── contact/
+│       └── route.ts
+├── lib/
+│   └── content.ts
+├── ui/
+│   ├── chat-board.tsx
+│   ├── contact-form.tsx
+│   ├── document-stack.tsx
+│   ├── pre-deployment-safety.tsx
+│   ├── project-tile.tsx
+│   └── site-nav.tsx
+├── globals.css
+├── icon.svg
+├── layout.tsx
+└── page.tsx
+```
 
-**`app/api/`:**
-- Purpose: Own server-only public API endpoints.
-- Contains: Nested route segment folders that each expose a `route.ts` file.
-- Key files: `app/api/chat/route.ts` and `app/api/contact/route.ts`.
+## `app/` Organization
 
-**`app/api/chat/`:**
-- Purpose: Own the `/api/chat` POST endpoint.
-- Contains: `app/api/chat/route.ts` with input validation, OpenAI configuration, OpenAI Responses API call, and best-effort IP rate limiting.
-- Key files: `app/api/chat/route.ts`.
+| Path | Role |
+|---|---|
+| `app/layout.tsx` | App Router root layout; imports `app/globals.css`, configures fonts and metadata, and bootstraps the selected theme. |
+| `app/page.tsx` | Root `/` server component; imports content and UI modules and defines the complete homepage section order. |
+| `app/icon.svg` | Site icon automatically discovered by the App Router. |
+| `app/globals.css` | Single global stylesheet containing CSS variables, light/dark themes, page layouts, component styles, motion, and breakpoints. |
+| `app/lib/content.ts` | Typed runtime source of public biography, project, process, safety, contact, and assistant starter content. |
+| `app/ui/` | Page-specific reusable UI modules, split between server-rendered presentation and browser-interactive components. |
+| `app/api/` | Same-origin public HTTP endpoints and server-only integration code. |
 
-**`app/api/contact/`:**
-- Purpose: Own the `/api/contact` POST endpoint.
-- Contains: `app/api/contact/route.ts` with contact payload validation, Resend email delivery, and best-effort IP rate limiting.
-- Key files: `app/api/contact/route.ts`.
+## `app/ui/` Organization
 
-**`app/ui/`:**
-- Purpose: Own reusable client components that require browser state or event handlers.
-- Contains: `"use client"` React components for chat and contact form workflows.
-- Key files: `app/ui/chat-board.tsx` and `app/ui/contact-form.tsx`.
+| File | Rendering Boundary | Responsibility |
+|---|---|---|
+| `app/ui/site-nav.tsx` | Client component | Primary navigation, mobile menu, theme toggle, outside-click handling, and theme persistence. |
+| `app/ui/chat-board.tsx` | Client component | Floating chat popup, AI SDK chat lifecycle, streaming messages, starter prompts, Markdown output, and error display. |
+| `app/ui/contact-form.tsx` | Client component | Lead form state, JSON submission, honeypot value, and result feedback. |
+| `app/ui/pre-deployment-safety.tsx` | Client component | Interactive accessible safety accordion. |
+| `app/ui/document-stack.tsx` | Server-compatible component | Maps document-stack content into a workflow section. |
+| `app/ui/project-tile.tsx` | Server-compatible component | Renders project icon images or inline SVG motif artwork. |
 
-**`.planning/codebase/`:**
-- Purpose: Store generated architecture, structure, stack, testing, convention, integration, and concern maps for GSD planning/execution agents.
-- Contains: Markdown files written by mapper agents.
-- Key files: `.planning/codebase/ARCHITECTURE.md` and `.planning/codebase/STRUCTURE.md`.
+## `app/api/` Organization
 
-**`qa-screenshots/`:**
-- Purpose: Store visual QA screenshots for desktop and mobile portfolio checks.
-- Contains: PNG screenshots.
-- Key files: `qa-screenshots/portfolio-desktop.png` and `qa-screenshots/portfolio-mobile.png`.
+| File | HTTP Surface | Responsibility |
+|---|---|---|
+| `app/api/chat/route.ts` | `POST /api/chat` | Builds assistant grounding, validates chat through the security utility, checks limits, invokes the model, and streams responses. |
+| `app/api/chat/security.ts` | Internal to chat route | Defines chat limits, validates/sanitizes message history, estimates token cost, and tracks process-local usage. |
+| `app/api/contact/route.ts` | `POST /api/contact` | Validates lead fields, applies a honeypot and process-local rate limit, and sends lead email through Resend. |
 
-**Repository root:**
-- Purpose: Own project configuration, operational docs, package metadata, lockfile, and generated framework/type artifacts.
-- Contains: `package.json`, `package-lock.json`, `next.config.ts`, `eslint.config.mjs`, `tsconfig.json`, `README.md`, `OPERATIONS.md`, `PRODUCT_INVENTORY.md`, `PROJECT_NOTES.md`, `.env.example`, `.gitignore`, `next-env.d.ts`, and `tsconfig.tsbuildinfo`.
-- Key files: `package.json`, `tsconfig.json`, `next.config.ts`, `eslint.config.mjs`.
+## `public/` Organization
 
-## Key File Locations
+| Path | Runtime Use |
+|---|---|
+| `public/55D670AB-C554-4417-86F0-C65863EDE18E.PNG` | Hero portrait referenced by `BIO_FACTS.image` in `app/lib/content.ts`. |
+| `public/icons/block-crush-icon.png` | Published game icon referenced by the Block Crush project tile. |
+| `public/icons/furrfind-icon.png` | Published app icon referenced by the FurrFind project tile. |
 
-**Entry Points:**
-- `app/layout.tsx`: Root App Router layout, metadata, global stylesheet import, and document wrapper.
-- `app/page.tsx`: Root `/` page and main portfolio composition.
-- `app/api/chat/route.ts`: `/api/chat` POST route handler.
-- `app/api/contact/route.ts`: `/api/contact` POST route handler.
+Only files under `public/` are intentionally served as static root URLs.
+The similar root-level `icons/` directory contains source copies and is not used by the current application imports.
 
-**Configuration:**
-- `package.json`: npm scripts, runtime dependencies, development dependencies, and module type.
-- `package-lock.json`: Locked npm dependency tree.
-- `next.config.ts`: Next.js config with Turbopack root set to `process.cwd()`.
-- `tsconfig.json`: Strict TypeScript config scoped to `app/**/*.ts`, `app/**/*.tsx`, `next-env.d.ts`, and generated Next type directories.
-- `eslint.config.mjs`: ESLint flat config using Next core web vitals and TypeScript presets.
-- `.env.example`: Example environment variable names only; do not store real secrets.
-- `.gitignore`: Ignore rules for generated and local files.
+## Planning And Governance Directories
 
-**Core Logic:**
-- `app/page.tsx`: Static portfolio data and section rendering.
-- `app/ui/chat-board.tsx`: Client chat UI state and `/api/chat` submission.
-- `app/ui/contact-form.tsx`: Client contact form state and `/api/contact` submission.
-- `app/api/chat/route.ts`: OpenAI chat request handling.
-- `app/api/contact/route.ts`: Resend contact email request handling.
+| Path | Purpose |
+|---|---|
+| `.planning/PROJECT.md` | Defines project purpose, validated/active requirements, constraints, and decisions. |
+| `.planning/ROADMAP.md` | Tracks the phased delivery roadmap and current phase status. |
+| `.planning/STATE.md` | Stores current GSD execution position, decisions, pending work, and continuity details. |
+| `.planning/REQUIREMENTS.md` | Holds requirement-level planning details. |
+| `.planning/phases/` | Contains phase-specific implementation plans, including `07-surgical-ui/` and `08-modern-consultancy/`. |
+| `.planning/research/` | Contains research documents for architecture, stack, features, pitfalls, and summary. |
+| `.planning/codebase/` | Contains generated maps of the current repository, including this structure document. |
+| `AGENTS.md` | Defines repository-wide agent constraints, workflow rules, security rules, and project context. |
+| `COMMITS.md` | Maintains the project's human-readable change audit trail. |
 
-**Styling and Assets:**
-- `app/globals.css`: CSS variables, base styles, layout grids, cards, forms, chat UI, and media queries.
-- `app/icon.svg`: App icon asset consumed by Next.js metadata/icon handling.
+## Design And QA Artifact Directories
 
-**Documentation:**
-- `README.md`: Setup, environment variables, commands, and file overview.
-- `OPERATIONS.md`: Working directory, verification commands, local runtime expectations, security notes, and operational warnings.
-- `PRODUCT_INVENTORY.md`: Product list and copy guidance for portfolio content.
-- `PROJECT_NOTES.md`: Portfolio positioning and project evidence notes.
+| Path | Purpose |
+|---|---|
+| `design-system/mian-portfolio/MASTER.md` | Stores generated design-system guidance and visual tokens; it is not imported by the app. |
+| `qa-screenshots/` | Stores desktop/mobile visual QA evidence and theme-specific Playwright captures. |
+| `.playwright-mcp/` | Stores browser automation console logs and page snapshots generated during QA. |
+| `phase8-fact-fix-*.png` | Root-level Phase 8 visual review evidence. |
+| `review-*.png` | Root-level review screenshots. |
+| `v2-overhaul-*.png` | Root-level earlier-overhaul screenshots. |
 
-**Testing and QA:**
-- `qa-screenshots/portfolio-desktop.png`: Desktop screenshot artifact.
-- `qa-screenshots/portfolio-mobile.png`: Mobile screenshot artifact.
-- Automated test directories are not detected in the current repo.
+## Historical Proposal Directories
 
-## Naming Conventions
+| Path | Purpose |
+|---|---|
+| `new-implemntation/` | Contains an earlier PRD, architecture proposal, and content strategy; not used by the runtime. |
+| `newclaude/` | Contains earlier portfolio copy and phase planning; not used by the runtime. |
+| `newoverhaul/` | Contains six historical overhaul phase documents; not used by the runtime. |
 
-**Files:**
-- Use Next.js App Router reserved names for route-level files: `app/layout.tsx`, `app/page.tsx`, and `app/api/**/route.ts`.
-- Use kebab-case for custom component filenames under `app/ui/`: `chat-board.tsx`, `contact-form.tsx`.
-- Use lowercase global stylesheet naming for the App Router stylesheet: `app/globals.css`.
-- Use uppercase root documentation names for project context docs: `README.md`, `OPERATIONS.md`, `PRODUCT_INVENTORY.md`, `PROJECT_NOTES.md`.
+These directories are documentation archives rather than application modules.
+Changes to them do not affect the deployed portfolio unless their content is manually implemented under `app/`.
 
-**Directories:**
-- Use App Router route segment names for URL paths: `app/api/chat/` maps to `/api/chat`, and `app/api/contact/` maps to `/api/contact`.
-- Use `app/ui/` for browser-interactive UI components imported by page routes.
-- Use `.planning/codebase/` for generated mapper output only.
-- Use `qa-screenshots/` for screenshot artifacts; do not place source code there.
+## Root Configuration Files
 
-**Components and Exports:**
-- Use PascalCase for React component exports: `ChatBoard`, `ContactForm`, `Home`, and `RootLayout`.
-- Use default exports for App Router page/layout components: `app/page.tsx` and `app/layout.tsx`.
-- Use named exports for reusable UI components in `app/ui/`.
-- Use named `POST` exports for route handlers in `app/api/**/route.ts`.
+| File | Responsibility |
+|---|---|
+| `package.json` | Declares npm scripts and runtime/development dependencies. |
+| `package-lock.json` | Locks the npm dependency graph. |
+| `next.config.ts` | Configures Next.js and the Turbopack root. |
+| `tsconfig.json` | Configures strict TypeScript, bundler resolution, and App Router source inclusion. |
+| `next-env.d.ts` | Next.js-generated TypeScript declarations. |
+| `eslint.config.mjs` | Enables Next.js Core Web Vitals and TypeScript ESLint presets. |
+| `.env.example` | Documents server environment variable names without secrets. |
+| `.gitignore` | Excludes dependencies, builds, local environment files, logs, and TypeScript build metadata. |
+| `skills-lock.json` | Records project skill installation state. |
 
-**CSS Classes:**
-- Use semantic kebab-case class names that describe UI role: `hero-shell`, `topbar`, `project-grid`, `chat-board`, `contact-form`, `form-error`.
-- Keep class names in JSX aligned with selectors in `app/globals.css`.
+## Root Operational And Content Documents
 
-## Where to Add New Code
+| File | Responsibility |
+|---|---|
+| `README.md` | Gives setup commands, environment requirements, commands, and key file references. |
+| `OPERATIONS.md` | Defines local workflow, verification commands, environment handling, and security notes. |
+| `PRODUCT_INVENTORY.md` | Defines product evidence, publication status, and safe public-claim rules. |
+| `PROJECT_NOTES.md` | Summarizes positioning, product shape, design direction, and chat/contact scope. |
+| `CV.pdf`, `Ublox Experience Letter.pdf`, `Fauji FreshnFreeze Experience Letter.pdf`, `OP SELLERS Letter.pdf` | Private/source evidence files used for accurate portfolio positioning; not served by the app. |
+| `Saleiac.jpg` | Root-level source image artifact; not referenced by the current application. |
 
-**New Page Section on `/`:**
-- Primary code: Add content arrays or JSX sections in `app/page.tsx`.
-- Styling: Add matching classes or extend existing section/card patterns in `app/globals.css`.
-- Tests/QA: Add visual verification screenshots under `qa-screenshots/` only when intentionally updating QA artifacts.
+## Import And Dependency Direction
 
-**New Interactive Component:**
-- Implementation: Add a kebab-case file under `app/ui/`, export a PascalCase component, and include `"use client"` only when state, event handlers, or browser APIs are needed.
-- Consumer: Import the component from `app/page.tsx` or another App Router component using relative paths.
-- Styling: Add global class selectors in `app/globals.css` using semantic class names.
+```text
+app/layout.tsx
+  -> app/globals.css
 
-**New API Endpoint:**
-- Implementation: Add `app/api/<endpoint>/route.ts`.
-- Handler pattern: Export `runtime = "nodejs"` when Node-only SDKs or environment access are required; export `POST`, `GET`, or the relevant HTTP method with `NextResponse.json` responses.
-- Validation: Keep endpoint-specific validation helpers in the same `route.ts` unless they are shared by multiple endpoints.
-- Secrets: Read environment variables only in route handlers or server-only modules; never in `app/ui/` components.
+app/page.tsx
+  -> app/lib/content.ts
+  -> app/ui/site-nav.tsx
+  -> app/ui/project-tile.tsx
+  -> app/ui/document-stack.tsx
+  -> app/ui/pre-deployment-safety.tsx
+  -> app/ui/contact-form.tsx
+  -> app/ui/chat-board.tsx
 
-**New External Integration:**
-- Primary code: Place SDK usage in `app/api/<endpoint>/route.ts` or a server-only helper if multiple route handlers use it.
-- Client boundary: Call the route from `app/ui/` with `fetch`; do not import SDKs into client components.
-- Documentation: Update `README.md` and `OPERATIONS.md` with required environment variable names and verification commands.
+app/ui/*
+  -> app/lib/content.ts where content is needed
+  -> browser APIs or client libraries only in `"use client"` modules
 
-**New Static Asset:**
-- App icon or route-level metadata asset: Place under `app/` when it follows Next.js conventions, like `app/icon.svg`.
-- QA image: Place under `qa-screenshots/` only when it is a verification artifact.
-- Public assets: No `public/` directory exists; create one only when an asset must be served directly by URL.
+app/api/chat/route.ts
+  -> app/api/chat/security.ts
+  -> `ai`
+  -> `@ai-sdk/openai`
 
-**Utilities:**
-- Shared helpers: No shared utility directory exists. Keep helpers colocated with route/component files first.
-- Extract to a new helper module only when at least two files need the same behavior; place server-only helpers near `app/api/` consumers and client-safe helpers near `app/ui/` consumers.
+app/api/contact/route.ts
+  -> `next/server`
+  -> `resend`
+```
 
-**Tests:**
-- Automated test structure is not present. If tests are introduced, colocate narrow tests next to the implementation or create a clearly named test directory consistent with the selected test runner.
-- Keep API route tests focused on validation, status codes, and external SDK mocking for `app/api/chat/route.ts` and `app/api/contact/route.ts`.
+Application dependencies point inward toward `app/lib/content.ts` and route-local helpers.
+The runtime does not import files from `.planning/`, `design-system/`, QA directories, historical proposal directories, or root evidence documents.
 
-## Special Directories
+## Naming And Placement Conventions
 
-**`.next/`:**
-- Purpose: Next.js generated build/dev output.
-- Generated: Yes.
-- Committed: No; treat as disposable framework output.
+- App Router entry files use framework names: `layout.tsx`, `page.tsx`, and `route.ts`.
+- UI module filenames under `app/ui/` use kebab-case and export PascalCase components.
+- Shared public content belongs in `app/lib/content.ts`; route-specific security helpers remain beside their route.
+- Public static assets belong in `public/` and are referenced with root-relative URLs such as `/icons/furrfind-icon.png`.
+- Global visual rules belong in `app/globals.css`; the current repository has no CSS modules or component-local stylesheet files.
+- Repository planning artifacts belong under `.planning/`, while review screenshots remain outside deployable application source.
 
-**`node_modules/`:**
-- Purpose: Installed npm dependencies.
-- Generated: Yes.
-- Committed: No; install from `package-lock.json`.
+## Change Boundaries
 
-**`.planning/`:**
-- Purpose: GSD planning and codebase intelligence artifacts.
-- Generated: Yes.
-- Committed: Depends on workflow; do not modify files outside the assigned mapper write set during mapping tasks.
-
-**`qa-screenshots/`:**
-- Purpose: Visual verification evidence.
-- Generated: Yes, by QA/browser workflows.
-- Committed: Project-dependent; update only when visual output changes intentionally.
-
-**`next-env.d.ts`:**
-- Purpose: Next.js TypeScript declarations.
-- Generated: Yes.
-- Committed: Commonly committed in Next.js projects; do not hand-edit.
-
-**`tsconfig.tsbuildinfo`:**
-- Purpose: TypeScript incremental build metadata.
-- Generated: Yes.
-- Committed: Project-dependent; do not hand-edit.
-
----
-
-*Structure analysis: 2026-05-30*
+- Homepage structure or section ordering changes primarily affect `app/page.tsx`.
+- Public portfolio facts and reusable copy changes primarily affect `app/lib/content.ts` and must remain aligned with `PRODUCT_INVENTORY.md`.
+- Interactive widget behavior changes belong in the relevant module under `app/ui/`.
+- Visual changes belong in `app/globals.css`, with component class-name changes coordinated with their TSX callers.
+- Chat provider, prompt, validation, cost, or rate-limit changes belong in `app/api/chat/`.
+- Contact validation or email-delivery changes belong in `app/api/contact/route.ts`.
+- Static runtime images must be added under `public/`; root screenshots and evidence documents should remain non-runtime artifacts.

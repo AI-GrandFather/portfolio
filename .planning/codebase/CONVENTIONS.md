@@ -1,103 +1,98 @@
 # Coding Conventions
 
-**Analysis Date:** 2026-05-30
+## Scope
 
-## Naming Patterns
+- This document records conventions observed in the current repository as of 2026-06-06.
+- Runtime application code lives under `app/`; root Markdown files provide operational and product guidance.
+- Present practices are distinguished from documented expectations and inconsistencies.
 
-**Files:**
-- Use Next.js App Router conventions for route and layout files: `app/page.tsx`, `app/layout.tsx`, `app/api/chat/route.ts`, and `app/api/contact/route.ts`.
-- Use kebab-case for component module filenames under `app/ui/`: `app/ui/contact-form.tsx` and `app/ui/chat-board.tsx`.
-- Keep global styling in `app/globals.css`; component-specific CSS is not split into CSS modules in the current codebase.
-- Keep framework configuration filenames at the repository root: `next.config.ts`, `eslint.config.mjs`, and `tsconfig.json`.
+## File And Module Organization
 
-**Functions:**
-- Use PascalCase for exported React components: `RootLayout` in `app/layout.tsx`, `Home` in `app/page.tsx`, `ContactForm` in `app/ui/contact-form.tsx`, and `ChatBoard` in `app/ui/chat-board.tsx`.
-- Use all-caps HTTP verb handlers for Next route handlers: `POST` in `app/api/chat/route.ts` and `app/api/contact/route.ts`.
-- Use camelCase for local helpers and event handlers: `rateLimit` in `app/api/chat/route.ts`, `getString`, `isEmail`, and `rateLimit` in `app/api/contact/route.ts`, `handleSubmit` in `app/ui/contact-form.tsx`, and `sendMessage` / `handleSubmit` in `app/ui/chat-board.tsx`.
-- Keep helper functions colocated with the route or component they support unless they become shared by multiple files.
+- Next.js App Router entry points use framework names: `app/layout.tsx`, `app/page.tsx`, and `app/api/**/route.ts`.
+- Reusable UI components live in `app/ui/` and use kebab-case filenames such as `app/ui/contact-form.tsx` and `app/ui/site-nav.tsx`.
+- Shared portfolio copy and typed content collections are centralized in `app/lib/content.ts`.
+- Global styling remains in the single stylesheet `app/globals.css`; no CSS Modules or CSS-in-JS system is present.
+- Route-specific helpers stay beside their route when not reused elsewhere, as shown by `app/api/chat/security.ts`.
+- Root configuration uses conventional filenames: `package.json`, `tsconfig.json`, `eslint.config.mjs`, and `next.config.ts`.
+- Planning and historical design documents are kept outside runtime code under `.planning/`, `new-implemntation/`, `newclaude/`, and `newoverhaul/`.
 
-**Variables:**
-- Use camelCase for local variables and React state: `formData`, `payload`, `response`, and `result` in `app/ui/contact-form.tsx`; `messages`, `input`, `isSending`, and `error` in `app/ui/chat-board.tsx`.
-- Use upper snake case for module-level limits and timing constants: `MAX_MESSAGE_LENGTH`, `WINDOW_MS`, and `MAX_REQUESTS_PER_WINDOW` in `app/api/chat/route.ts`; `MAX_REQUESTS_PER_WINDOW` and `WINDOW_MS` in `app/api/contact/route.ts`.
-- Use lower camelCase for static data arrays rendered by pages: `projects`, `capabilities`, and `process` in `app/page.tsx`; `starterMessages` and `prompts` in `app/ui/chat-board.tsx`.
-- Use descriptive payload keys that match form field names and API contracts: `name`, `email`, `projectType`, `budget`, and `message` in `app/ui/contact-form.tsx` and `app/api/contact/route.ts`.
+## TypeScript And React Style
 
-**Types:**
-- Use PascalCase for type aliases: `Status` in `app/ui/contact-form.tsx`, `Message` in `app/ui/chat-board.tsx`, and `ContactPayload` in `app/api/contact/route.ts`.
-- Use narrow string unions for UI state and roles: `Status` in `app/ui/contact-form.tsx` and `Message["role"]` in `app/ui/chat-board.tsx`.
-- Use framework-provided types where available: `Metadata` in `app/layout.tsx`, `NextConfig` in `next.config.ts`, and `FormEvent` in `app/ui/contact-form.tsx` / `app/ui/chat-board.tsx`.
+- TypeScript is configured with `strict: true`, `noEmit: true`, and `isolatedModules: true` in `tsconfig.json`.
+- Exported React components use PascalCase names, including `ContactForm`, `SiteNav`, and `PreDeploymentSafety`.
+- Interactive components begin with `"use client"`; static components and `app/page.tsx` remain server components.
+- Local functions and event handlers use camelCase, such as `handleSubmit`, `toggleTheme`, `rateLimit`, and `validateRequest`.
+- Types and interfaces use PascalCase, such as `ContactPayload`, `Project`, `ProjectTileProps`, and `Theme`.
+- Narrow string unions model controlled states and content categories in `app/ui/contact-form.tsx` and `app/lib/content.ts`.
+- Static collections and limits use uppercase names where they act as configuration, such as `PROJECTS`, `SECURITY_CONFIG`, and `ALLOWED_BUDGETS`.
+- Component-local static collections use lower camelCase where appropriate, such as `navLinks` in `app/ui/site-nav.tsx`.
+- Relative imports are used throughout `app/`; no path alias is configured in `tsconfig.json`.
+- Content arrays are rendered with `.map()` and stable domain keys such as `project.id`, `item.step`, or `link.href`.
+- The `satisfies` operator is used in `app/lib/content.ts` to check selected content collections without widening their inferred values.
 
-## Code Style
+## Formatting
 
-**Formatting:**
-- Formatting is enforced by ESLint and TypeScript conventions; no Prettier configuration file is present.
-- Use two-space indentation in TypeScript/TSX and CSS, matching `app/page.tsx`, `app/api/contact/route.ts`, and `app/globals.css`.
-- Use double quotes for strings and imports, matching `eslint.config.mjs`, `app/page.tsx`, and all TypeScript source files.
-- Use semicolons consistently, matching `app/api/chat/route.ts`, `app/ui/chat-board.tsx`, and `next.config.ts`.
-- Prefer multi-line objects and JSX props when values are long, as in `metadata` in `app/layout.tsx`, `projects` in `app/page.tsx`, and `fetch` calls in `app/ui/contact-form.tsx`.
-- Use trailing commas in multi-line arrays, objects, and function calls, matching `NextResponse.json(..., { status: 429 },)` in `app/api/chat/route.ts` and `app/api/contact/route.ts`.
+- Most TypeScript and TSX uses two-space indentation, double-quoted strings, semicolons, and trailing commas in multiline constructs.
+- JSX props are generally split across lines when elements carry several attributes, especially in `app/ui/site-nav.tsx` and `app/ui/project-tile.tsx`.
+- The repository has no Prettier configuration or formatting script; formatting consistency relies on author discipline and ESLint.
+- Some current files deviate from the dominant style: `app/api/chat/route.ts`, `app/api/chat/security.ts`, `app/ui/chat-board.tsx`, and parts of `app/page.tsx` use single quotes or compact inline JSX.
+- Inline `style` objects exist in `app/page.tsx` and `app/ui/project-tile.tsx`, although the primary styling convention is named classes in `app/globals.css`.
+- Comments are sparse in ordinary UI code but extensive in the security-focused modules `app/api/chat/route.ts` and `app/api/chat/security.ts`.
 
-**Linting:**
-- Use ESLint 9 through the root script `npm run lint` in `package.json`.
-- ESLint configuration lives in `eslint.config.mjs` and combines `eslint-config-next/core-web-vitals` with `eslint-config-next/typescript`.
-- TypeScript strictness is configured in `tsconfig.json` with `strict: true`, `allowJs: false`, `isolatedModules: true`, and `moduleResolution: "bundler"`.
-- Run `npm run typecheck` from `package.json` for `tsc --noEmit`; the current app passes typecheck.
+## Content And Data Conventions
 
-## Import Organization
+- Public claims, project statuses, page copy, and shared assistant defaults are intended to use `app/lib/content.ts` as the source of truth.
+- Product publication rules and supporting evidence are documented separately in `PRODUCT_INVENTORY.md`.
+- Project records use explicit status values and labels so public launch claims can be controlled in `app/lib/content.ts`.
+- Server-rendered page composition imports content constants rather than embedding most long-form copy directly in `app/page.tsx`.
+- Environment variable names use uppercase snake case and are listed in `.env.example`.
+- Secrets are read only in server route code; client components call same-origin endpoints instead of importing provider SDKs.
 
-**Order:**
-1. External package imports first: `OpenAI` and `NextResponse` in `app/api/chat/route.ts`; `NextResponse` and `Resend` in `app/api/contact/route.ts`; `FormEvent` and `useState` in UI components.
-2. Local component imports next: `ChatBoard` and `ContactForm` in `app/page.tsx`.
-3. Side-effect style imports after type imports when required by the framework: `./globals.css` in `app/layout.tsx`.
+## CSS And UI Conventions
 
-**Path Aliases:**
-- No path aliases are configured in `tsconfig.json`.
-- Use relative imports inside `app/`, such as `./ui/chat-board` and `./ui/contact-form` in `app/page.tsx`.
-- Do not introduce alias imports unless `tsconfig.json` is updated deliberately and all callers adopt the new convention.
+- `app/globals.css` defines a tokenized visual system with custom properties under `:root` and `:root[data-theme="dark"]`.
+- CSS class names use descriptive kebab-case names such as `.project-grid`, `.contact-form`, and `.mobile-nav-menu`.
+- Responsive behavior is centralized in media queries in `app/globals.css`, primarily at `1024px` and `760px`.
+- Motion includes a global reduced-motion override and a progressive `animation-timeline` enhancement in `app/globals.css`.
+- Focus styling is explicitly defined for major links, buttons, navigation controls, and form fields.
+- Interactive controls generally include accessibility attributes such as `aria-label`, `aria-expanded`, `aria-controls`, and `aria-pressed`.
+- Decorative SVGs and images use `aria-hidden="true"` or empty alternative text where appropriate.
 
 ## Error Handling
 
-**Patterns:**
-- API route handlers return structured JSON errors with explicit HTTP status codes using `NextResponse.json`, as in `app/api/chat/route.ts` and `app/api/contact/route.ts`.
-- Parse request bodies as `unknown` first, then validate shape and field types before using values. `app/api/chat/route.ts` checks the `message` field manually; `app/api/contact/route.ts` rejects non-object and array payloads before creating `ContactPayload`.
-- Catch malformed JSON separately and return `400` with a short user-safe message in `app/api/chat/route.ts` and `app/api/contact/route.ts`.
-- Do not expose provider errors to clients. `app/api/chat/route.ts` catches OpenAI failures and returns `502` with a generic message; `app/api/contact/route.ts` catches Resend failures and returns `502` with a generic message.
-- Client components convert failed API responses into user-visible UI state. `app/ui/contact-form.tsx` throws with `result.error` when `/api/contact` is not OK; `app/ui/chat-board.tsx` throws with `payload.error` when `/api/chat` is not OK or lacks a reply.
-- Use `caught instanceof Error ? caught.message : fallback` when displaying client-side caught errors, as in `app/ui/contact-form.tsx` and `app/ui/chat-board.tsx`.
+- Public contact requests are parsed as `unknown`, checked for object shape, normalized with `getString`, and validated server-side in `app/api/contact/route.ts`.
+- Contact validation failures return structured JSON errors with explicit `400`, `429`, `502`, or `503` statuses.
+- The contact route catches malformed JSON separately and does not return provider exception details to the browser.
+- `app/ui/contact-form.tsx` converts failed responses into a narrow status state and renders a user-facing error message.
+- Chat request validation and rate/cost decisions are delegated to `app/api/chat/security.ts`.
+- The chat route returns JSON errors for validation and limit failures, while successful responses are streamed from `app/api/chat/route.ts`.
+- `app/ui/chat-board.tsx` attempts to parse structured API errors and falls back to the supplied error message.
+- The theme bootstrap in `app/layout.tsx` catches storage or media-query failures and falls back to the light theme.
+- Current inconsistency: `app/api/chat/route.ts` catches all failures as `500` and logs the raw error object with `console.error`, while `OPERATIONS.md` says not to log secrets or full private responses.
+- Current inconsistency: the contact route uses `NextResponse.json`, while the chat route manually constructs `Response` objects and JSON headers.
 
-## Logging
+## Quality And Security Practices
 
-**Framework:** No application logging framework is configured.
+- Public endpoints implement server-side validation and best-effort in-memory rate limiting in `app/api/contact/route.ts` and `app/api/chat/security.ts`.
+- The contact form includes a honeypot field named `website` in `app/ui/contact-form.tsx`, with silent success handling in `app/api/contact/route.ts`.
+- The chat security helper limits input length, history length, output tokens, burst requests, daily requests, and estimated spend.
+- In-memory rate and cost state is explicitly documented as process-local and resettable in `app/api/chat/security.ts`.
+- External project links in `app/page.tsx` use `target="_blank"` with `rel="noopener noreferrer"`.
+- `.gitignore` excludes local environment files, build output, coverage output, logs, and TypeScript build metadata.
+- `AGENTS.md` and `OPERATIONS.md` define scope, security, dependency, and verification expectations beyond what tooling automatically enforces.
 
-**Patterns:**
-- There are no `console.*` statements in `app/`.
-- Keep API responses user-safe and avoid logging request bodies, prompts, contact messages, environment values, or provider responses.
-- Follow `OPERATIONS.md` security guidance: do not log full user messages, secrets, signed URLs, uploaded files, or private local paths.
+## Documented Expectations Versus Present Practice
 
-## Comments
+- `OPERATIONS.md` requires `npm run lint`, `npm run typecheck`, and `npm run build` before completion; these are documented gates, not automatically enforced by CI.
+- `app/lib/content.ts` describes conventional commit logging and review gates; `COMMITS.md` records selected historical work, but the repository has no automated commit-message enforcement.
+- `AGENTS.md` requires endpoint validation and desktop/mobile browser screenshots for security and frontend claims; screenshot artifacts exist, but no executable browser test suite is committed.
+- The codebase generally follows its stated naming and module conventions, but formatting and error-response patterns are not fully uniform.
 
-**When to Comment:**
-- Source files currently rely on clear names and straightforward control flow rather than explanatory comments.
-- Add comments sparingly for non-obvious security, validation, rate limiting, or provider behavior. Keep ordinary JSX and simple helpers uncommented.
+## Guidance For New Work
 
-**JSDoc/TSDoc:**
-- No JSDoc or TSDoc pattern is used in current source files.
-- Prefer TypeScript types over documentation comments for local data contracts, as shown by `ContactPayload` in `app/api/contact/route.ts`, `Status` in `app/ui/contact-form.tsx`, and `Message` in `app/ui/chat-board.tsx`.
-
-## Function Design
-
-**Size:** Keep route handlers and components compact enough to read in one file. Current source files are small: `app/ui/contact-form.tsx`, `app/ui/chat-board.tsx`, `app/api/chat/route.ts`, and `app/api/contact/route.ts` each keep helper logic local and avoid extra abstraction.
-
-**Parameters:** Use typed framework/event parameters at boundaries, such as `Request` in API `POST` handlers and `FormEvent<HTMLFormElement>` in form submit handlers.
-
-**Return Values:** Return JSX from React components, `NextResponse.json(...)` from API routes, booleans from rate-limit helpers, and strings from validation helpers such as `getString` in `app/api/contact/route.ts`.
-
-## Module Design
-
-**Exports:** Use named exports for reusable UI components (`ContactForm` and `ChatBoard`) and default exports for Next app entry components (`RootLayout` and `Home`). Use named `POST` exports for API route handlers.
-
-**Barrel Files:** Not used. Import components directly from their files, as in `app/page.tsx`.
-
----
-
-*Convention analysis: 2026-05-30*
+- Keep changes scoped to existing module boundaries and place shared public copy in `app/lib/content.ts`.
+- Preserve server-only ownership of OpenAI and Resend integrations.
+- Follow the dominant two-space, double-quote, semicolon, and trailing-comma style.
+- Reuse global CSS tokens and semantic class names before introducing inline styling or another styling system.
+- Return user-safe structured errors with explicit status codes and avoid logging request bodies, secrets, provider payloads, or private paths.
+- Treat the verification commands and manual checks in `OPERATIONS.md` as required until automated coverage is added.
