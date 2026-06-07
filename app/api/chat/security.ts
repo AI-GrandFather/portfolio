@@ -60,7 +60,7 @@ export function calculateCost(inputTokens: number, outputTokens: number): number
 }
 
 interface ChatMessage {
-  role: "user" | "assistant" | "system";
+  role: "user" | "assistant";
   content: string;
 }
 
@@ -68,41 +68,57 @@ interface ChatMessage {
  * Validates the incoming chat request
  */
 export async function validateRequest(messages: unknown) {
-  if (!messages || !Array.isArray(messages)) {
+  if (!Array.isArray(messages)) {
     return { valid: false, error: "Invalid messages format", status: 400 };
   }
 
-  // Type assertion for initial loose check
-  const rawMessages = messages as { role: string; content: string }[];
-
-  if (rawMessages.length === 0) {
+  if (messages.length === 0) {
     return { valid: false, error: "Empty conversation", status: 400 };
   }
 
-  // Validate last message
-  const lastMessage = rawMessages[rawMessages.length - 1];
-  if (!lastMessage || typeof lastMessage.content !== 'string') {
-    return { valid: false, error: "Malformed last message", status: 400 };
+  const sanitizedMessages: ChatMessage[] = [];
+
+  for (const message of messages) {
+    if (!message || typeof message !== "object" || Array.isArray(message)) {
+      return { valid: false, error: "Malformed message", status: 400 };
+    }
+
+    const { role, content } = message as Record<string, unknown>;
+    if (role !== "user" && role !== "assistant") {
+      return { valid: false, error: "Unsupported message role", status: 400 };
+    }
+
+    if (typeof content !== "string") {
+      return { valid: false, error: "Malformed message content", status: 400 };
+    }
+
+    const trimmedContent = content.trim();
+    if (!trimmedContent) {
+      continue;
+    }
+
+    if (trimmedContent.length > SECURITY_CONFIG.MAX_INPUT_CHARS) {
+      return {
+        valid: false,
+        error: "Message too long. Please keep it under 3000 characters.",
+        status: 400,
+      };
+    }
+
+    sanitizedMessages.push({
+      role,
+      content: trimmedContent,
+    });
   }
 
-  const trimmedContent = lastMessage.content.trim();
-  if (!trimmedContent) {
+  if (sanitizedMessages.length === 0) {
     return { valid: false, error: "Empty message", status: 400 };
   }
 
-  if (trimmedContent.length > SECURITY_CONFIG.MAX_INPUT_CHARS) {
-    return { valid: false, error: "Message too long. Please keep it under 3000 characters.", status: 400 };
+  if (sanitizedMessages[sanitizedMessages.length - 1].role !== "user") {
+    return { valid: false, error: "The final message must be from the user", status: 400 };
   }
 
-  // Sanitize messages: Only keep supported roles and content, properly typed
-  const sanitizedMessages: ChatMessage[] = rawMessages.map(msg => ({
-    role: (msg.role === 'user' || msg.role === 'assistant' || msg.role === 'system') 
-          ? (msg.role as "user" | "assistant" | "system") 
-          : "user",
-    content: typeof msg.content === 'string' ? msg.content.substring(0, SECURITY_CONFIG.MAX_INPUT_CHARS) : ''
-  })).filter(msg => msg.content.length > 0);
-
-  // Truncate history
   const history = sanitizedMessages.slice(-SECURITY_CONFIG.MAX_MESSAGES_SENT_TO_MODEL);
 
   return { valid: true, history };
