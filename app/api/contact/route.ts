@@ -15,6 +15,7 @@ const ALLOWED_PLATFORMS = [
   "Game",
   "AI Integration",
   "Internal Tool",
+  "App Audit / Deployment Help",
   "Deployment / Cloud Support",
   "Other",
 ];

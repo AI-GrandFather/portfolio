@@ -2128,6 +2128,16 @@ h3 {
   padding: 7px 9px;
 }
 
+.support-grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.support-card {
+  min-height: 260px;
+}
+
 .process-subtitle {
   color: var(--muted-strong);
   font-size: clamp(20px, 3vw, 30px);
@@ -2299,6 +2309,7 @@ h3 {
 
   .featured-work-grid,
   .capability-grid,
+  .support-grid,
   .compact-stack-grid,
   .portfolio-page .process-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -2346,6 +2357,7 @@ h3 {
   .featured-work-grid,
   .secondary-work-grid,
   .capability-grid,
+  .support-grid,
   .compact-stack-grid,
   .portfolio-page .process-grid {
     grid-template-columns: 1fr;

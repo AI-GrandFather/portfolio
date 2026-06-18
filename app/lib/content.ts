@@ -237,21 +237,57 @@ export const CAPABILITIES: CapabilityCard[] = [
     chips: ["Dashboards", "Reports", "Automation"],
   },
   {
-    title: "Deployment & Handoff",
+    title: "App Audit & Deployment",
     description:
-      "Production setup, environment documentation, cloud troubleshooting, rollback planning, and source-code handoff.",
-    chips: ["Vercel", "AWS basics", "Runbooks"],
+      "I help ship, fix, audit, deploy, and stabilize apps across Vercel, Supabase, Firebase, AWS, app stores, and production environments.",
+    chips: [
+      "Vercel",
+      "Supabase",
+      "Firebase",
+      "AWS",
+      "App Store",
+      "CI/CD",
+      "Performance",
+      "Security",
+    ],
   },
 ];
 
 export const SERVICE_CAPABILITIES = CAPABILITIES;
 
+export const APP_SUPPORT: CapabilityCard[] = [
+  {
+    title: "App Audit",
+    description:
+      "Review the codebase, architecture, environment setup, database structure, auth flow, and deployment risks before more money is spent.",
+    chips: ["Code Review", "Architecture", "Security", "Database"],
+  },
+  {
+    title: "Deployment Fixes",
+    description:
+      "Fix broken builds, Vercel issues, Supabase/Firebase setup problems, app store blockers, environment variables, and production configuration.",
+    chips: ["Vercel", "Supabase", "Firebase", "App Store"],
+  },
+  {
+    title: "Performance & Stability",
+    description:
+      "Improve loading speed, reduce fragile flows, clean up API/database bottlenecks, and make the app more reliable before launch.",
+    chips: ["Performance", "Reliability", "API", "Database"],
+  },
+  {
+    title: "Production Handoff",
+    description:
+      "Prepare documentation, environment notes, rollback steps, repo cleanup, deployment instructions, and ownership transfer.",
+    chips: ["Runbooks", "Docs", "Rollback", "Handoff"],
+  },
+];
+
 export const DEPLOYMENT_CAPABILITIES: CapabilityCard[] = [
   {
-    title: "Deployment & Handoff",
+    title: "App Audit & Deployment",
     description:
-      "Production setup across Vercel, AWS, Azure, and GCP, including environment configuration, deployment checks, rollback planning, and handoff documentation.",
-    chips: ["Vercel", "AWS basics", "Docs"],
+      "App audit, deployment fixes, production stabilization, performance review, and launch handoff across Vercel, Supabase, Firebase, AWS, app stores, and backend environments.",
+    chips: ["Vercel", "Supabase", "Firebase", "AWS", "CI/CD"],
   },
   {
     title: "Scaling & Troubleshooting",
@@ -317,7 +353,14 @@ export const STACK_GROUPS: StackGroup[] = [
   },
   {
     label: "Cloud",
-    items: ["Vercel", "AWS basics", "Deployment troubleshooting"],
+    items: [
+      "Vercel",
+      "Supabase",
+      "Firebase",
+      "AWS",
+      "Deployment Troubleshooting",
+      "CI/CD",
+    ],
   },
   {
     label: "Tooling",

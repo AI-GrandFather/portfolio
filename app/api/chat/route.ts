@@ -2,6 +2,7 @@ import { openai } from "@ai-sdk/openai";
 import { streamText } from "ai";
 import {
   AI_WORKFLOW_CLAIMS,
+  APP_SUPPORT,
   BIO_FACTS,
   DEPLOYMENT_CAPABILITIES,
   PROCESS,
@@ -34,6 +35,11 @@ const deploymentFacts = DEPLOYMENT_CAPABILITIES.map(
   (capability) => `- ${capability.title}: ${capability.description}`,
 ).join("\n");
 
+const appSupportFacts = APP_SUPPORT.map(
+  (capability) =>
+    `- ${capability.title}: ${capability.description} | Areas: ${capability.chips.join(", ")}`,
+).join("\n");
+
 const processFacts = PROCESS.map(
   (step) => `- ${step.title}: ${step.text}`,
 ).join("\n");
@@ -54,6 +60,7 @@ Actively help with:
 - Early project-fit guidance: likely platform, practical MVP scope, feature prioritization, technical options, risks, discovery questions, and relevant portfolio proof.
 - Comparing reasonable implementation approaches, such as Flutter versus SwiftUI, when tied to a visitor's project.
 - Questions about authentication, billing, subscriptions, entitlements, deployment, cloud setup, scaling, and production troubleshooting when tied to a visitor's project.
+- Questions about auditing existing apps, fixing broken deployments, stabilizing backend/cloud setup, preparing apps for launch, or documenting production handoff.
 - Turning a rough idea into a concise first-pass concept or MVP outline.
 - Explaining what information Athar would need before providing a proposal.
 
@@ -108,6 +115,9 @@ ${serviceFacts}
 
 Deployment and cloud support:
 ${deploymentFacts}
+
+Existing app support:
+${appSupportFacts}
 
 Delivery approach:
 - ${AI_WORKFLOW_CLAIMS.delivery}

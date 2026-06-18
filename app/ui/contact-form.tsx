@@ -104,6 +104,7 @@ export function ContactForm() {
           <option>Game</option>
           <option>AI Integration</option>
           <option>Internal Tool</option>
+          <option>App Audit / Deployment Help</option>
           <option>Deployment / Cloud Support</option>
           <option>Other</option>
         </select>

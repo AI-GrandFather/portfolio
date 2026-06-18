@@ -4,6 +4,7 @@ import { ContactForm } from "./ui/contact-form";
 import { ProjectTile } from "./ui/project-tile";
 import { SiteNav } from "./ui/site-nav";
 import {
+  APP_SUPPORT,
   BIO_FACTS,
   CAPABILITIES,
   CONTACT_COPY,
@@ -154,6 +155,32 @@ export default function Home() {
               <p>{capability.description}</p>
               <div className="capability-chips">
                 {capability.chips.map((chip) => (
+                  <span key={chip}>{chip}</span>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="portfolio-section app-support-section" id="app-support">
+        <div className="section-heading section-heading-row">
+          <div>
+            <p className="eyebrow">Production Readiness</p>
+            <h2>Already have an app?</h2>
+          </div>
+          <p className="section-copy">
+            I can also help when the product already exists but needs to be fixed,
+            deployed, stabilized, documented, or prepared for real users.
+          </p>
+        </div>
+        <div className="support-grid">
+          {APP_SUPPORT.map((support) => (
+            <article className="capability-card support-card" key={support.title}>
+              <h3>{support.title}</h3>
+              <p>{support.description}</p>
+              <div className="capability-chips">
+                {support.chips.map((chip) => (
                   <span key={chip}>{chip}</span>
                 ))}
               </div>
