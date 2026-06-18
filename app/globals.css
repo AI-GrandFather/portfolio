@@ -958,6 +958,14 @@ h3 {
   line-height: 1.7;
 }
 
+.capability-note {
+  color: var(--muted-strong) !important;
+  font-size: 13px !important;
+  font-weight: 800;
+  line-height: 1.55 !important;
+  margin-top: 14px;
+}
+
 .deployment-note {
   color: var(--muted);
   font-size: 15px;

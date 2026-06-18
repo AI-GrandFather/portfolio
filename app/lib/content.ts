@@ -237,18 +237,18 @@ export const CAPABILITIES: CapabilityCard[] = [
     chips: ["Dashboards", "Reports", "Automation"],
   },
   {
-    title: "App Audit & Deployment",
+    title: "Cloud Deployment & Implementation",
     description:
-      "I help ship, fix, audit, deploy, and stabilize apps across Vercel, Supabase, Firebase, AWS, app stores, and production environments.",
+      "I deploy, configure, troubleshoot, and stabilize production apps across AWS, Azure, Google Cloud, Vercel, Supabase, and Firebase — including hosting, storage, databases, environment variables, monitoring, CI/CD, app backends, and production handoff.",
     chips: [
+      "AWS",
+      "Azure",
+      "Google Cloud",
       "Vercel",
       "Supabase",
       "Firebase",
-      "AWS",
-      "App Store",
       "CI/CD",
-      "Performance",
-      "Security",
+      "Monitoring",
     ],
   },
 ];
@@ -275,25 +275,25 @@ export const APP_SUPPORT: CapabilityCard[] = [
     chips: ["Performance", "Reliability", "API", "Database"],
   },
   {
-    title: "Production Handoff",
+    title: "Cloud Fixes & Production Readiness",
     description:
-      "Prepare documentation, environment notes, rollback steps, repo cleanup, deployment instructions, and ownership transfer.",
-    chips: ["Runbooks", "Docs", "Rollback", "Handoff"],
+      "For apps that work locally but fail in production, have broken environment variables, database connection issues, missing logs, storage/auth misconfiguration, scattered AWS resources, or unclear deployment ownership.",
+    chips: ["Production Fixes", "AWS", "Azure", "GCP", "Databases", "Logs", "Storage"],
   },
 ];
 
 export const DEPLOYMENT_CAPABILITIES: CapabilityCard[] = [
   {
-    title: "App Audit & Deployment",
+    title: "Cloud Deployment & Implementation",
     description:
-      "App audit, deployment fixes, production stabilization, performance review, and launch handoff across Vercel, Supabase, Firebase, AWS, app stores, and backend environments.",
-    chips: ["Vercel", "Supabase", "Firebase", "AWS", "CI/CD"],
+      "Cloud deployment, implementation, troubleshooting, stabilization, monitoring, CI/CD setup, and production handoff across AWS, Azure, Google Cloud, Vercel, Supabase, and Firebase.",
+    chips: ["AWS", "Azure", "Google Cloud", "Vercel", "Supabase", "Firebase"],
   },
   {
-    title: "Scaling & Troubleshooting",
+    title: "Cloud Troubleshooting & Stabilization",
     description:
-      "Help with performance, scaling, or billing issues on Vercel or AWS as a separate scoped engagement.",
-    chips: ["Scaling", "Billing", "Debugging"],
+      "Help with broken deployments, environment variables, database connections, missing logs, storage/auth configuration, backend stability, and unclear ownership.",
+    chips: ["Production Fixes", "Databases", "Logs", "Storage"],
   },
 ];
 
@@ -353,13 +353,30 @@ export const STACK_GROUPS: StackGroup[] = [
   },
   {
     label: "Cloud",
+    items: ["AWS", "Azure", "Google Cloud", "Vercel", "Supabase", "Firebase"],
+  },
+  {
+    label: "AWS",
     items: [
-      "Vercel",
-      "Supabase",
-      "Firebase",
-      "AWS",
-      "Deployment Troubleshooting",
+      "S3",
+      "RDS",
+      "Aurora",
+      "Amplify",
+      "App Runner",
+      "CloudFormation",
+      "CloudWatch",
+      "IAM",
+    ],
+  },
+  {
+    label: "Deployment",
+    items: [
       "CI/CD",
+      "Environment Setup",
+      "Production Troubleshooting",
+      "Monitoring",
+      "Rollback Planning",
+      "Handoff Docs",
     ],
   },
   {

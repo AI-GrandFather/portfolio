@@ -18,3 +18,4 @@
 - f3a735f 2026-06-18 14:39 PKT Phase 15 — Portfolio redesigned around work, capabilities, process, stack, and contact.
 - 68bd4ff 2026-06-18 14:49 PKT Phase 16 — Blended hero portrait restored.
 - 32b1bc9 2026-06-18 14:56 PKT Phase 17 — Hero portrait constrained below the topbar.
+- 258fa60 2026-06-18 16:56 PKT Phase 18 — App audit, deployment support, and production readiness copy added.

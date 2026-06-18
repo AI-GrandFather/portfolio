@@ -153,6 +153,12 @@ export default function Home() {
             <article className="capability-card" key={capability.title}>
               <h3>{capability.title}</h3>
               <p>{capability.description}</p>
+              {capability.title === "Cloud Deployment & Implementation" ? (
+                <p className="capability-note">
+                  AWS services: S3, RDS, Aurora, Amplify, App Runner,
+                  CloudFormation, CloudWatch, IAM.
+                </p>
+              ) : null}
               <div className="capability-chips">
                 {capability.chips.map((chip) => (
                   <span key={chip}>{chip}</span>
