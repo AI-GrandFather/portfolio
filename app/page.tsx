@@ -39,32 +39,17 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="hero-proof-panel" aria-label="Portfolio proof summary">
-            <div className="hero-portrait-card">
-              <Image
-                src={BIO_FACTS.image}
-                alt={BIO_FACTS.fullName}
-                fill
-                priority
-                sizes="(max-width: 860px) 82vw, 360px"
-                style={{ objectFit: "cover" }}
-              />
-            </div>
-            <dl className="proof-metrics">
-              <div>
-                <dt>Published</dt>
-                <dd>2 iOS apps</dd>
-              </div>
-              <div>
-                <dt>Live</dt>
-                <dd>1 SaaS product</dd>
-              </div>
-              <div>
-                <dt>Built with</dt>
-                <dd>AI-assisted systems</dd>
-              </div>
-            </dl>
-          </div>
+        </div>
+
+        <div className="hero-portrait">
+          <Image
+            src={BIO_FACTS.image}
+            alt={BIO_FACTS.fullName}
+            fill
+            priority
+            sizes="(max-width: 1024px) min(100vw - 48px, 520px), 38vw"
+            style={{ objectFit: "cover" }}
+          />
         </div>
       </section>
 

@@ -15,3 +15,4 @@
 - 9ca4b5d 2026-06-02 16:58 PKT Phase 11 — SVG motifs centered in tiles using absolute positioning, matching icon centering behaviour.
 - 21d9f0a 2026-06-04 22:00 PKT Phase 13 — Hamburger menu added for mobile nav, footer subtitle cleaned up.
 - 83c84c3 2026-06-18 14:07 PKT Phase 14 — Auth, subscriptions, and deployment service sections added.
+- f3a735f 2026-06-18 14:39 PKT Phase 15 — Portfolio redesigned around work, capabilities, process, stack, and contact.
