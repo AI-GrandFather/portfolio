@@ -8,10 +8,12 @@ import { SiteNav } from "./ui/site-nav";
 import {
   BIO_FACTS,
   CONTACT_COPY,
+  DEPLOYMENT_CAPABILITIES,
   HOW_I_BUILD,
   ORIGIN_STORY,
   PROCESS,
   PROJECTS,
+  SERVICE_CAPABILITIES,
   STACK_GROUPS,
 } from "./lib/content";
 
@@ -143,6 +145,61 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="section services-section section-textured" id="services">
+        <div className="section-heading section-heading-row">
+          <div>
+            <p className="eyebrow">Services</p>
+            <h2>Product Systems I Can Add</h2>
+          </div>
+          <p className="section-copy">
+            Available as part of a full product build, or scoped as a standalone integration.
+          </p>
+        </div>
+        <div className="capability-grid">
+          {SERVICE_CAPABILITIES.map((capability) => (
+            <article className="capability-card" key={capability.title}>
+              <h3>{capability.title}</h3>
+              <p>{capability.description}</p>
+            </article>
+          ))}
+        </div>
+        <div className="section-cta">
+          <a className="button primary" href="#contact">
+            Discuss a System
+          </a>
+        </div>
+      </section>
+
+      <section className="section deployment-section section-textured" id="deployment">
+        <div className="section-heading section-heading-row">
+          <div>
+            <p className="eyebrow">Deployment</p>
+            <h2>Deployment & Cloud Support</h2>
+          </div>
+          <p className="section-copy">
+            I can set up, configure, and troubleshoot your production environment.
+          </p>
+        </div>
+        <div className="capability-grid">
+          {DEPLOYMENT_CAPABILITIES.map((capability) => (
+            <article className="capability-card" key={capability.title}>
+              <h3>{capability.title}</h3>
+              <p>{capability.description}</p>
+            </article>
+          ))}
+        </div>
+        <p className="deployment-note">
+          I am currently completing AWS cloud engineering coursework, with hands-on
+          familiarity with EC2, S3, RDS, Lambda, cloud billing, and service selection
+          for production workloads. No AWS certification is claimed.
+        </p>
+        <div className="section-cta">
+          <a className="button primary" href="#contact">
+            Plan a Deployment
+          </a>
+        </div>
+      </section>
+
       <section className="section build-section section-textured" id="how-i-build">
         <div className="build-copy">
           <p className="eyebrow">{HOW_I_BUILD.eyebrow}</p>
@@ -238,6 +295,7 @@ export default function Home() {
             <div className="footer-group">
               <span className="eyebrow">Navigate</span>
               <a href="#work">Work</a>
+              <a href="#services">Services</a>
               <a href="#how-i-build">How I Build</a>
               <a href="#document-stack">Document Stack</a>
               <a href="#safety">Safety</a>

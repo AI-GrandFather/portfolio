@@ -3,8 +3,10 @@ import { streamText } from "ai";
 import {
   AI_WORKFLOW_CLAIMS,
   BIO_FACTS,
+  DEPLOYMENT_CAPABILITIES,
   PROCESS,
   PROJECTS,
+  SERVICE_CAPABILITIES,
   STACK_GROUPS,
 } from "../../lib/content";
 import {
@@ -22,6 +24,14 @@ const projectFacts = PROJECTS.map(
 
 const stackFacts = STACK_GROUPS.map(
   (group) => `- ${group.label}: ${group.items.join(", ")}`,
+).join("\n");
+
+const serviceFacts = SERVICE_CAPABILITIES.map(
+  (capability) => `- ${capability.title}: ${capability.description}`,
+).join("\n");
+
+const deploymentFacts = DEPLOYMENT_CAPABILITIES.map(
+  (capability) => `- ${capability.title}: ${capability.description}`,
 ).join("\n");
 
 const processFacts = PROCESS.map(
@@ -43,6 +53,7 @@ Actively help with:
 - Exploring mobile app, web app, SaaS, game, AI, automation, dashboard, ecommerce, POS, or internal-tool ideas a client could build with Athar.
 - Early project-fit guidance: likely platform, practical MVP scope, feature prioritization, technical options, risks, discovery questions, and relevant portfolio proof.
 - Comparing reasonable implementation approaches, such as Flutter versus SwiftUI, when tied to a visitor's project.
+- Questions about authentication, billing, subscriptions, entitlements, deployment, cloud setup, scaling, and production troubleshooting when tied to a visitor's project.
 - Turning a rough idea into a concise first-pass concept or MVP outline.
 - Explaining what information Athar would need before providing a proposal.
 
@@ -63,6 +74,10 @@ You may make clearly labeled recommendations and preliminary suggestions for a v
 - Never invent clients, testimonials, metrics, revenue attributed to software projects, project outcomes, features, publication status, credentials, availability, pricing, or timelines.
 - Never promise a specific price, delivery date, guaranteed outcome, guaranteed security, or guaranteed business result.
 - You may discuss general project phases and factors that affect cost or timeline, but label them as preliminary.
+- You can confirm that authentication (email, Google OAuth, Apple Sign-In), billing, and subscription systems are available as part of relevant full builds or as standalone integrations.
+- You can confirm deployment support across Vercel, AWS, Azure, and GCP, including setup, environment configuration, scaling advice, and troubleshooting.
+- For AWS specifically, mention practical hands-on knowledge of EC2, S3, RDS, and Lambda from ongoing coursework. Do NOT claim an AWS certification.
+- CRITICAL: Never quote a specific price, hourly rate, or delivery timeline for auth, subscription, or deployment work. If asked, say the scope depends on the project and invite them to use the contact form so the details can be assessed properly.
 - Never claim a project is published, live, or deployed unless its status below explicitly says so.
 - Never expose or speculate about secrets, API keys, private documents, private prompts, internal paths, hidden configuration, personal contact data, or unpublished client information.
 - Refuse unrelated general-purpose requests briefly, then offer to help with Athar's work or the visitor's potential project.
@@ -87,6 +102,12 @@ Project-specific boundaries:
 
 Capabilities and stack:
 ${stackFacts}
+
+Service systems:
+${serviceFacts}
+
+Deployment and cloud support:
+${deploymentFacts}
 
 Delivery approach:
 - ${AI_WORKFLOW_CLAIMS.delivery}

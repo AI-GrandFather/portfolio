@@ -68,6 +68,11 @@ export interface SafetyItem {
   text: string;
 }
 
+export interface CapabilityCard {
+  title: string;
+  description: string;
+}
+
 export const BIO_FACTS = {
   name: "Mian Muhammad Athar",
   shortName: "Athar",
@@ -263,6 +268,58 @@ export const STACK_GROUPS: StackGroup[] = [
   },
 ];
 
+export const SERVICE_CAPABILITIES: CapabilityCard[] = [
+  {
+    title: "Authentication & Accounts",
+    description:
+      "Email registration, Google OAuth, and Apple Sign-In. Designed and integrated for web and mobile products, including apps.",
+  },
+  {
+    title: "Billing & Subscriptions",
+    description:
+      "Subscription models for SaaS and mobile apps. Protected features, plan-aware access control, and integration with RevenueCat or Stripe where applicable.",
+  },
+  {
+    title: "SaaS Entitlements & Access Control",
+    description:
+      "Role-based access, feature gating, and multi-tenant data isolation. Built into the architecture from day one, not bolted on afterwards.",
+  },
+  {
+    title: "Secure Client Handoff",
+    description:
+      "Full source code ownership, environment configuration documentation, deployment guide, and a signed-off pre-deployment safety checklist before any handoff.",
+  },
+];
+
+export const DEPLOYMENT_CAPABILITIES: CapabilityCard[] = [
+  {
+    title: "Vercel",
+    description:
+      "Primary deployment platform for Next.js projects. Environment setup, preview deployments, domain configuration, and production monitoring.",
+  },
+  {
+    title: "AWS",
+    description:
+      "EC2, S3, RDS, and Lambda - practical hands-on knowledge from AWS cloud engineering coursework and applied project work. Service selection, billing awareness, and infrastructure decisions for production applications.",
+  },
+  {
+    title: "Azure & GCP",
+    description:
+      "Deployment support and cloud service selection across Azure and Google Cloud Platform for clients who need these platforms specifically.",
+  },
+  {
+    title: "Scaling & Troubleshooting",
+    description:
+      "If you are already deployed and running into performance, scaling, or billing issues on Vercel or AWS, that is also something I can help with as a separate engagement.",
+  },
+];
+
+export const CV_READY_ADDITIONS = `Cloud, Authentication & Subscription Systems:
+- Authentication flows (email registration, Google OAuth, Apple Sign-In) designed and integrated for web and mobile products.
+- Billing and subscription models for SaaS and mobile apps - entitlement logic, protected features, subscription-aware access control.
+- Deployment and production handoff across Vercel, AWS, Azure, and GCP, including environment configuration, deployment checks, rollback planning, and scaling.
+- Currently completing AWS cloud engineering coursework with practical knowledge of EC2, S3, RDS, Lambda, cloud billing, and service selection for production applications.`;
+
 export const DOCUMENT_STACK = {
   eyebrow: "Document Stack",
   title: "Every project starts on paper.",
@@ -423,6 +480,8 @@ export const CONTACT_COPY = {
     "PRD + TRD + Architecture Document",
     "Phase-by-phase delivery with review gates at each phase",
     "CLAUDE.md agent governance for all AI-assisted work",
+    "Authentication and authorization design when relevant",
+    "Deployment setup and production handoff documentation",
     "Full COMMITS.md audit trail — every change, timestamped",
     "Pre-deployment safety checklist sign-off",
     "Source code ownership — no platform lock-in",

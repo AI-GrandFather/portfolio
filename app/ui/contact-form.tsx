@@ -114,6 +114,7 @@ export function ContactForm() {
           <option>Game</option>
           <option>AI Integration</option>
           <option>Internal Tool</option>
+          <option value="deployment">Deployment / Cloud Support</option>
           <option>Other</option>
         </select>
         <label htmlFor="timeline">

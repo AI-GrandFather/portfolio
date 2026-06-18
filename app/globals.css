@@ -914,6 +914,63 @@ h3 {
   color: var(--muted-strong);
 }
 
+.services-section {
+  padding-bottom: 42px;
+}
+
+.deployment-section {
+  padding-top: 42px;
+}
+
+.capability-grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.capability-card {
+  background: var(--panel-bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  min-height: 230px;
+  padding: 26px;
+  transition: border-color var(--duration-medium) var(--ease-out-premium), 
+              transform var(--duration-medium) var(--ease-out-premium);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .capability-card:hover {
+    border-color: var(--border-strong);
+    transform: translateY(-2px);
+  }
+}
+
+.capability-card h3 {
+  color: var(--text);
+  font-size: 24px;
+  line-height: 1.12;
+  margin-bottom: 16px;
+}
+
+.capability-card p {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.deployment-note {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.7;
+  margin-top: 24px;
+  max-width: 860px;
+}
+
+.section-cta {
+  display: flex;
+  margin-top: 28px;
+}
+
 .work-cta {
   align-items: center;
   background:
@@ -1625,6 +1682,7 @@ h3 {
   }
 
   .origin-grid,
+  .capability-grid,
   .stack-grid,
   .process-grid {
     grid-template-columns: 1fr;
@@ -1706,6 +1764,21 @@ h3 {
 
   .project-grid {
     grid-template-columns: 1fr;
+  }
+
+  .services-section,
+  .deployment-section {
+    padding-bottom: 46px;
+    padding-top: 46px;
+  }
+
+  .capability-card {
+    min-height: 0;
+    padding: 22px;
+  }
+
+  .section-cta {
+    display: grid;
   }
 
   .project-card {
