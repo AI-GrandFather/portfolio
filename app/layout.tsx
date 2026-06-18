@@ -15,9 +15,37 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Mian Muhammad Athar - Solo Product Engineer",
+  metadataBase: new URL("https://portfolio-alpha-five-1ka0417h0y.vercel.app"),
+  title: {
+    default: "Mian Muhammad Athar - Solo Product Engineer",
+    template: "%s | Mian Muhammad Athar",
+  },
   description:
-    "I turn ideas into shipped apps, games, and SaaS systems. Engineering discipline meets agentic AI workflows. From idea to the App Store.",
+    "Solo product engineer building mobile apps, SaaS products, AI workflows, and games from idea to shipped product.",
+  openGraph: {
+    title: "Mian Muhammad Athar - Solo Product Engineer",
+    description:
+      "From idea to shipped product. Mobile apps, SaaS systems, AI workflows, and games built with disciplined AI-assisted development.",
+    url: "/",
+    siteName: "Mian Muhammad Athar Portfolio",
+    images: [
+      {
+        url: "/55D670AB-C554-4417-86F0-C65863EDE18E.PNG",
+        width: 1200,
+        height: 630,
+        alt: "Mian Muhammad Athar",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Mian Muhammad Athar - Solo Product Engineer",
+    description:
+      "From idea to shipped product. Mobile apps, SaaS systems, AI workflows, and games.",
+    images: ["/55D670AB-C554-4417-86F0-C65863EDE18E.PNG"],
+  },
 };
 
 const themeScript = `

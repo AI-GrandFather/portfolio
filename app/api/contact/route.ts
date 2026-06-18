@@ -8,17 +8,19 @@ const WINDOW_MS = 60_000;
 const buckets = new Map<string, { count: number; resetAt: number }>();
 
 const ALLOWED_PLATFORMS = [
+  "",
   "Mobile App",
   "Web App / SaaS",
   "iOS / Apple Platform",
   "Game",
   "AI Integration",
   "Internal Tool",
-  "deployment",
+  "Deployment / Cloud Support",
   "Other",
 ];
 
 const ALLOWED_TIMELINES = [
+  "",
   "Under 1 month",
   "1-3 months",
   "3-6 months",
@@ -26,6 +28,7 @@ const ALLOWED_TIMELINES = [
 ];
 
 const ALLOWED_BUDGETS = [
+  "",
   "Under $5K",
   "$5K - $15K",
   "$15K - $50K",
@@ -113,10 +116,7 @@ export async function POST(request: Request) {
   if (
     !payload.name ||
     !isEmail(payload.email) ||
-    !payload.building ||
-    !payload.platform ||
-    !payload.timeline ||
-    !payload.budget
+    !payload.building
   ) {
     return NextResponse.json(
       { error: "Please complete every required field with a valid email address." },
@@ -166,7 +166,7 @@ export async function POST(request: Request) {
       from,
       to,
       replyTo: payload.email,
-      subject: `Portfolio lead: ${payload.platform}`,
+      subject: `Portfolio lead: ${payload.platform || "New build"}`,
       text: [
         `Name: ${payload.name}`,
         `Email: ${payload.email}`,

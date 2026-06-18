@@ -1,7 +1,6 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import { CONTACT_COPY } from "../lib/content";
 
 type Status = "idle" | "sending" | "sent" | "error";
 
@@ -55,15 +54,6 @@ export function ContactForm() {
 
   return (
     <form className="contact-form" onSubmit={handleSubmit}>
-      <div className="included-block">
-        <h3>{CONTACT_COPY.includedTitle}</h3>
-        <ul>
-          {CONTACT_COPY.included.map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </ul>
-      </div>
-
       <div className="field-pair">
         <label htmlFor="name">
           Name
@@ -106,22 +96,22 @@ export function ContactForm() {
         <label htmlFor="platform">
           Platform
         </label>
-        <select id="platform" name="platform" required defaultValue="">
-          <option value="" disabled>Select one</option>
+        <select id="platform" name="platform" defaultValue="">
+          <option value="">Select one</option>
           <option>Mobile App</option>
           <option>Web App / SaaS</option>
           <option>iOS / Apple Platform</option>
           <option>Game</option>
           <option>AI Integration</option>
           <option>Internal Tool</option>
-          <option value="deployment">Deployment / Cloud Support</option>
+          <option>Deployment / Cloud Support</option>
           <option>Other</option>
         </select>
         <label htmlFor="timeline">
           Timeline
         </label>
-        <select id="timeline" name="timeline" required defaultValue="">
-          <option value="" disabled>Select one</option>
+        <select id="timeline" name="timeline" defaultValue="">
+          <option value="">Select one</option>
           <option>Under 1 month</option>
           <option>1-3 months</option>
           <option>3-6 months</option>
@@ -133,23 +123,14 @@ export function ContactForm() {
         <label htmlFor="budget">
           Budget
         </label>
-        <select id="budget" name="budget" required defaultValue="">
-          <option value="" disabled>Select one</option>
+        <select id="budget" name="budget" defaultValue="">
+          <option value="">Select one</option>
           <option>Under $5K</option>
           <option>$5K - $15K</option>
           <option>$15K - $50K</option>
           <option>$50K+</option>
           <option>Let&apos;s discuss</option>
         </select>
-        <label htmlFor="source">
-          How did you find me?
-        </label>
-        <input
-          id="source"
-          name="source"
-          maxLength={200}
-          placeholder="LinkedIn, GitHub, referral..."
-        />
       </div>
 
       <div style={{ display: "none" }} aria-hidden="true">

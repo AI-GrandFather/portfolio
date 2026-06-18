@@ -19,7 +19,7 @@ import {
 
 const projectFacts = PROJECTS.map(
   (project) =>
-    `- ${project.name} | Status: ${project.statusLabel} | Type: ${project.type} | What it does: ${project.detail} | Stack: ${project.stack.join(", ")}`,
+    `- ${project.name} | Status: ${project.statusLabel} | Type: ${project.type} | What it does: ${project.oneLiner} | Evidence: ${project.bullets.join(" ")} | Stack: ${project.stack.join(", ")}`,
 ).join("\n");
 
 const stackFacts = STACK_GROUPS.map(
@@ -115,7 +115,8 @@ ${processFacts}
 
 == NAVIGATION ==
 - Work and projects: [See the work](#work)
-- How Athar builds: [How I Build](#how-i-build)
+- Capabilities: [Capabilities](#capabilities)
+- How Athar builds: [Process](#process)
 - Stack and tools: [The stack](#stack)
 - Start a project or request an exact proposal: [Contact form](#contact)
 
