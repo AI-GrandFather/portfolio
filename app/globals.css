@@ -1681,7 +1681,7 @@ h3 {
   }
 
   .hero-portrait {
-    opacity: 0.34;
+    opacity: 0.78;
     width: 70%;
   }
 
@@ -2343,7 +2343,18 @@ h3 {
 
   .portfolio-hero .hero-portrait {
     height: calc(100% - 71px);
+    right: -72px;
     top: 71px;
+    width: 92%;
+  }
+
+  .portfolio-hero .hero-portrait::before {
+    opacity: 0.34;
+  }
+
+  .portfolio-hero .hero-portrait img {
+    filter: contrast(1.04) saturate(0.86) brightness(0.9);
+    object-position: 72% center !important;
   }
 
   .portfolio-hero-inner {
