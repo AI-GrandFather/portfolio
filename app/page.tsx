@@ -1,15 +1,18 @@
 import Image from "next/image";
 import { ChatBoard } from "./ui/chat-board";
 import { ContactForm } from "./ui/contact-form";
+import { DocumentStack } from "./ui/document-stack";
+import { PreDeploymentSafety } from "./ui/pre-deployment-safety";
 import { ProjectTile } from "./ui/project-tile";
 import { SiteNav } from "./ui/site-nav";
 import {
-  APP_SUPPORT,
+  AGENTIC_AI_CAPABILITIES,
   BIO_FACTS,
-  CAPABILITIES,
   CONTACT_COPY,
+  DEPLOYMENT_CAPABILITIES,
   PROCESS,
   PRODUCTION_SAFETY,
+  SERVICE_CAPABILITIES,
   STACK_GROUPS,
   WORK_PROJECTS,
 } from "./lib/content";
@@ -140,25 +143,21 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="portfolio-section capabilities-section" id="capabilities">
-        <div className="section-heading">
-          <p className="eyebrow">Capabilities</p>
-          <h2>What I Build</h2>
+      <section className="portfolio-section agentic-ai-section" id="agentic-ai">
+        <div className="section-heading section-heading-row">
+          <div>
+            <p className="eyebrow">Flagship Specialization</p>
+            <h2>Agentic AI & Automation</h2>
+          </div>
           <p className="section-copy">
-            Product builds, integrations, and handoff work for founders and operators who need useful software, not a slide deck.
+            Autonomous multi-agent workflows, vision classification systems, and custom internal tools to automate repetitive operations.
           </p>
         </div>
         <div className="capability-grid">
-          {CAPABILITIES.map((capability) => (
+          {AGENTIC_AI_CAPABILITIES.map((capability) => (
             <article className="capability-card" key={capability.title}>
               <h3>{capability.title}</h3>
               <p>{capability.description}</p>
-              {capability.title === "Cloud Deployment & Implementation" ? (
-                <p className="capability-note">
-                  AWS services: S3, RDS, Aurora, Amplify, App Runner,
-                  CloudFormation, CloudWatch, IAM.
-                </p>
-              ) : null}
               <div className="capability-chips">
                 {capability.chips.map((chip) => (
                   <span key={chip}>{chip}</span>
@@ -169,30 +168,59 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="portfolio-section app-support-section" id="app-support">
+      <section className="portfolio-section services-section" id="services">
         <div className="section-heading section-heading-row">
           <div>
-            <p className="eyebrow">Production Readiness</p>
-            <h2>Already have an app?</h2>
+            <p className="eyebrow">Services</p>
+            <h2>Product Systems I Can Add</h2>
           </div>
           <p className="section-copy">
-            I can also help when the product already exists but needs to be fixed,
-            deployed, stabilized, documented, or prepared for real users.
+            Available as part of a full product build, or scoped as a standalone integration.
           </p>
         </div>
-        <div className="support-grid">
-          {APP_SUPPORT.map((support) => (
-            <article className="capability-card support-card" key={support.title}>
-              <h3>{support.title}</h3>
-              <p>{support.description}</p>
+        <div className="capability-grid">
+          {SERVICE_CAPABILITIES.map((capability) => (
+            <article className="capability-card" key={capability.title}>
+              <h3>{capability.title}</h3>
+              <p>{capability.description}</p>
               <div className="capability-chips">
-                {support.chips.map((chip) => (
+                {capability.chips.map((chip) => (
                   <span key={chip}>{chip}</span>
                 ))}
               </div>
             </article>
           ))}
         </div>
+      </section>
+
+      <section className="portfolio-section deployment-section" id="deployment">
+        <div className="section-heading section-heading-row">
+          <div>
+            <p className="eyebrow">Deployment</p>
+            <h2>Deployment & Cloud Support</h2>
+          </div>
+          <p className="section-copy">
+            I can set up, configure, and troubleshoot your production environment.
+          </p>
+        </div>
+        <div className="capability-grid">
+          {DEPLOYMENT_CAPABILITIES.map((capability) => (
+            <article className="capability-card" key={capability.title}>
+              <h3>{capability.title}</h3>
+              <p>{capability.description}</p>
+              <div className="capability-chips">
+                {capability.chips.map((chip) => (
+                  <span key={chip}>{chip}</span>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
+        <p className="deployment-note" style={{ marginTop: '24px', fontSize: '13px', color: 'var(--muted)' }}>
+          I am currently completing AWS cloud engineering coursework, with hands-on
+          familiarity with EC2, S3, RDS, Lambda, cloud billing, and service selection
+          for production workloads. No AWS certification is claimed.
+        </p>
       </section>
 
       <section className="portfolio-section process-section" id="process">
@@ -232,6 +260,10 @@ export default function Home() {
           </aside>
         </div>
       </section>
+
+      <DocumentStack />
+
+      <PreDeploymentSafety />
 
       <section className="portfolio-section stack-section" id="stack">
         <div className="section-heading section-heading-row">
@@ -287,9 +319,10 @@ export default function Home() {
             <div className="footer-group">
               <span className="eyebrow">Navigate</span>
               <a href="#work">Work</a>
-              <a href="#capabilities">Capabilities</a>
+              <a href="#agentic-ai">Agentic AI</a>
+              <a href="#services">Services</a>
               <a href="#process">Process</a>
-              <a href="#stack">Stack</a>
+              <a href="#safety">Safety</a>
               <a href="#contact">Contact</a>
             </div>
           </div>

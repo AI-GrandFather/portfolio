@@ -4,9 +4,10 @@ import { useEffect, useRef, useState } from "react";
 
 const navLinks = [
   { href: "#work", label: "Work" },
-  { href: "#capabilities", label: "Capabilities" },
+  { href: "#agentic-ai", label: "Agentic AI" },
+  { href: "#services", label: "Services" },
   { href: "#process", label: "Process" },
-  { href: "#stack", label: "Stack" },
+  { href: "#safety", label: "Safety" },
   { href: "#contact", label: "Contact" },
 ];
 

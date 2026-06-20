@@ -56,7 +56,7 @@ export const BIO_FACTS = {
   fullName: "Mian Muhammad Athar",
   location: "Product Engineer",
   title: "Solo Product Engineer",
-  tagline: "Solo Product Engineer",
+  tagline: "Solo Product Engineer — Agentic AI, Automation & iOS/SaaS Delivery",
   headline: "From idea to shipped product.",
   subheadline:
     "I build mobile apps, SaaS products, AI workflows, and games from first scope to launch. I combine engineering discipline, operator experience, and AI-assisted development systems to move faster without handing quality control to the AI.",
@@ -253,7 +253,53 @@ export const CAPABILITIES: CapabilityCard[] = [
   },
 ];
 
-export const SERVICE_CAPABILITIES = CAPABILITIES;
+export const AGENTIC_AI_CAPABILITIES: CapabilityCard[] = [
+  {
+    title: "Autonomous AI Agents",
+    description:
+      "Build multi-agent architectures using OpenAI Agents SDK, Claude API, and customized routing to automate complex business workflows and data synthesis.",
+    chips: ["OpenAI Agents", "Claude API", "Structured Routing", "MCP"],
+  },
+  {
+    title: "Workflow Automation & Tools",
+    description:
+      "Build internal dashboards, automated reporting scripts, and database-backed workflows that allow operators to inspect and update state using natural language.",
+    chips: ["Automation", "Dashboards", "Natural Language UX", "SQLite / Express"],
+  },
+  {
+    title: "Vision AI & Real-Time Interaction",
+    description:
+      "Deploy production vision systems (like photo-based breed/care classification) and browser-based hand landmark gesture controls using MediaPipe.",
+    chips: ["OpenAI Vision", "MediaPipe Tasks", "Canvas", "Verlet Physics"],
+  },
+];
+
+export const SERVICE_CAPABILITIES: CapabilityCard[] = [
+  {
+    title: "Authentication & Accounts",
+    description:
+      "Email registration, Google OAuth, and Apple Sign-In. Designed and integrated for web and mobile products.",
+    chips: ["NextAuth", "Supabase Auth", "OAuth 2.0", "Firebase Auth"],
+  },
+  {
+    title: "Billing & Subscriptions",
+    description:
+      "Subscription models for SaaS and mobile apps. Protected features, plan-aware access control, and integration with RevenueCat or Stripe.",
+    chips: ["Stripe", "RevenueCat", "Webhooks", "IAP"],
+  },
+  {
+    title: "SaaS Entitlements & Access Control",
+    description:
+      "Role-based access control (RBAC), feature gating, and multi-tenant data isolation built into the database schema.",
+    chips: ["RBAC", "Row-Level Security", "Feature Gating", "Tenant Isolation"],
+  },
+  {
+    title: "Secure Client Handoff",
+    description:
+      "Full source code ownership, environment configuration documentation, deployment guide, and a pre-deployment safety checklist.",
+    chips: ["Handoff Docs", "Environment Setup", "Checklists", "Source Handoff"],
+  },
+];
 
 export const APP_SUPPORT: CapabilityCard[] = [
   {
@@ -284,16 +330,28 @@ export const APP_SUPPORT: CapabilityCard[] = [
 
 export const DEPLOYMENT_CAPABILITIES: CapabilityCard[] = [
   {
-    title: "Cloud Deployment & Implementation",
+    title: "Vercel",
     description:
-      "Cloud deployment, implementation, troubleshooting, stabilization, monitoring, CI/CD setup, and production handoff across AWS, Azure, Google Cloud, Vercel, Supabase, and Firebase.",
-    chips: ["AWS", "Azure", "Google Cloud", "Vercel", "Supabase", "Firebase"],
+      "Primary deployment platform for Next.js projects. Environment setup, preview deployments, domain configuration, and production monitoring.",
+    chips: ["Next.js", "Vercel Edge", "Domains", "Analytics"],
   },
   {
-    title: "Cloud Troubleshooting & Stabilization",
+    title: "AWS",
     description:
-      "Help with broken deployments, environment variables, database connections, missing logs, storage/auth configuration, backend stability, and unclear ownership.",
-    chips: ["Production Fixes", "Databases", "Logs", "Storage"],
+      "EC2, S3, RDS, and Lambda — service selection, billing awareness, and infrastructure decisions for production applications.",
+    chips: ["S3", "RDS", "EC2", "Lambda", "IAM"],
+  },
+  {
+    title: "Azure & GCP",
+    description:
+      "Deployment support and cloud service selection across Azure and Google Cloud Platform for clients who need these platforms specifically.",
+    chips: ["Azure App Services", "Google Cloud Run", "Cloud Storage"],
+  },
+  {
+    title: "Scaling & Troubleshooting",
+    description:
+      "Fix performance, scaling, or billing issues on Vercel or AWS, database connection pools, memory leaks, and production logs.",
+    chips: ["Connection Pools", "Debugging", "Logs", "Cost Control"],
   },
 ];
 
@@ -349,7 +407,7 @@ export const STACK_GROUPS: StackGroup[] = [
   },
   {
     label: "AI",
-    items: ["OpenAI", "Claude", "Gemini", "MediaPipe"],
+    items: ["OpenAI Agents SDK", "Claude API", "Gemini API", "MediaPipe Tasks"],
   },
   {
     label: "Cloud",
@@ -422,7 +480,7 @@ export const CV_READY_ADDITIONS = `Cloud, Authentication & Subscription Systems:
 export const AI_WORKFLOW_CLAIMS = {
   delivery:
     "Architecture-first AI-assisted delivery: Athar writes the spec, scopes the tasks, directs coding agents, reviews output, verifies behavior, and ships only after quality gates.",
-  tools: ["Codex", "Claude Code", "Gemini", "OpenAI", "MCPs", "Agents", "Skills"],
+  tools: ["Codex", "Claude Code", "Gemini Developer API", "OpenAI Agents SDK", "MCPs", "Agents", "Skills"],
 };
 
 export const DOCUMENT_STACK = {
