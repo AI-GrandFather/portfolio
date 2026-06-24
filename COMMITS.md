@@ -22,3 +22,4 @@
 - 21b2deb 2026-06-18 23:33 PKT Phase 19 — Cloud deployment and implementation positioning strengthened.
 - c22915f 2026-06-19 10:56 PKT Phase 20 — Mobile hero portrait visibility improved
 - 22021c6 2026-06-20 22:44 PKT Phase 21 — surface agentic AI positioning in hero, fix vague AI copy, reorder sections.
+- b005347 2026-06-24 11:28 PKT Phase 22 — marked Lingua Loop as shipped and updated AI engineering and AWS copy.

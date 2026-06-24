@@ -14,9 +14,12 @@ function renderMotif(motif: ProjectTileMotif, accentColor: string) {
   switch (motif) {
     case "pos":
       return (
-        <g fill="none" stroke={accentColor} strokeWidth="2">
-          <rect height="64" rx="7" width="46" x="41" y="28" />
-          <path d="M50 43h28M50 55h22M50 67h26M50 80h28" />
+        <g fill="none" stroke={accentColor} strokeLinecap="round" strokeLinejoin="round">
+          <path d="M33 88h62" opacity="0.5" strokeWidth="2" />
+          <rect height="58" rx="8" strokeWidth="2.5" width="48" x="40" y="25" />
+          <path d="M48 37h32v13H48zM48 60h7M61 60h7M74 60h6M48 70h7M61 70h7M74 70h6" strokeWidth="2" />
+          <path d="M91 33l8 8-8 8M99 41h-18" opacity="0.72" strokeWidth="2" />
+          <path d="M29 41l8-8M29 41l8 8" opacity="0.45" strokeWidth="2" />
         </g>
       );
     case "blocks":
@@ -56,22 +59,27 @@ function renderMotif(motif: ProjectTileMotif, accentColor: string) {
       );
     case "chart":
       return (
-        <g fill={accentColor}>
-          <rect height="18" rx="2" width="12" x="38" y="72" />
-          <rect height="33" rx="2" width="12" x="56" y="57" />
-          <rect height="45" rx="2" width="12" x="74" y="45" />
-          <rect height="60" rx="2" width="12" x="92" y="30" />
-          <path d="M31 91h82" fill="none" stroke={accentColor} strokeWidth="2" />
+        <g fill="none" stroke={accentColor} strokeLinecap="round" strokeLinejoin="round">
+          <rect height="68" opacity="0.8" rx="7" strokeWidth="2" width="80" x="24" y="27" />
+          <path d="M36 43h26M36 51h14" opacity="0.55" strokeWidth="2" />
+          <path d="M36 82v-12M48 82V61M60 82V66M72 82V53" strokeWidth="4" />
+          <path d="M35 68l14-12 12 5 16-19 14 7" strokeWidth="2.5" />
+          <circle cx="49" cy="56" fill={accentColor} r="2.5" />
+          <circle cx="77" cy="42" fill={accentColor} r="2.5" />
+          <path d="M84 82h8" opacity="0.52" strokeWidth="2" />
         </g>
       );
     case "hand":
       return (
-        <g fill="none" stroke={accentColor} strokeLinecap="round" strokeWidth="2">
-          <path d="M64 88C48 69 40 55 33 35" />
-          <path d="M64 88C55 66 52 49 51 26" />
-          <path d="M64 88C64 64 65 47 66 23" />
-          <path d="M64 88C74 66 79 50 85 29" />
-          <path d="M64 88C84 72 95 59 104 43" />
+        <g fill="none" stroke={accentColor} strokeLinecap="round" strokeLinejoin="round">
+          <path d="M63 98C52 84 42 71 36 52l-2-18M63 98C57 75 52 54 52 28M63 98C64 74 66 49 67 23M63 98C73 75 79 53 85 30M63 98C84 79 94 60 103 43" strokeWidth="2.5" />
+          <path d="M36 52l16 2 15-5 18 4 18-10M52 54l5 18 7 2 9-18 7 13 8-16" opacity="0.68" strokeWidth="1.5" />
+          <circle cx="34" cy="34" fill={accentColor} r="3" />
+          <circle cx="52" cy="28" fill={accentColor} r="3" />
+          <circle cx="67" cy="23" fill={accentColor} r="3" />
+          <circle cx="85" cy="30" fill={accentColor} r="3" />
+          <circle cx="103" cy="43" fill={accentColor} r="3" />
+          <circle cx="63" cy="98" fill={accentColor} r="3.5" />
         </g>
       );
   }
