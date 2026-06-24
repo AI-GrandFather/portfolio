@@ -37,6 +37,10 @@ export interface CapabilityCard {
   title: string;
   description: string;
   chips: string[];
+  statusLabel?: string;
+  statusColor?: StatusColor;
+  link?: string;
+  linkLabel?: string;
 }
 
 export interface StackGroup {
@@ -255,6 +259,16 @@ export const CAPABILITIES: CapabilityCard[] = [
 
 export const AGENTIC_AI_CAPABILITIES: CapabilityCard[] = [
   {
+    title: "Lingua Loop — Live on AWS",
+    description:
+      "Three-agent adaptive language-practice system. Tutor, Evaluator, and Coach agents run on a shared LangGraph state graph with checkpointing. The Coach agent generates and updates a curriculum roadmap in real time. Supports 12 languages, configurable AI model tiers, Vocabulary Bank, Grammar Notes, and a persistent Learner Profile. Deployed on AWS Amplify — originally architected on Lambda, S3, CloudFront, and API Gateway.",
+    chips: ["LangGraph", "AWS Amplify", "Multi-Agent", "12 Languages"],
+    statusLabel: "Live · AWS Amplify",
+    statusColor: "green",
+    link: "https://main.dxc1dhz704oyg.amplifyapp.com",
+    linkLabel: "Open Lingua Loop",
+  },
+  {
     title: "Autonomous AI Agents",
     description:
       "Build multi-agent architectures using OpenAI Agents SDK, Claude API, and customized routing to automate complex business workflows and data synthesis.",
@@ -271,6 +285,33 @@ export const AGENTIC_AI_CAPABILITIES: CapabilityCard[] = [
     description:
       "Deploy production vision systems (like photo-based breed/care classification) and browser-based hand landmark gesture controls using MediaPipe.",
     chips: ["OpenAI Vision", "MediaPipe Tasks", "Canvas", "Verlet Physics"],
+  },
+];
+
+export const AI_ENGINEERING_FOUNDATIONS: CapabilityCard[] = [
+  {
+    title: "Context Engineering",
+    description:
+      "LLMs are stateless — every API call starts completely fresh. The application decides what enters the context window at each inference step: prior messages, retrieved chunks, tool results, system instructions. Getting this wrong is the most common production failure mode in AI systems. Context engineering is the discipline of structuring that input deliberately.",
+    chips: ["Context Windows", "Retrieval", "Tool Results", "System Instructions"],
+  },
+  {
+    title: "RAG Pipeline Design",
+    description:
+      "Retrieval-Augmented Generation grounds model responses in your actual data. The pipeline: document ingestion and parsing → semantic chunking (splitting on topic boundaries, not character counts) → embedding generation → HNSW vector indexing → hybrid retrieval combining dense semantic search with sparse BM25 keyword search → cross-encoder reranking for precision. Retrieval failure is where 73% of RAG systems break — not generation.",
+    chips: ["Semantic Chunking", "HNSW", "BM25", "Reranking"],
+  },
+  {
+    title: "Agent Architecture",
+    description:
+      "An agent is an LLM with access to defined tools, executing a loop until a stopping condition is met. Serious production agents use LangGraph: explicit state machines, separation of planning and execution nodes, checkpointing before expensive calls, and human-in-the-loop interrupt support. Supervisor/worker patterns handle multi-agent coordination.",
+    chips: ["LangGraph", "State Machines", "Checkpointing", "Human-in-the-Loop"],
+  },
+  {
+    title: "Streaming & Response Design",
+    description:
+      "Token-by-token streaming via server-sent events with real-time markdown rendering. The difference between a system that feels alive and one that makes users wonder if it crashed while waiting for a full response to arrive.",
+    chips: ["Server-Sent Events", "Streaming", "Markdown", "UX"],
   },
 ];
 
@@ -338,7 +379,7 @@ export const DEPLOYMENT_CAPABILITIES: CapabilityCard[] = [
   {
     title: "AWS",
     description:
-      "EC2, S3, RDS, and Lambda — service selection, billing awareness, and infrastructure decisions for production applications.",
+      "Hands-on AWS engineering across EC2, S3, CloudFront, RDS, Aurora, Amplify, App Runner, CloudFormation, CloudWatch, Lambda, API Gateway, and IAM. Production deployment of Lingua Loop: initially architected on Lambda, S3, CloudFront, and API Gateway — then migrated to AWS Amplify for full-stack hosting and CI/CD. AWS CLI is part of the daily workflow. Amazon Bedrock integration currently in progress. Terraform used for infrastructure-as-code.",
     chips: ["S3", "RDS", "EC2", "Lambda", "IAM"],
   },
   {
@@ -475,7 +516,7 @@ export const CV_READY_ADDITIONS = `Cloud, Authentication & Subscription Systems:
 - Authentication flows (email registration, Google OAuth, Apple Sign-In) designed and integrated for web and mobile products.
 - Billing and subscription models for SaaS and mobile apps - entitlement logic, protected features, subscription-aware access control.
 - Deployment and production handoff across Vercel, AWS, Azure, and GCP, including environment configuration, deployment checks, rollback planning, and scaling.
-- Currently completing AWS cloud engineering coursework with practical knowledge of EC2, S3, RDS, Lambda, cloud billing, and service selection for production applications.`;
+- Hands-on AWS engineering across EC2, S3, CloudFront, RDS, Aurora, Amplify, App Runner, CloudFormation, CloudWatch, Lambda, API Gateway, IAM, and Terraform. Amazon Bedrock integration is in progress.`;
 
 export const AI_WORKFLOW_CLAIMS = {
   delivery:

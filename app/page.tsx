@@ -6,6 +6,7 @@ import { PreDeploymentSafety } from "./ui/pre-deployment-safety";
 import { ProjectTile } from "./ui/project-tile";
 import { SiteNav } from "./ui/site-nav";
 import {
+  AI_ENGINEERING_FOUNDATIONS,
   AGENTIC_AI_CAPABILITIES,
   BIO_FACTS,
   CONTACT_COPY,
@@ -155,6 +156,45 @@ export default function Home() {
         </div>
         <div className="capability-grid">
           {AGENTIC_AI_CAPABILITIES.map((capability) => (
+            <article
+              className="capability-card"
+              data-status={capability.statusColor}
+              key={capability.title}
+            >
+              {capability.statusLabel ? (
+                <span className="status-tag">{capability.statusLabel}</span>
+              ) : null}
+              <h3>{capability.title}</h3>
+              <p>{capability.description}</p>
+              <div className="capability-chips">
+                {capability.chips.map((chip) => (
+                  <span key={chip}>{chip}</span>
+                ))}
+              </div>
+              {capability.link ? (
+                <a
+                  className="project-link capability-link"
+                  href={capability.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {capability.linkLabel}
+                </a>
+              ) : null}
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="portfolio-section ai-engineering-section" id="ai-engineering">
+        <div className="section-heading section-heading-row">
+          <div>
+            <p className="eyebrow">AI Engineering</p>
+            <h2>How the Systems Actually Work</h2>
+          </div>
+        </div>
+        <div className="capability-grid">
+          {AI_ENGINEERING_FOUNDATIONS.map((capability) => (
             <article className="capability-card" key={capability.title}>
               <h3>{capability.title}</h3>
               <p>{capability.description}</p>
@@ -216,11 +256,6 @@ export default function Home() {
             </article>
           ))}
         </div>
-        <p className="deployment-note" style={{ marginTop: '24px', fontSize: '13px', color: 'var(--muted)' }}>
-          I am currently completing AWS cloud engineering coursework, with hands-on
-          familiarity with EC2, S3, RDS, Lambda, cloud billing, and service selection
-          for production workloads. No AWS certification is claimed.
-        </p>
       </section>
 
       <section className="portfolio-section process-section" id="process">
