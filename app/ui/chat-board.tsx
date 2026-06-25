@@ -1,14 +1,28 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, type FormEvent } from "react";
 import { useChat } from "ai/react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { AI_ASSISTANT_DEFAULTS } from "../lib/content";
+import {
+  hasBlockedSensitiveInput,
+  redactSensitiveInput,
+} from "../lib/pii-middleware";
 
 export function ChatBoard() {
   const [isOpen, setIsOpen] = useState(false);
-  const { messages, input, handleInputChange, handleSubmit, setMessages, isLoading, error, append } = useChat({
+  const [guardrailError, setGuardrailError] = useState<string | null>(null);
+  const {
+    messages,
+    input,
+    handleInputChange,
+    setInput,
+    setMessages,
+    isLoading,
+    error,
+    append,
+  } = useChat({
     api: "/api/chat",
     initialMessages: [
       {
@@ -38,8 +52,42 @@ export function ChatBoard() {
     ]);
   }
 
+  function getSafeMessage(content: string) {
+    const trimmedContent = content.trim();
+    if (!trimmedContent) {
+      return null;
+    }
+
+    const redacted = redactSensitiveInput(trimmedContent);
+    if (hasBlockedSensitiveInput(redacted.redactions)) {
+      setGuardrailError(
+        "Please remove API keys, tokens, private keys, or payment card details before sending.",
+      );
+      return null;
+    }
+
+    setGuardrailError(null);
+    return redacted.text;
+  }
+
   const sendMessage = async (content: string) => {
-    await append({ role: 'user', content });
+    const safeMessage = getSafeMessage(content);
+    if (!safeMessage) {
+      return;
+    }
+
+    await append({ role: "user", content: safeMessage });
+  };
+
+  const submitMessage = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const safeMessage = getSafeMessage(input);
+    if (!safeMessage) {
+      return;
+    }
+
+    setInput("");
+    void append({ role: "user", content: safeMessage });
   };
 
   return (
@@ -82,16 +130,17 @@ export function ChatBoard() {
                 <p className="typing-dots"><span>.</span><span>.</span><span>.</span></p>
               </div>
             )}
-            {error && (
+            {(guardrailError || error) && (
               <p className="chat-error">
-                {(() => {
-                  try {
-                    const parsed = JSON.parse(error.message);
-                    return parsed.error || "The assistant is unavailable.";
-                  } catch {
-                    return error.message || "The assistant is unavailable.";
-                  }
-                })()}
+                {guardrailError ||
+                  (() => {
+                    try {
+                      const parsed = JSON.parse(error?.message || "");
+                      return parsed.error || "The assistant is unavailable.";
+                    } catch {
+                      return error?.message || "The assistant is unavailable.";
+                    }
+                  })()}
               </p>
             )}
           </div>
@@ -107,13 +156,16 @@ export function ChatBoard() {
           )}
         </div>
 
-        <form className="chat-footer" onSubmit={handleSubmit}>
+        <form className="chat-footer" onSubmit={submitMessage}>
           <input
             className="chat-input"
             value={input}
-            onChange={handleInputChange}
+            onChange={(event) => {
+              setGuardrailError(null);
+              handleInputChange(event);
+            }}
             placeholder="Ask a question..."
-            maxLength={900}
+            maxLength={1500}
             disabled={isLoading}
           />
           <button type="submit" className="chat-send-btn" disabled={isLoading || !input.trim()}>

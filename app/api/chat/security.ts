@@ -1,14 +1,19 @@
 /**
  * AI Chat Security & Cost Guardrails
  * 
- * This utility provides input validation, rate limiting, cost estimation,
- * and usage tracking for the AI chat endpoint.
+ * This utility provides input validation, PII redaction, rate limiting,
+ * cost estimation, and usage tracking for the AI chat endpoint.
  */
 
+import {
+  hasBlockedSensitiveInput,
+  redactSensitiveInput,
+} from "../../lib/pii-middleware";
+
 export const SECURITY_CONFIG = {
-  MAX_INPUT_CHARS: 3000,
-  MAX_MESSAGES_SENT_TO_MODEL: 10,
-  MAX_OUTPUT_TOKENS: 700,
+  MAX_INPUT_CHARS: 4000,
+  MAX_MESSAGES_SENT_TO_MODEL: 12,
+  MAX_OUTPUT_TOKENS: 900,
   TEMPERATURE: 0.5,
   
   // Daily caps (USD)
@@ -16,8 +21,8 @@ export const SECURITY_CONFIG = {
   DAILY_GLOBAL_COST_CAP: 5.00, // Total app cap per day
   
   // Rate limits
-  BURST_LIMIT: 3, // Messages per minute
-  DAILY_LIMIT: 12, // Messages per day per IP
+  BURST_LIMIT: 4, // Messages per minute
+  DAILY_LIMIT: 18, // Messages per day per IP
 };
 
 const MODEL_PRICING = {
@@ -100,14 +105,23 @@ export async function validateRequest(messages: unknown) {
     if (trimmedContent.length > SECURITY_CONFIG.MAX_INPUT_CHARS) {
       return {
         valid: false,
-        error: "Message too long. Please keep it under 3000 characters.",
+        error: "Message too long. Please keep it under 4000 characters.",
+        status: 400,
+      };
+    }
+
+    const redacted = redactSensitiveInput(trimmedContent);
+    if (hasBlockedSensitiveInput(redacted.redactions)) {
+      return {
+        valid: false,
+        error: "Please remove API keys, tokens, private keys, or payment card details before sending.",
         status: 400,
       };
     }
 
     sanitizedMessages.push({
       role,
-      content: trimmedContent,
+      content: redacted.text,
     });
   }
 
