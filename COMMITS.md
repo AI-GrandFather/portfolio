@@ -24,4 +24,4 @@
 - 22021c6 2026-06-20 22:44 PKT Phase 21 — surface agentic AI positioning in hero, fix vague AI copy, reorder sections.
 - b005347 2026-06-24 11:28 PKT Phase 22 — marked Lingua Loop as shipped and updated AI engineering and AWS copy.
 - c0119d5 2026-06-24 11:28 PKT Phase 23 — replaced generic project tile motifs with product-specific SVG visuals.
-- 97db570 2026-06-25 18:11 PKT Phase 24 — added chat PII middleware and blocked secrets from assistant input.
+- ea26eb7 2026-06-25 18:11 PKT Phase 24 — added chat PII middleware and blocked secrets from assistant input.
