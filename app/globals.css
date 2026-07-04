@@ -1730,11 +1730,19 @@ h3 {
   }
 
   .theme-toggle {
-    margin-left: auto;
+    display: none;
   }
 
   .mobile-menu-toggle {
-    display: flex;
+    background: rgba(255, 255, 255, 0.08) !important;
+    border-color: rgba(255, 255, 255, 0.28) !important;
+    color: #ffffff !important;
+    display: flex !important;
+    margin-left: auto;
+    position: fixed !important;
+    right: 20px !important;
+    top: 16px !important;
+    z-index: 1001 !important;
   }
 
   .mobile-nav-menu[data-open="true"] {
@@ -2024,7 +2032,7 @@ h3 {
 .featured-work-grid {
   display: grid;
   gap: 20px;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .work-card {
@@ -2033,6 +2041,7 @@ h3 {
   border-radius: 20px;
   box-shadow: var(--shadow);
   color: var(--text);
+  min-width: 0;
   padding: 18px;
   transition: border-color var(--duration-medium) var(--ease-out-premium),
     transform var(--duration-medium) var(--ease-out-premium);
@@ -2084,6 +2093,7 @@ h3 {
   font-weight: 800;
   line-height: 1.45;
   margin-bottom: 18px;
+  overflow-wrap: anywhere;
 }
 
 .project-bullets {
@@ -2120,16 +2130,25 @@ h3 {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.agentic-ai-section .capability-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 .capability-card {
   background: var(--panel-bg);
   border: 1px solid var(--border);
   border-radius: 18px;
   min-height: 240px;
+  min-width: 0;
   padding: 24px;
 }
 
 .capability-card h3 {
   font-size: 24px;
+}
+
+.capability-card p {
+  overflow-wrap: anywhere;
 }
 
 .capability-chips {
@@ -2376,13 +2395,41 @@ h3 {
     padding-bottom: 54px;
   }
 
+  .portfolio-hero-copy {
+    max-width: min(320px, calc(100vw - 40px));
+    min-width: 0;
+    width: 100%;
+  }
+
   .portfolio-hero h1 {
-    font-size: clamp(54px, 16vw, 72px);
+    font-size: 52px;
+    max-width: 9.5ch;
+    overflow-wrap: normal;
+  }
+
+  .portfolio-hero .hero-text {
+    max-width: min(320px, calc(100vw - 40px));
+    overflow-wrap: anywhere;
   }
 
   .proof-bar {
     border-radius: 18px;
-    display: flex;
+    box-sizing: border-box;
+    display: block;
+    max-width: min(320px, calc(100vw - 40px));
+    overflow-wrap: anywhere;
+    width: 100%;
+  }
+
+  .work-card,
+  .capability-card {
+    box-sizing: border-box;
+    max-width: min(320px, calc(100vw - 40px));
+    width: 100%;
+  }
+
+  .portfolio-page .section-copy {
+    max-width: min(320px, calc(100vw - 40px));
   }
 
   .proof-metrics,
