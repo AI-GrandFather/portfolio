@@ -22,6 +22,9 @@ export const metadata: Metadata = {
   },
   description:
     "Solo product engineer building mobile apps, SaaS products, AI workflows, and games from idea to shipped product.",
+  verification: {
+    google: "1a1546567e216d51",
+  },
   openGraph: {
     title: "Mian Muhammad Athar - Solo Product Engineer",
     description:
