@@ -25,3 +25,5 @@
 - b005347 2026-06-24 11:28 PKT Phase 22 — marked Lingua Loop as shipped and updated AI engineering and AWS copy.
 - c0119d5 2026-06-24 11:28 PKT Phase 23 — replaced generic project tile motifs with product-specific SVG visuals.
 - ea26eb7 2026-06-25 18:11 PKT Phase 24 — added chat PII middleware and blocked secrets from assistant input.
+- b789dd1 2026-07-04 21:31 PKT Phase 25 — added Job Hunter Agent as shipped product and marked Lingua Loop live.
+[24aef53] 2026-07-17 15:24 PKT Phase N/A — add google site verification tag and file
