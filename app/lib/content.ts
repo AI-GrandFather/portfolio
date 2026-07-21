@@ -182,7 +182,7 @@ export const WORK_PROJECTS: WorkProject[] = [
       "CloudFront",
       "Terraform",
     ],
-    link: "https://ddrjt7oik18q9.cloudfront.net/dashboard/index.html",
+    link: "https://d3e3e4rigt8ske.cloudfront.net/dashboard/index.html#overview",
     linkLabel: "Live dashboard",
     caseStudyHref: "/work/job-hunter-agent",
     caseStudyLabel: "Case Study",
@@ -312,7 +312,7 @@ export const AGENTIC_AI_CAPABILITIES: CapabilityCard[] = [
     chips: ["LangGraph", "ECS Fargate", "Playwright", "Human Approval"],
     statusLabel: "Live · AWS ECS Fargate",
     statusColor: "green",
-    link: "https://ddrjt7oik18q9.cloudfront.net/dashboard/index.html",
+    link: "https://d3e3e4rigt8ske.cloudfront.net/dashboard/index.html#overview",
     linkLabel: "Open Job Hunter",
   },
   {
