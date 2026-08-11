@@ -21,7 +21,7 @@ Primary conversion path: visitor reviews work, asks the chat board what can be b
 
 The content was based on local project evidence from `/Users/atharmushtaq/projects`:
 
-- Block Crush Game / BlockPuzzlePro: published iOS block puzzle game using SwiftUI and SpriteKit with multiple modes and 120Hz performance work.
+- Block Crush Game / BlockPuzzlePro: originally shipped as a native iOS block puzzle game using SwiftUI and SpriteKit, then fully rebuilt with Flutter, Dart, and Flame. It is now published on both iOS and Android with a shared codebase, multiple modes, monetization, platform game services, and high-refresh performance work.
 - FurrFind: Flutter iOS and Android AI pet breed identification app with scan history, free scan limits, subscriptions, and premium AI care chat.
 - Soleris Ledger: budget, inventory, profit, ROAS, currency conversion, and AI-assisted business dashboard.
 - AuraPOS: live Next.js and Supabase POS system with entry management, inventory, SaaS-oriented architecture, and operational tooling.

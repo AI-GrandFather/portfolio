@@ -2296,6 +2296,11 @@ h3 {
   line-height: 1.35;
 }
 
+.case-copy .project-actions {
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
 .case-hero .project-visual {
   height: 420px;
 }
@@ -2312,6 +2317,15 @@ h3 {
 .case-section h2 {
   font-size: 28px;
   margin-bottom: 18px;
+}
+
+.case-section > p {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.case-section > p + p {
+  margin-top: 14px;
 }
 
 .case-bullets {

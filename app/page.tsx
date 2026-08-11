@@ -94,7 +94,19 @@ export default function Home() {
                 ))}
               </div>
               <div className="project-actions">
-                {project.link ? (
+                {project.links?.map((link) => (
+                  <a
+                    className="project-link"
+                    href={link.href}
+                    aria-label={`${link.label} for ${project.name}`}
+                    key={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {link.label}
+                  </a>
+                ))}
+                {!project.links && project.link ? (
                   <a
                     className="project-link"
                     href={project.link}

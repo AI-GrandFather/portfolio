@@ -8,19 +8,23 @@ It summarizes known products, publication status, and construction status based 
 
 ### Block Crush Game
 
-- Status: Published on the iOS App Store.
-- Source project evidence: `block-puzzle-pro` / `BlockPuzzlePro`.
-- Product type: iOS game.
-- Stack and build evidence: SwiftUI, SpriteKit, Combine, Observation, StoreKit, Game Center, ad integrations.
+- Status: Published on the iOS App Store and Google Play. Both user-provided store URLs returned HTTP 200 on 2026-08-11.
+- Store URLs:
+  - iOS: `https://apps.apple.com/us/app/block-crush-fun-puzzle-game/id6755646573`
+  - Android: `https://play.google.com/store/apps/details?id=com.blockcrush.flutter`
+- Source project evidence: original native project in `block-puzzle-pro` / `BlockPuzzlePro`; cross-platform rebuild in `blockcrush_flutter`.
+- Product type: Cross-platform iOS and Android game.
+- Migration: Full SwiftUI + SpriteKit to Flutter + Flame rebuild, not a UI reskin.
+- Current stack and build evidence: Flutter, Dart, Flame, ChangeNotifier, Firebase, AdMob, cross-platform IAP, Game Center, and Play Games Services.
 - Core capabilities:
   - Block puzzle gameplay.
   - Multiple modes including Classic, Timed, Zen, Puzzle, and Cascade.
-  - Drag-and-drop game interaction.
-  - SpriteKit visual effects and animation polish.
-  - Performance work for smooth 120Hz gameplay.
+  - Drag-and-drop game interaction rebuilt in Flame.
+  - Flame visual effects, particles, and animation polish mapped from the SpriteKit original.
+  - Explicit iOS and Android high-refresh configuration and performance validation work.
 - Portfolio positioning:
-  - Proof of shipping a polished mobile game.
-  - Proof of game-feel, performance, monetization, and App Store release capability.
+  - Proof of shipping and maintaining a polished cross-platform mobile game.
+  - Proof of native-to-Flutter migration, game-feel, performance work, monetization, and App Store/Google Play release capability.
 
 ## Built Products And Strong Portfolio Evidence
 
@@ -192,7 +196,7 @@ Use these categories in UI copy, chat responses, and future case-study pages:
 
 Future agents should follow these copy rules:
 
-- It is safe to say Block Crush Game is published on the iOS App Store.
+- It is safe to say Block Crush Game is published on the iOS App Store and Google Play.
 - It is safe to say FurrFind is published on the iOS App Store, verified on 2026-06-01.
 - It is safe to say AuraPOS is live at `https://nexpos-ten.vercel.app/`, verified with HTTP 200 on 2026-05-31.
 - It is safe to say Handtracking is a complete experimental project.

@@ -15,6 +15,17 @@ export interface ProjectTileData {
   iconSrc?: string;
 }
 
+export interface ProjectLink {
+  href: string;
+  label: string;
+}
+
+export interface CaseStudySection {
+  title: string;
+  paragraphs?: string[];
+  bullets?: string[];
+}
+
 export interface WorkProject {
   id: string;
   name: string;
@@ -26,8 +37,10 @@ export interface WorkProject {
   stack: string[];
   link?: string;
   linkLabel?: string;
+  links?: ProjectLink[];
   caseStudyHref: string;
   caseStudyLabel: string;
+  caseStudySections?: CaseStudySection[];
   visual: string;
   tile: ProjectTileData;
   featured: boolean;
@@ -60,12 +73,12 @@ export const BIO_FACTS = {
   fullName: "Mian Muhammad Athar",
   location: "Product Engineer",
   title: "Solo Product Engineer",
-  tagline: "Solo Product Engineer — Agentic AI, Automation & iOS/SaaS Delivery",
+  tagline: "Solo Product Engineer — Agentic AI, Automation & Mobile/SaaS Delivery",
   headline: "From idea to shipped product.",
   subheadline:
     "I build mobile apps, SaaS products, AI workflows, and games from first scope to launch. I combine engineering discipline, operator experience, and AI-assisted development systems to move faster without handing quality control to the AI.",
   proof:
-    "2 published iOS apps · 2 live web products · Full-stack builds · App Store + AWS + Vercel + Supabase",
+    "2 published mobile apps · iOS + Android · 2 live web products · App Store + Google Play + AWS + Vercel + Supabase",
   image: "/55D670AB-C554-4417-86F0-C65863EDE18E.PNG",
   email: "atharmushtaq9@gmail.com",
   linkedin: "https://linkedin.com/in/mian-muhammad-athar",
@@ -107,22 +120,55 @@ export const WORK_PROJECTS: WorkProject[] = [
   {
     id: "block-crush",
     name: "Block Crush",
-    statusLabel: "Live on App Store",
+    statusLabel: "Live on iOS + Android",
     statusColor: "green",
-    type: "iOS Game",
+    type: "Flutter Game · iOS + Android",
     oneLiner:
-      "Published iOS puzzle game with power-ups, Game Center, StoreKit monetization, and 120Hz gameplay support.",
+      "Cross-platform block-puzzle game rebuilt from native SwiftUI and SpriteKit in Flutter and Flame, now published on iOS and Android.",
     bullets: [
-      "Built with SwiftUI/SpriteKit-style mobile game polish.",
-      "Includes power-ups, daily rewards, leaderboards, achievements, and IAP.",
-      "Proof of mobile UX, game-feel, monetization, and App Store shipping.",
+      "Rebuilt the native iOS codebase—not just the UI—as a shared Flutter and Dart architecture.",
+      "Moved gameplay rendering and effects to Flame while Flutter owns navigation, settings, store, and platform flows.",
+      "Preserved the 8×8 game, multiple modes, power-ups, monetization, leaderboards, and high-refresh performance work.",
     ],
-    stack: ["SwiftUI", "SpriteKit", "StoreKit", "Game Center"],
-    link: "https://apps.apple.com/us/app/block-crush-puzzle-games-new/id6755646573",
-    linkLabel: "View App Store",
+    stack: ["Flutter", "Dart", "Flame", "Firebase", "AdMob + IAP"],
+    links: [
+      {
+        href: "https://apps.apple.com/us/app/block-crush-fun-puzzle-game/id6755646573",
+        label: "View on App Store",
+      },
+      {
+        href: "https://play.google.com/store/apps/details?id=com.blockcrush.flutter",
+        label: "View on Google Play",
+      },
+    ],
     caseStudyHref: "/work/block-crush",
     caseStudyLabel: "Case Study",
-    visual: "Board · pieces · rewards",
+    caseStudySections: [
+      {
+        title: "Why move beyond the native iOS build?",
+        paragraphs: [
+          "Block Crush began as a shipped iOS game with a SwiftUI interface and SpriteKit gameplay. Reaching Android with a separate native build would have created two engines, two feature paths, and twice the parity work.",
+          "The goal was one maintainable product codebase without flattening the game feel, economy, or platform services that made the original app production-ready.",
+        ],
+      },
+      {
+        title: "How I transitioned SwiftUI and SpriteKit to Flutter",
+        bullets: [
+          "Extracted the original 8×8 grid rules, scoring, piece generation, power-ups, modes, assets, and testable behavior before rebuilding screens.",
+          "Ported gameplay math into framework-independent Dart so rules could be tested separately from rendering.",
+          "Recreated the board, drag input, effects, particles, and gameplay loop with Flame components.",
+          "Rebuilt menus, navigation, settings, store, profiles, and dialogs as Flutter widgets around the Flame game surface.",
+          "Reimplemented ads, in-app purchases, analytics, achievements, leaderboards, and persistence through cross-platform services, then validated parity with automated tests and device checks.",
+        ],
+      },
+      {
+        title: "The cross-platform result",
+        paragraphs: [
+          "Block Crush now ships from a Flutter and Dart codebase to both the Apple App Store and Google Play. The migration preserves the original iOS product lineage while giving the game an Android release path and a shared foundation for future gameplay, store, and live-service updates.",
+        ],
+      },
+    ],
+    visual: "SwiftUI → Flutter · iOS + Android",
     featured: true,
     tile: {
       gradient: "linear-gradient(135deg, #0f0f2e 0%, #1a1a4e 100%)",

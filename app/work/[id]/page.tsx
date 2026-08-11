@@ -46,6 +46,12 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
     notFound();
   }
 
+  const projectLinks =
+    project.links ??
+    (project.link && project.linkLabel
+      ? [{ href: project.link, label: project.linkLabel }]
+      : []);
+
   return (
     <main className="case-study-page">
       <Link className="case-back-link" href="/#work">
@@ -61,16 +67,17 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
           <h1>{project.name}</h1>
           <p>{project.oneLiner}</p>
           <div className="project-actions">
-            {project.link ? (
+            {projectLinks.map((link) => (
               <a
                 className="project-link"
-                href={project.link}
+                href={link.href}
+                key={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {project.linkLabel}
+                {link.label}
               </a>
-            ) : null}
+            ))}
             <Link className="project-link secondary-link" href="/#contact">
               Start a Similar Build
             </Link>
@@ -97,6 +104,22 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
           ))}
         </div>
       </section>
+
+      {project.caseStudySections?.map((section) => (
+        <section className="case-section" key={section.title}>
+          <h2>{section.title}</h2>
+          {section.paragraphs?.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
+          {section.bullets ? (
+            <ul className="case-bullets">
+              {section.bullets.map((bullet) => (
+                <li key={bullet}>{bullet}</li>
+              ))}
+            </ul>
+          ) : null}
+        </section>
+      ))}
 
       <section className="case-section case-note">
         <h2>Status boundary</h2>
